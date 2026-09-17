@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:b5cf12312ca4f37888f5f0e4e614cd9bbdbf6d6232e1229412e8b2099c923e90",
+  "claims": [
+    {
+      "id": "claim_c5c176a2b2fc4a02a15c2b839bc6aa32",
+      "statement": "load_hub_dataset replaces the datasets library: it lists a Hub dataset's parquet export via the Hub API, downloads all shards once under <base_dir>/task_data/<owner--repo>/<subset>/<split>/, writes manifest.json last as the completion marker, and serialises the download across torchrun ranks with a FileLock on the manifest path.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/common.py#L45-L82",
+          "version": "repo-lines-v1:sha256:54c72d7011e1d61b440b586df554e8376d83efd2fccefaa5d86cdae76f4ee7a7:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIxYTI1OWFjYTkwNjRmNDE1ZTdiNDU0Y2Q3ODM2YjMzY2Y5YmY1OTFkNGQ3YjBmMmNkOTY3MDA5M2IwNDY0ZTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4OTc1NjQ0ZmMzY2I2MzUyZWE2OGZjZDEzYTAyMmUyNjdjOWQxNzBlNWVkMDAxYjUwNjg5MGU0NDM3OGFiYjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljY2Y0MmVhMTY2NmQ3Mzg5ZWM2OWY2Zjg4ZDRmNDFmNWE1NGY2OGY1ODk5MzZmOTQ0MmZlOWY4MmY5MWFiMWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI3NGZkOGNjMTJkYWU4YzhmM2ZmODViZDQ4NGYxNDU1ODFkZDUxNDZhOTQwMjFiMTU4N2Y3NTkzY2Y1YmEwMjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b3683ebb584b4a9c9cf4eb79e68f1c16",
+      "statement": "HubDataset.shuffle(seed) builds a numpy default_rng(seed) permutation view so row order matches datasets.Dataset.shuffle(seed) exactly, and every concrete task shuffles with seed 42.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/arc.py#L14-L14",
+          "version": "repo-lines-v1:sha256:9805a28eeeace82770cee2693b9f94ebaf780a2e832c8a9ec0bdc3f536a4e1af:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTgwNWEyOGVlZWFjZTgyNzcwY2VlMjY5M2I5Zjk0ZWJhZjc4MGEyZTgzMmM4YTllYzBiZGMzZjUzNmE0ZTFhZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTgwNWEyOGVlZWFjZTgyNzcwY2VlMjY5M2I5Zjk0ZWJhZjc4MGEyZTgzMmM4YTllYzBiZGMzZjUzNmE0ZTFhZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjM1YWVlNDc4ZTAzZDMwOTMzYTFkYjA3MWNiM2RiNjE0OGU4N2U0ZTgwMzE2ZGYwMzBjZGIyYjY3MjQxOTA5ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzA5MTQ1OWZkMzVmNmQ1MGFjMzk1NGFkZjYxNTZlYTE4YzI2OGYyMTYwMWI0ZWU4NmRiMzM4ODBlZjBiMjRjOCJ9"
+        },
+        {
+          "resource": "repo://tasks/common.py#L21-L43",
+          "version": "repo-lines-v1:sha256:93de02844ba19ecab0c8d05aae09145f27d30ce8277bb41f5bba07589687c4c7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkwMmE3ZTBiYWMyZWNhOTcxMTcyZjUxMmM5N2RiNDE3MjJiMWYwNjcyNjQ1Nzk3NmY4YjkxNTIyYjBkM2JkMjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ5NDBhNmMwZTUzYTBiNmE0YjFiZGZkZmVkOWJhMGFlMWQyODY5ZDVmYTdjMzRhMzc2YmVlYmYyMGRiNzZiMzIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNmNjJjMTI0NzY2ZjNlMGZjOWU4Mzg3Njk1NjdhYWIzNTk1MmM0Njk0NmM3YmU5MWFlYmIzYzI3MGZkZGU3ZTMifQ"
+        },
+        {
+          "resource": "repo://tasks/gsm8k.py#L42-L42",
+          "version": "repo-lines-v1:sha256:5d3e7e0a0e16e9ac94fdca52d9ef2d6d93abd2a93e7258dcffbf3ade9870cbbe:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQzZTdlMGEwZTE2ZTlhYzk0ZmRjYTUyZDllZjJkNmQ5M2FiZDJhOTNlNzI1OGRjZmZiZjNhZGU5ODcwY2JiZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQzZTdlMGEwZTE2ZTlhYzk0ZmRjYTUyZDllZjJkNmQ5M2FiZDJhOTNlNzI1OGRjZmZiZjNhZGU5ODcwY2JiZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTMyNjc4NTNhMzI0NTNhODEyZTJiNmFmZjA0YTZhMWNhNzBkMjM1YmIxYTM0YTQ3Nzk4MTI5ZThkZmQwZjZkYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzA5MTQ1OWZkMzVmNmQ1MGFjMzk1NGFkZjYxNTZlYTE4YzI2OGYyMTYwMWI0ZWU4NmRiMzM4ODBlZjBiMjRjOCJ9"
+        },
+        {
+          "resource": "repo://tests/test_tasks.py#L73-L82",
+          "version": "repo-lines-v1:sha256:65b99b108c335a0690b5f27adbce56f3e73342621e2793fe5459777394051f72:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxZWE1MWNjNGEwZGU3ZjkxY2E5ODUzMzNjZTQzYThjMmY0MDJhNTQ5YzZkYjJlMmYwZDJmYTI2MWZkMTI2YzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVlNDJhMWI0ZWE4ODFkZWVmOTY5ZGYzOTAzZTBhOGViNjUzNDBmZDdiYTNlMjBkNDg1MDM2NzQ0M2E1NGQzNzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJjYzZlZWYxODhjNzkzNTM2YzJkMzljOWQ0OTZhOGQ3ZGRkMGMyZmNmNTJkODc2OWFjYTU4NWZiNzIyMjRhMGIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_30296f9dd1ec42629cd7970424d0b62e",
+      "statement": "Task(start, stop, step) is a lightweight logical view: len is ceil((stop-start)/step) and task[i] maps to physical index start + i*step before calling get_example, which is how chat_sft trims validation sets without copying data.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L177-L181",
+          "version": "repo-lines-v1:sha256:6acaaf2ae1d1a36d4d90a8ca515cbb7193339443fbd34ab7c33bddf105b07141:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmMxYmI4ODAyYzYyZTg2MTYxMDQ2MTJjMGZlMWVhYTU0NmNiNDJlODg3Y2JmMzU1NTZkMDUzNjNkY2VkNWIyNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTZhNzE1MjU3MmVlODRmMTA5MDZjNzRiOWYyYTkyNDM0ZGRhYjBlM2M0MjgxM2IwNGU1OTdlZmNlYzk1MWIyNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTQwYTJjMzRmNTcxYzI2OTg2MDcxMmY3ODllNTAxZjI2MDE2YmRiNzA4ZjI4NDY4YTk4MWY0MjM1YmZhZGQxZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWExZDMyNzAyYTI1OTczMmE2MDcwZWQ0ZGVhYzdlMzdmNTRjMGQzZmZmOGQwMzVkNjU3ZTIwNWZkNzNhMDVlNSJ9"
+        },
+        {
+          "resource": "repo://tasks/common.py#L85-L127",
+          "version": "repo-lines-v1:sha256:e4ae5c4ae77e003e734a6313be3f87cde02379d0c0c10b3954fa31d4281f9314:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljZDkwM2ExNGFlMzJkZmZmMTNkNzFhMGYxOWFlZWIyZTRiZTZmM2IyMTc0MjBkYmQxNGExMmQ4YjFmMzgwNzYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQzYWZjNDlhMjI4ODQzMWMyMTY1YjkyZTdmOTdmYmI2ODk0ZTg4MGM2Yjk0MzI3MjZlZTg3YWIyY2M3YTYxNDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJkMzA0N2I3Y2Y2NGMwY2Y3YzEzMjMxMDMxYmQ1Y2I3YmVhMmFhMGY1MmQzYjM1M2NmNzIzYmMwZGUzYmNmYWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_71a866c9fcda422caf2b29870a4c0ec7",
+      "statement": "TaskMixture concatenates tasks and deterministically shuffles the combined index map with random.Random(42) so tasks interleave, and passing a task multiple times oversamples it; TaskSequence concatenates in order for curricula.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/common.py#L129-L184",
+          "version": "repo-lines-v1:sha256:301240aa7a257cdc912f065cd0632b4581ba4d925066ad015e7dcc2967a81b9f:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3MGVjYTA1YzA4ZDUxNzI1NDkzNmYxMGRjYzE3YzA0YzU5NjM4YmUyMzM5YTRiYTgwNTNkYTFjOTA4NDNjMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhYzMyZWIwZTkxM2U2ZjM3MjQ2OTdhYTFkMTI5M2MzZWEwYjc1ZGE5OTVhZWY0NGJiNTU0N2YyMDQxMmZhZjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIxZTZjNmE2MTMwMDQzMzZiYmQ4MWNkYmJmZjZkZmNkMzE4Zjg2YzY1YTU4ODRlMzQ5ZWFjMmZmZjdhM2U1YzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwY2RhNDE0YmJkZTc2YzYyMDk1MzhlMzUwY2I2Zjc1MjI1MTI1OTkyMGVkZGQ5NjA5ZjQwYWFkMjZhZTgzMjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c3d76694bc9f4be98843808a26398a43",
+      "statement": "render_mc places each answer letter after its choice with no whitespace after '=' because the tokenizer has distinct ids for 'A' and ' A' and the assistant answer is the bare letter.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/common.py#L187-L207",
+          "version": "repo-lines-v1:sha256:a9bab794b8ce89bead926882e55134854619530c45f5790902d9e931e1532077:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjZWMyNmY1MGQ3MzU3YWYxNjVhODFhZGY5MjRhMGZmODc1ODhiMjQyYzIyNzJlNDRiZThiN2ZiNmQ3MzVmMDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI4MDNiNGE2ZTRkYzU4OWFmODdjZWMzMTU4NjFkYTMxMDBkZWNjYzBlNGE2NWNhNjM1Y2E0MDA3OTNmZmJkMWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkxZjU0OWM1MDVmMGE4YjI2MjgxMjhiOGZhNWQ0NjAwNTFkZTY0OTc1YzY4MWVmYjFlY2E4OTcyMjMyNTQ5NmEifQ"
+        },
+        {
+          "resource": "repo://tests/test_tasks.py#L84-L88",
+          "version": "repo-lines-v1:sha256:1cc6892210d257d3d2ae55e51ee493a36df51fde2493e11ea4b411be38c490d8:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmUwYzQ5NjI5MTIzNDA3ZWNhNDU0NWY1ODQzNTMxNmM2OTExNjQ1ZTAzNTE4MWI2ZTg2M2I2ODA1ZTgwZGNmMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDRmOWM1OWFlN2Y4MWQ3ZWYxY2Q4NzE1YTIzMzk3NDc3NzY2YjJmYmEwNmQwNTJiYzdkZjNkOWEwMjQ2MjE5NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODU4YTUzMWM4YzUwYWI4ZTBhM2M0ZThiOWNhZmYyODA3MmZhNjBjYmY1YzRkY2ZlNGU2MzI1ZTBkMWU3ZmFlZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_20a0c37f2db44a8a9bcc0abf1cc7159c",
+      "statement": "ARC and MMLU are categorical tasks whose conversations carry the allowed letters and whose evaluate asserts the response is one of those letters and compares it to the gold letter; GSM8K, HumanEval are generative.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/arc.py#L16-L47",
+          "version": "repo-lines-v1:sha256:69f435ac966c1a5f232e897071f6b81773e1b28b6af89b00b2b8767c30fe3a63:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzZDAwY2YyNzA5NjRkNDRhMTNkZmFjODc1MmIwOWZjYzQzNWIwZjE5YjMxNmFiY2Y4MWE3YWE2NGJiMTIyZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYzhkMTZjMWRmZTdjNGU3MDQ4NWJmYWQ3YmQ5MWM0OTM0MTZjNjJkMjY0M2RjMzIzNzcxZWZjOWY4MWVkMjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhMDMwZGE3ZWU4ZjQzNmRhYjVkMmJlMmVlYzFhMjE3YmE4MmVlOWIzYmUxNjQwNmUyOTJmNjBhNjE2OTdiNGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://tasks/gsm8k.py#L44-L46",
+          "version": "repo-lines-v1:sha256:59b8bffde6ce0ebd4918fa60b4e94431e653e2b99ad46dea03e88324e71bff9f:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjNkMDBjZjI3MDk2NGQ0NGExM2RmYWM4NzUyYjA5ZmNjNDM1YjBmMTliMzE2YWJjZjgxYTdhYTY0YmIxMjJkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzNmNmU4NWFiYjVjYWNiYzA1ZjRiNzk1NTNiMzU0OGVmOTE0NTE4ZDczYjQwYmQ4MzIwOTRjMjRmNmI3NzlkNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGYzMTJkNmRmYmE0M2FjZmMyZjUzNmY5OGMzODg1NGE0MzJiZTQ1YjUxMTlkNDFlNTQxMTZmOTlhNTc2YzY5ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDZiMjAwOTVhOTI4NjhlNGNlZDExZWE4OWE3NzkwNzY3OGRkZGU3Nzc0MDEyMmU1NDQ3OTFkODVmMmFiZDMxYSJ9"
+        },
+        {
+          "resource": "repo://tasks/humaneval.py#L53-L55",
+          "version": "repo-lines-v1:sha256:59b8bffde6ce0ebd4918fa60b4e94431e653e2b99ad46dea03e88324e71bff9f:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjNkMDBjZjI3MDk2NGQ0NGExM2RmYWM4NzUyYjA5ZmNjNDM1YjBmMTliMzE2YWJjZjgxYTdhYTY0YmIxMjJkNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzNmNmU4NWFiYjVjYWNiYzA1ZjRiNzk1NTNiMzU0OGVmOTE0NTE4ZDczYjQwYmQ4MzIwOTRjMjRmNmI3NzlkNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMThlYjVmMzdmZGM1MWU1MmE3Y2EzNmE4N2I4Mzg3ZTlkODU2ZTFlYjcwZGQ5YWIzMWVmMjc5NDFiM2YyZDkwNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDZiMjAwOTVhOTI4NjhlNGNlZDExZWE4OWE3NzkwNzY3OGRkZGU3Nzc0MDEyMmU1NDQ3OTFkODVmMmFiZDMxYSJ9"
+        },
+        {
+          "resource": "repo://tasks/mmlu.py#L21-L54",
+          "version": "repo-lines-v1:sha256:b98ce06651fcfa58bd679419c7a7f027667fc91b1317d3da7f90351b67a14b82:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzZDAwY2YyNzA5NjRkNDRhMTNkZmFjODc1MmIwOWZjYzQzNWIwZjE5YjMxNmFiY2Y4MWE3YWE2NGJiMTIyZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwYzhkMTZjMWRmZTdjNGU3MDQ4NWJmYWQ3YmQ5MWM0OTM0MTZjNjJkMjY0M2RjMzIzNzcxZWZjOWY4MWVkMjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUyNWE2ODFjODliZDQ4MzMyYmNlODhiYzVjMGI3Y2Y0MTA4ZDEzZjMxYTc1Nzc5MmZmMzFiZDI5MmZjNzFiNGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_54965e58208149ad87591c1a72dabada",
+      "statement": "GSM8K splits the reference answer's <<expr=result>> spans into python and python_output assistant parts so SFT teaches tool use, grades by comparing the number after '####' in reference and response, and exposes that grade as a float reward for RL.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/gsm8k.py#L21-L34",
+          "version": "repo-lines-v1:sha256:e3023c4fdc44e73ef32cf88ce80cafd83f7c18ec192978bb8963bf928e18866e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2OGMwMGQ0ZjI0ZmFjMjMzMjNlMzg0OTE2MDdlOGQ2YjIwZTE5YWNhMDQ5MzhjYjY1YWFhZjNhMjUzNzk0YWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg4Yzc0ZDYzM2Q5YTFiMzI1YmMzZDAzZjc0MWUyNjY5ZTI5M2VlZGExYWVlZDNlYWNlMmViMTAwM2E2NjEyN2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE5N2NhNGIxZGUxZDYzNzk0MTM0ZTY5ZWEwYzRkYTNkNDBlODhkZjRkMGE4OTFjZjAyNjUwMjgwMTA3MTRkYjYifQ"
+        },
+        {
+          "resource": "repo://tasks/gsm8k.py#L56-L115",
+          "version": "repo-lines-v1:sha256:256891aeabaa4fdb0550afd1e1917a70298fef8b1d78fb6c57ec3b8540c4f757:eyJzZWxlY3RlZExpbmVDb3VudCI6NjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3NTFjOGZiNTg2YmNiNTIyM2ZjMzNhYmFmZWY5YjIzM2I5MTVkODNmZGEzZjU4YWNhN2YyMTJlZTRkMTlmOTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRhYzRhMTdjZjcwMjMwOTNhYWFkNmQ2NWViMTc1YTA3ZTY3ZTkyMDY4NzJhODViM2M0MzhiM2YwMmQ4MTdjNGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjZDVhNGJlNTQyYzFiMjUwYjdiMTY5MzVkZjY0YzAyMTFlNmNkOTM0YmI0OGIxNWY1YjA4NDkwZjUxMDhhODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVjNTRiZWJmOWJjMGE4M2E0ZjlhMWFjNzE2NzJiNjQxMzQyMTg3OTkyZmRkODYzY2VjZTFmMjgzODg0MmI3ZDMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_435da54a14d4429096407f2a3476511d",
+      "statement": "HumanEval.evaluate extracts the first code block from the completion, prepends the prompt's imports, appends the test and check(entry_point), and runs the program in the execution sandbox, treating process success as a pass.",
+      "evidence": [
+        {
+          "resource": "repo://tasks/humaneval.py#L23-L44",
+          "version": "repo-lines-v1:sha256:f051afac63b42e93abab99977de00b715fc10e1be0214eaecfe7f418fe56d4ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhMTk4NTllOGNjMDFkMDcwMTQ3YWE5ODkxYmViODJlYmM5NTI5ZDNmYTI1YTAyZjk4YzhlYzJlYTcxZTQ1N2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1NDU3ODE4Y2IwZjZkNzdjOWE5MWIyM2YzZjYyZDE0MTg5ODM1YTkzMDJiZmFiZTk0NDVhN2NkOTAzMWE5YTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgyZTJlY2ZhNTg3YTAxODRlMTM1YjIxMzc4NjE1NWIyM2Q4YWRhMDM4MGU4YjU2NjhmYzg4YzZjZWI1ZGM4ZGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNlNzJlNzAwMGNkYzQzMjcyMzU1Yjg5MjI1NGFmZjA4YWMzZTU3MDY0MGM0NjAwM2QwYTc2OGYwYWI2MTA1MWIifQ"
+        },
+        {
+          "resource": "repo://tasks/humaneval.py#L79-L97",
+          "version": "repo-lines-v1:sha256:dee1b6860285c7c2bdb7db305ac5887ee5dc36370fa0544bbe5197dbdec02c3f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmYTBhMWYzZGQ3NDIwMWRhY2U2ZGQwYmQ2MjM5MDM4NjU1ZWNhOTU4ZWVkZDdhNzg4NDRlODJmZjYwYWUyMDEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNmYjAxZWNjMDJiZWQwYmY4YmZiNmViMWZkMWFiMzZmZDYxMTMwZjJkOTlmODk0YmEwZjdiMzBlNDVlMTQ1ZDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA0MmM0ZjM2NTk3YmQ2Yjk0NjZiNjFkN2RjMDU2MTcyM2U4OTkyYzQ2YjYzNWU4Y2NmMjYyOGUwMDRiOWI3OTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

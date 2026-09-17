@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:908632732bb27bf2ea393b719861f3c70d0a622894663303ac4916cf0bba8add",
+  "claims": [
+    {
+      "id": "claim_e75fb5923b6c46a1a9b45baab24a9588",
+      "statement": "evaluate_bpb computes bits per byte as summed per-token nats divided by ln(2) times the summed byte lengths of target tokens from the token_bytes table, excluding zero-byte special tokens and ignore-index targets, all-reducing both sums across ranks and returning infinity when no bytes were counted.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/loss_eval.py#L9-L65",
+          "version": "repo-lines-v1:sha256:843418fc847a050bb1a489b4e6dcf34139a907b3e4087ab8a0bdd570f83c77a9:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4MDY1YmQ3ZWQ5MmU1YTBlMjhjZTA5NmRhZDUyNTg1N2VlNjg4OWQ0MTY5MmU2MzVmOGY3YTRlNTMyY2Y5ZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4NzczNDVmYmEzNzg2NTJlYjVlOGE0OTNkYTRlZGQzNjY5MThkNmMyZmNlYTViM2U2Y2IzZjZkYmJhNjNmNmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJhMGUxM2FhZjljYTg0ZGMzOGMyY2NhMGYzYjAwZDRiN2Y4ZDkwMjM2ZDFjNWQ3MjkyMDEyNDk3MTlmNjE5NjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_687399dd7dc44e7c805fbb002d5aee44",
+      "statement": "CORE evaluation downloads eval_bundle.zip from a public S3 URL once via a file lock into <base_dir>/eval_bundle, reads core.yaml for the task list and eval_meta_data.csv for random baselines, shuffles each task's examples with seed 1337 before truncating to max_per_task, centres accuracy as (acc - baseline)/(1 - baseline) and averages the centred values.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_eval.py#L42-L121",
+          "version": "repo-lines-v1:sha256:c8d06da845da5e47d14c59c48ca42be14654dfebd992dc65c4f6b7edc5e60a20:eyJzZWxlY3RlZExpbmVDb3VudCI6ODAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhNTgxMTRiYTNkMGQ4MGFkNTlkZjk2N2ZmYzZiZTU5NWJmNGExMGUyN2NiY2Q5Njg1NTM0ZjZmNGZiMTFkMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM4ODc0Y2ExODI5YWQ1ZTMxMDhlOGRmNjAyYTM0YzNkMDM2ZWU0ZjUyMTYyYjUxNTQyYzA0NmQ4MzBlMDQ3NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwNDQzODUwOTlhOGUwNjllNGJlMDQzOWE2NGI5NDZlNTY0ODY5NzY4MGVlNzU3Yzg5ZTAwMTJhMmM4NWI0NmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRhNTllZGYwMGFjM2MzMWYwNzhjNzk2ZmVmMTE2NjVjOWExM2EyNTY5MTkzMDY0NDczZGFhMTVlZjM5MjUzYTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9b3e156a2fb14a1ab149b274eeb3e667",
+      "statement": "core_eval implements three DCLM task types: multiple_choice picks the choice with the lowest mean loss over the continuation span found via the common token prefix, schema does the same over the common suffix, and language_modeling requires the argmax prediction to match every continuation token.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/core_eval.py#L17-L143",
+          "version": "repo-lines-v1:sha256:c7d8e66bd8e68e9b024a3673762454260910a4d0d2293d269c5678cff828fa2a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTI3LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIzNWQ2ZjAxMmJlODdmNjM5ZWExNjY3NWI0MGMzZDFiYzY0ODU2NmJjNzhlZmMxOTUyYTA1NmFkM2ZkYWYzMGNhIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJhODA1YmVhNTE3MTUwOWE2MWU1NjgyODBiNzdkMDM0ZGE0YzcwMTFhNDI1MDUzNTdhNWVlMzI5Yjc1ODk2NzgyIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJkNzFiNjAwYjNkYzdhYjEzMWFjMWYzNjk0ZTI3NGFkMGQwNjk5N2M2MDk5YzEzZTY3MzJmNjZmNDA2ZjNmNGI0In0"
+        },
+        {
+          "resource": "repo://nanochat/core_eval.py#L223-L242",
+          "version": "repo-lines-v1:sha256:712497aece1cc9a51a671835d32bed7cf2526287c701418915007f5b950ee9cb:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA0ZDE4NzlmZGM1YjZjZjE1ZjkzZWQ4MTZlODEzNTk3MGM0OGQ0NWE2ZDcyMjQ1MGZjZWU5NDJhMWVlN2ExODUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNhZGIxNjljZDk0MzAzMTNmNTI2NTE1OTQ1Yzg4MTI4NTRkYWYwN2ZiNzM5M2ExNzIxOGIyNDM1ZWM1NWVhMTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM5ODg5MTdhMDMzOWFkZTg5M2YzMzIzYmRhOGJmZWVmMDA1ZmRlMWRmNTRkYmUzOTc5NTdkN2JlZWZhMDYxNjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6458b3e6f8734beeb2f7bac9656281d8",
+      "statement": "Few-shot examples are sampled per item with random.Random(1234 + idx) excluding the item, sequences are right-padded with BOS, and evaluate_task strides examples across ranks and all-reduces a per-example correctness tensor before taking the mean.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/core_eval.py#L168-L182",
+          "version": "repo-lines-v1:sha256:7c6abe25a1865f3c5fc2cceee84e91461781bf9a828afe25c035218287fd939f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzMWY2Njg3NGQ0NzIwN2Y3YjdmMjIzOTE3OGQ1YTg3YzhiYWUyNDA1ZTU5NzE4MzZiYzUwYWNmZTZmOTc5ZjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI5YjJhNzFjMGVjOWQ4YzA5ZDA4MWE3OWEyM2I5ZTg3YjY1ZjQ2NmE0Y2E3N2I3ZTM3MTMzMjg4YjMwODQ2NmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmOGYzNTVjNWRjNzYyYmIxNDkyY2RlMzFhNWNlMGU5NDZiNmI0ZjA0MWVjZGJmNzk2MGQ1NjYzZjcxZmIzYjAifQ"
+        },
+        {
+          "resource": "repo://nanochat/core_eval.py#L216-L218",
+          "version": "repo-lines-v1:sha256:18391997ccd0def1f94e12cf877d5ea2fee73c72be12b0c842a029a4a4566a5a:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTliZTU3NTlhZjQzYTFmOTI0YjA1MjRmOGFmZTE0YzRmMDQxMmFhYmUxNmY0N2MwNzM1MTNkM2NjNzRhN2M1MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzQ3MjA5Mzk4NDQ2YmYzODA1ZGEzYTJhZmMzOTIyMmFmOGMyNGE1MDE2NTNjOWQ5YzVlYTQxOTIyMWJkN2FiOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWRjMzY0MGZlMzMyNzY0MGRhMjNhOTI4ZDZhMDY0NjY5OWM1Y2M0MGNlODU3MDNiNmQ4NmVhZjdkYmIzM2E4YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDY4ZjRmNzRkZGQxMzI1ODU2N2Q3ZDE1MzBjNmI2YjRjYzVmOTE4ZGFiZTdmZTE3MzNiMjAwYWFkNGE4ZWFhNCJ9"
+        },
+        {
+          "resource": "repo://nanochat/core_eval.py#L244-L262",
+          "version": "repo-lines-v1:sha256:a29fa2aa665a8460996766c71ceae04e58da8c7098b9b3ef7f65707535fe7eab:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3NTYzYmQxMzkzMjJjNWFiN2I5NDQ2YzYwYTY4YjcyZmNlZTc0OGEzZTI4MDliYjQ3MDBhZTdkNjU0MTBhNGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIzMjIxNzdlYjljNzYxOTg0ZDBmZmVjOTU4MGNhMzI3NmVjNzQ5ODcxMjEzNTQ2ZWE5NzIwNWU4Njk5NjA1YjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ0Nzk5ZDlhMGYzYWZmYzQ0N2Y5Njg0MDJiMjg5MWIzZGRhMGNjY2VmNzI5Y2I5Y2VhNjVlN2Y4NjQyNzEyNzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b5f10375a8864723a170b4ebb841dea5",
+      "statement": "scripts/base_eval.py runs any subset of three modes (sample on rank 0 through the Engine, train/val bpb via the BOS-aligned dataloader with split tokens rounded to a multiple of tokens per step, and CORE written to <base_dir>/base_eval/<slug>.csv on rank 0).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_eval.py#L128-L240",
+          "version": "repo-lines-v1:sha256:2475e058dc72f2c3a02bea8444e6c07e2cc05a6ef7021f52070966d1279e10d0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJjMmUzMTI1N2RjMGFlMWQ1OTMwMzdjMjgwYzlhZDUwODE5YjhhNmM4Y2Y3MjhiZTA3MTZkMDBhM2VlY2MwNGJiIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJjZjMwODI0MDM1NTJhYzdkNDYzNGMzYzNmZGMwNDdmNTIwMGI2M2FjYTVkYmVjMGQ1MzM1NTQxZDY0OTE4YjgyIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiIwMzJlNjkyMjUxODQ2NWRlZTk4NzBlNzYwMTY1NGFlZGViODk4Yjg0OWZiZjZjM2YwNDhjOGMxOTJmNzNiZjBlIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_0cf2c6db3a1f4f1ab76d9c7b48289506",
+      "statement": "Pretraining evaluates validation bpb every --eval-every steps (--eval-tokens budget) and CORE every --core-metric-every steps with --core-metric-max-per-task examples (default 500), both inside disable_fp8 and CORE on the uncompiled model.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L420-L451",
+          "version": "repo-lines-v1:sha256:03cea3d9facd7f0ddd7a87f22aafe950b457f5dc822b60c9b649f19232fe0470:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM4ZGVlMzdmMDA5NWFlMTRkNzdiYjNjYzdlMGFkMjRjMGRmZDI2ODBlMTA0NThmMWMzY2MxZjQ4MzIxZmVmMTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyMDJkMGM1YzgwOGJmNTZhZmRkZTJmZGE5NWM1OTU5ZTViNDI3MzUyYzg4YWIyYmM5MDQ4YjdjM2ZkNWRmNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc1YjJkZTFlNzU3MmQ4MTJiOThiYTFiNTZhY2E2ODI4YjM5NTZlMmViZjM2ZDU1NDI0MDk4NmQyZGFhMjdkOGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1OTllOGNmM2RhOWQzMzdiYzlkMmI3N2RhMWEzMDQ5Zjg1NzE4YTRmZjdjYTBhYTFiY2JhNmVmM2EzZjdjMjYifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L72-L75",
+          "version": "repo-lines-v1:sha256:c753756b663993230b2b9f36848b5c3c033ce9e8e8e5f02e34ef3fd8c93d2706:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTRkZGUyY2JlZmRkNjMyM2IxNzdiZjJlYjUwN2NkNGE5NjMyNGQ0NjAxZGQwMDQyZDU0ZWVjZjcyMTkxZjk2ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGJjMTA1NWUzNTAzNjQyOWViMWUwYzkwNDYwNGI3ZTNhNTNiYzRhOTBhM2Q5ODdiYmNlNjMzNzI2ZWM5OTRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDk4NWRiYTVlM2YzNTE3ZjIwN2EzNWMzMTYxNWI5YTg2ODE4ZTFjNDBiNzgyOGU2OWI1MGNiMmRjMzNkMjY1MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjQ5Y2U0Yzc5MGExNjhlOTY4OTI0ZWYwNGVjN2YzOGRhMzExMDAzNmIxYmU2YmYyY2YwYjFmYzc3MGEwMGNlMyJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

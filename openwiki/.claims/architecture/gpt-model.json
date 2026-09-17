@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:d3d0384a50ebfa901c09dcd8b5e7d80741a4d42f4e54df15e92559fcf834a2fd",
+  "claims": [
+    {
+      "id": "claim_19b11b6e8e424b509aeb2fbbac1e0361",
+      "statement": "GPT.__init__ runs under the meta device and only defines shapes; all real values including the non-persistent rotary buffers are produced by init_weights(), so model construction follows GPT(config) -> to_empty(device) -> init_weights(), and build_model calls init_weights before load_state_dict for that reason.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L99-L104",
+          "version": "repo-lines-v1:sha256:b2c238e7015a57480ec3c9661a2ed0b6bba151f32f35a0bfaa077eda304ea52d:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTY4MTljN2E2NGQzYmFlODlmZjk5NTViMTEwZGQ2MmQzZmE4MGY4YmY3YmVmYjg5YTU2NGFlZTEyMTYxOTU4OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWIxNWI5MWYyZTdhNWZhODUzNTQ2ZTdkN2FjNDQwYjRhYjMxMjFiNTBkOTNmNzZlN2E0NjcwYTFiNTE3ZTc2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODk0NzhhNGEyZDg4NDVlNzdiNDVmMjQ3ODNhMTAyYzBhOWJiYWNmNDA2MDUyOTg4Y2YwZDA4NWQyMWE2OWU3ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWQwMmY1NDkxYmJlZmE1ZGQzNGFlNTZhNzRmZTRiYWIyMDM1ZmQ4YWFlYjY0ZDBhZmI5MzViNDhlMjZiM2M4NCJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L156-L202",
+          "version": "repo-lines-v1:sha256:216fae879383a4bd2939357d2ed3e6cfac312c72b9f70e35a532b6705b407a95:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxOTY0ZWIzYmVhNDNkZmNmZGRiNTY5ZTllYjFiNTU2YmMwZTE3NDQ2YjcyM2Y2OTNlM2IxYTRkOThjYzJmNGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE1NzVlYTUyNTZmNmUyYmJjMWU1ZjdhZDMwNTNjNDY0MWJhNDQxM2U0YWJiZGNkYzgxNDIzMzgyOTAwOTBlNTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVlNmI1NWFjN2Q5Y2NkMGI5NzE4MDg3Yzc0ZmM2NGE1ZDdmNDJlNDc0NzhlZmIyYjJhYjI2MGIwMDgzNjdmMjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5ac8a914a7fc43328b7fd82c66d343cc",
+      "statement": "The vocabulary is padded to a multiple of 64 inside the model and logits are sliced back to config.vocab_size in forward before the tanh softcap (15) and cross entropy with ignore_index=-1.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L170-L172",
+          "version": "repo-lines-v1:sha256:1a0e22f1bdb9607ed75c13d530edb0c633cb87251813dd050eb27a659e2746e9:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjNlNzFhN2U0YmFhNDQ5MmM2OGE5YjU0YTU0MTY1Y2JlNGJmNWU3NzNjN2U0ZTRjYzU1MDUxYzk5NTRlZmIwMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTg1YjkxNDJlZmUyYzA0ODdlMjdmNTg2MWU4NTIxMGJiOTU3YTBhZDg0N2JjMzJlMGUxMmQ3NmM2NzYxNDVmZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGU0MjEyYmJlZjEwNDk0ZWJkZWFlMzc2ZmIxM2U2ZWIyZTY3NDVhZWVhMzZjMDcyOGZmNzIxNzA1OWY2M2YyNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjNmMmQ4ZjI3ZmE1YzdiZDRjNzkzMjhhMzRlMTFjN2M4NGVkMzg5ODUwY2UyNWE5MmE5N2I3N2E1MGM5NDlhZCJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L509-L522",
+          "version": "repo-lines-v1:sha256:6750f1567294a0554e2055daf08ea8c49a62bf98603f233d1d43eaa9df0cec5a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5N2I0N2JiODFjZTkzY2JhNjdhZmMwODY5OGE4MGNmYTA5M2E4NjY3ZTljOWY5NjUzMzc4MThkNjU3OGQxODUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljYTI2NjY1MGExY2U5Zjk3NWI5N2FiOTgxYTJiOGJkYmJhYmVjOTAyODdiMmNiNGE2YmY5NjRkZmRiNmE2Y2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUxYjkyMWM4ZGIwYmJmMTIzYzdlODg3NWY0MDZhNmI4YzkwNWM0ODRjNWVlMThkYmE5NGRlZmY3NjY3OWExYTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_28a13e33421d477cadd8f6f4754b81ac",
+      "statement": "The custom Linear casts its weight to the input dtype at every forward call, replacing autocast, and num_matmul_params counts matmul parameters structurally as the sum over Linear modules, so FLOP estimates depend on all matmuls going through this class.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L341-L349",
+          "version": "repo-lines-v1:sha256:663c7cd4af2bd7f327ee6daeae684006a821306b5867177fee6dbebf831235f8:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjcwNTgxMDFlYzNkMDYwNTA1YzZiZGE2OTZjNTVlZDFhY2UwZmZmYTMwYjdjYTNkMWEyYmQ3NmVkYzkzZmU5OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWJlOTUzY2QyMjM1YmFhODk3OGU4Mjc1YmY3OTEzNTU5YTUyZWUyZDY2ODI4ODdlNjYwYmViMDI5MzZiN2I1YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2FiZDg2ODg1YjY4M2E4NWJlY2U1YmNhZDAxYzVhMGNhYjU4NTI4OWNjMTFhN2I1YmE3NzJiYTk4NWY4YzcyNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzc0N2ViOGNhM2FkOThmMzQ0MzdlOWQwMTBjZjA5NDFhYzkyZWQ4MjIwMDg4NTZjMzIzYzc3ZTg1NDVmZDA0MSJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L45-L50",
+          "version": "repo-lines-v1:sha256:8915af9e0788cea607937303bd3f754c5a825e30cd39117b69826306b8a7df09:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJmMmE3ODc2OWI4ZDcyZTY3ZGI1ZjkyMGIzNjA4NDBjYzQzMzJhYWVmZjQwODNmYTllMjIyNGQ1YmZjZjEwYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTkwYWJhZWFiYzJmZTYzMzQwNWI3MGI4Y2E3MDc5ZDBjMmEzZDkzZmQ2ZmNkZGNhZWI5OTE4MmYxNTQ5NGMxMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTU1MDBmYmE2ZjViNmYzNmZiZjU1M2U2YmVlNDZmNDNhMjMxZmVlYmY4MDdjNzdhMGQ4NWRjOTkzNGNlMWM3NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDZmYzdhYmY1N2Q1ZTljZWUwMWEwN2E1MjRjNmU3NTMxYzNhZjRjZThiN2UwZDU5MTdlNjk0MDM0MWYwZGI2MyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1e755849e6214d4084eb58c92adde46c",
+      "statement": "Attention applies rotary embeddings (rotating by -theta for checkpoint compatibility), QK norm, a 1.2x scale on both q and k, and on alternating layers selected by has_ve adds a token value embedding into v through a per-KV-head sigmoid gate in (0, 3) computed from the first 12 input channels.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L53-L65",
+          "version": "repo-lines-v1:sha256:68afe3dcbe37cf8b187fc5851d302552d42dbcf34f8dc49babdcafcf41a7db63:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZjg2YTRkOTk3YmI5ZmNjYmI4OTI4NmFmMmQwMGM4ZjA5ZTE5NDU2MmNmNzU3NGVhNjY2NjcwMjYyOTdiNzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFmMjg2MjAxODhiZDJjZDAwZDZjYTU5YzZhNTdiYjBkYjlhYWMzOTQ1MzE4Yjg0NzZiNWMyY2FlNzUwZmMyMjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhNTRmY2E1MmQwZDI5ZGVhMDQ0M2I0NjdlNTFlNjVjNTBhMGMyM2Y0ZWRmNjE4YTk3MDMyNGM1NjA2NWRkODIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM1NGE1YzE4MTE1OGY1NTQ2ODhkZmFkNDk2ZWFkMzU4MTk0ZDAzOGI0MWMyM2I0NjYyYmFjMjBkZmNkY2JjZjkifQ"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L82-L104",
+          "version": "repo-lines-v1:sha256:fa2326663a214e2aef547953cc5aa04426a9e9970fb198aed1b160359bed8db0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiZTFlZWFiMGIwYjNmOTdkOTUwODQ0OGRjMWU3YTVmOGJmZWQwMzU0N2ZmNzcyZDNkMzMyOGJjNWVhZGZhOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVmNWY4MTc2YmQyNjUzYzBlOWQyMGIwZGE5YmY0ZjE3NDMxZTA1MmIyNTkxNzQzMDhlYmM1NGI5YjI4NjdiOGEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE4NGFlZWVjN2Y4ZjQyNmMyYjU5YmY2MGUzY2VlOGRkZWJmZmRiNDAxMjE5MjQ3NWU4MjZiOTBkMWY1MDA2YjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZiYjAzMDQ3OTg2MjI5MWU2ZDE4NDI0MzY3MDMyMjQ3YTBhNTMzNzUzMTE1NmE0ODA2OWI4ZTA2NDRkOTUzODQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1f993bb1ea024975a0efd8d68e45cd91",
+      "statement": "The forward trunk applies smear (gated previous-token embedding mix, with previous embedding carried in kv_cache.prev_embedding during decode), per-layer resid_lambdas and x0_lambdas blending, and a backout that subtracts backout_lambda times the residual cached after the middle layer before the final norm.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L470-L508",
+          "version": "repo-lines-v1:sha256:192ea03d211dd4f9f0c20a9eeeb4a100804d9e438bbb6cbf143f047d85dafac9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwOWFjY2Y1MTU3Y2MwMTI3MmRmM2EzNjg4ZmYyNWRmMWYxNWYwODA4MGUwYWQ5YmEzZTliNzJjYTAxOTMwZmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYwN2NmOGVmYmM1NWM5ZjFmZjlhMjMxNDczNTQwMTZlMGExZGQxOWUxNGQ0NjA0NzQyMTk3ZmNlNDUxZGEzMWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImExMDJkZjk4YTc1ZWZhOWE4ZWJjMjBiOTQ3YTEyNGFjM2QwZmNmOWI4NGJiOGM3MjAwN2MzMjc1ODUwMDIyZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM4MmZjZmIyMjg1ZDVlZTcwNWEzNDM0NmFmYmYyMDQzMDhlODM4MzM1Yjk5Zjc3YzlhYmI5ZTY1ZGE1NjJmYWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6415af959b1c447c96de2a6126fae8fa",
+      "statement": "init_weights defines the whole initialisation scheme (wte std 0.8, lm_head std 0.001, uniform bound sqrt(3)/sqrt(n_embd) for input matrices with c_fc at 0.4x, zero output projections, depth-decaying lambda schedules) and then casts wte and value embeddings to COMPUTE_DTYPE unless it is float16.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L204-L268",
+          "version": "repo-lines-v1:sha256:e33f662861a68edbf7ee2f048063a75ce5873b7bf59815444fe8b062939d815b:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlYjkxODYxYWY3NDhjYTVmMGZlZjQ3NmNhZTFiNDNkYWJjNWM3MDNiYmY5ODBiOTE4ODllOTBhYTRkYmZjZTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNmZjc5OWEwNWE1ZGQzOTFiMzQwMGQxZDkwMzdlMTA3YzFiMWNmNDA5NzY4ZWM1ZmEwM2FhYTk2MWIzNzM2ODUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3ZTg2YjYzZTY5MzRmNDc4MDg1YzZkMTEwMDA2MzdlZDZkMmU3MGI2NGFhYmVmNGFmZTM0ZmZkNGM2Y2YxNzkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyZDk0ODM1MDc5ZDdmZWNlOGZhNWJjOTA5YTM4OTAxMDFiOTZiNjMxNmU0OGRkOTQ4OTJlYWFhNzFmODYwM2MifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d841af6787de4414aaec9fd908c88f55",
+      "statement": "The model owns the cost-accounting helpers used by training and benchmarking: estimate_flops (6 * matmul params plus window-capped attention), decode/prefill FLOP estimates, KV-cache bytes per token and per-step read bytes, and num_scaling_params which returns per-group counts asserted to sum to the total.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L319-L417",
+          "version": "repo-lines-v1:sha256:cb07a8141d08998d0d6c05a5e0fcb5213e5fe05c641a669969d9d7d7868787bd:eyJzZWxlY3RlZExpbmVDb3VudCI6OTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkxYjZmYTllNDUwNTZlMDgxYzAyNmQ1N2M4NWVlYTdmYjQxZjk0Zjg4NjFmMjJlNTYzOTc4ZmVlNWYzMjA3NTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YjA0NDkxNDY5NzIyZTgzNjNhOTRlNDA0NDUzOGUwMTNhMmEyMTdlMzZiMWU1NjhiYTYwYWNiN2I0YzhmMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyMjFhMGYyYTIwOGMyODZmOGE5ZmI3ODI1OWY3NmJjNTU3ZmQzNDg3ZTM1ZDQxYTM1ODZjZmFlMWQ1ZmJmYTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM3NzZmYjZmNmRkMzg1MmY3YzVlZDMzZjE5Mjc3MGFhNDFkMDAwNzkxYjJlOTcyMzVkNjM3ZjczNGVmNGYxZTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2d511bf9bd7a42e785b3f81e8f506f97",
+      "statement": "setup_optimizer partitions all parameters into AdamW groups (lm_head, wte, value embeddings, resid, x0, smear/backout scalars) with LRs scaled by (n_embd/768)^-0.5 and Muon groups formed per distinct matrix shape, asserts full coverage, and returns a MuonAdamW with initial_lr recorded per group.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L419-L457",
+          "version": "repo-lines-v1:sha256:cc0c0e104b61fc6545d7357a14a9f232ca1177056d7e5e55e49d7a2020c51e04:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkOTRkMTUzMDNjZmY4MzRlMzg1NDU4ZWI1M2E1OTQxZWIyYjI2OTcyMGY0ZTljNDZlYjM5OTNlMGQyYmJhZWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmNDBlMDY3NDhkZjQ0ODU2M2IwZDYyYTA0MTVhZmVmOTE4NTM2OTkwMmM3NWRhOTg4MDlhNDhlMzE3NDA4NzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk2NWUwMjI5NGYxYTI0ODMzZTM5MzJkOGEwYTlkZWY0MWI0NjQ1NzM1NjFiMzYyNDhmM2FjYjVlMmRkYzNlNjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMxOTFmYjg0MDBiNThhNjE1NTM4YWE4YzU3YzM5ZjcxOTA4OTRhNjkzMzhiMWRmN2Y3ZjRmZDBhZTFiMTA5MDMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f739dcb6d0484bc5915057fecd3ca648",
+      "statement": "checkpoint_manager patches older checkpoints by defaulting a missing window_pattern to L and filling missing resid_lambdas/x0_lambdas with ones and zeros, so new model parameters need similar patches to load old checkpoints under strict loading.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L104-L104",
+          "version": "repo-lines-v1:sha256:9b15b91f2e7a5fa853546e7d7ac440b4ab3121b50d93f76e7a4670a1b517e764:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWIxNWI5MWYyZTdhNWZhODUzNTQ2ZTdkN2FjNDQwYjRhYjMxMjFiNTBkOTNmNzZlN2E0NjcwYTFiNTE3ZTc2NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWIxNWI5MWYyZTdhNWZhODUzNTQ2ZTdkN2FjNDQwYjRhYjMxMjFiNTBkOTNmNzZlN2E0NjcwYTFiNTE3ZTc2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2VmZTZkNzYxMzZmOTIyODRmYjE4OWU4ZTY2NmMwYTc4MzFlODJhYTRkY2U3OTQxMTk4OGYxYjQ0YjJhOTlhNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWQwMmY1NDkxYmJlZmE1ZGQzNGFlNTZhNzRmZTRiYWIyMDM1ZmQ4YWFlYjY0ZDBhZmI5MzViNDhlMjZiM2M4NCJ9"
+        },
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L22-L40",
+          "version": "repo-lines-v1:sha256:1883317dcca9e49a0c03d7c5716da0e620333d4be93fef3bf588fcfec4c0bbfe:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhNjMyYmY0ZTk3ZGZjOTJlZjUxYWI0Mzk5ZWYyNmY1MDBhMWNjMjNlY2FlOTViODEwYmFjYzg0ODhmYWZjYjUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE2ZDI2MmZjZWYwYzBkYmE1N2Q1NTA5YWI5NGM4MGUxZjM4YzYzOTJmYmIxN2U0NzRiODFjZTU1YzQwZjE1ZTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQyZGQxNDhkN2Q0OGFhMmU3ZWRlMDdmM2JkODBhZTdiYzY2MTE1ZDgxZGNlZTgxZWYwODZhNDlmZmJmMTVkY2UifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

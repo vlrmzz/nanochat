@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:013bc69e565a37dadd64bb69068ca165d7a2f7c1e7588bc34965b9f969963049",
+  "claims": [
+    {
+      "id": "claim_41e7f39fa28e439cbd807e61e12a5c03",
+      "statement": "nanochat is configured around a single complexity dial, --depth, from which all other hyperparameters are derived so any depth is roughly compute-optimal, and candidate changes must generalise across the whole depth miniseries.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L108-L108",
+          "version": "repo-lines-v1:sha256:8af70a6ec52d9f3f215f6618e7fa571648e51db50a0081d906ec4eaab85fa520:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGFmNzBhNmVjNTJkOWYzZjIxNWY2NjE4ZTdmYTU3MTY0OGU1MWRiNTBhMDA4MWQ5MDZlYzRlYWFiODVmYTUyMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGFmNzBhNmVjNTJkOWYzZjIxNWY2NjE4ZTdmYTU3MTY0OGU1MWRiNTBhMDA4MWQ5MDZlYzRlYWFiODVmYTUyMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI4MTBiYTZjOTFhOTczYWE4ZDk2ZGY0MTM3ODE3YzU3YmQ4MjY1ZjkwYzY4M2NjMTYzNWU2MjhhNzQ4YTkwOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODhkYmRhMWFiYzMzMmZhMGQxNzYyZDY3NjgwYzU2M2IzZjhiMmVmNjJiYTVhNTY4MmNlNDUwMDUxNmFkNGRlZiJ9"
+        },
+        {
+          "resource": "repo://README.md#L5-L5",
+          "version": "repo-lines-v1:sha256:01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZWY2MmFjOGJmZTJlYjI5ZTllNTUwNTdjMTU0ZTBmOGJkOWU1NjQ3ZmUyYmRkOGM0NDhhMzM4MTkzMTRiYzgwMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGMwMDYyMmM5ODZlMTNiYjExYzIzMDRiMjQ3NTdiNGY0MTBhZWVhMTFkMWJkNDk1NDcxYjk0ZWNhMjdlMmZlMiJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L129-L136",
+          "version": "repo-lines-v1:sha256:db231de1e4cd9a2aa33298f88bd2cc5cc5febad604f0d268e12186e6a9b765f2:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzk2NjdmYmNiMDRmN2MzMDFmN2YzN2E5MjgyNzExMTk3MjJhOTQ1N2ZjZWJlMmE2YWY3OTE5YTZkYWFmNDNiMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2EzZmY2ZmZiMmZlODRhNzNlNTg5NDg3NzI3NzBjN2U0NDAyODkyYTdkMGNmODgxMjZmYWZmNzIwMWFjOWNkYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2RlM2EyOGRjMTJjNzNlOTZhNzI1YTQyNzVhNjcyNmE4MDJlNmJmNzMzYzE3ODdlMTcxYzE1ZWUzZTQ0ZWU4YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDkwMGViNjE0NWJhNmNmOGQ3NzkzZWZlZjliYWU5ZTljZTZlNDBhYTc4Yjg3YTdiMjA3ZDMxNTgzNjU2OGQzNCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9dc3f14414c24f95a2e1278ac3330d6b",
+      "statement": "The headline metric is wall-clock time on an 8xH100 node to exceed GPT-2's CORE score of 0.256525, with runs/speedrun.sh as the reference recipe and dev/LEADERBOARD.md defining how runs are configured and reported.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L11-L27",
+          "version": "repo-lines-v1:sha256:3fb2a9f8a6882ece2dbce01286f3deab713779acd5b64ca7560cbd030e54fdc1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzNDcyNzZlYWRlNTkwMGYzMzJhZDNiMTRjMDNiMDVhZjczYmU0ODdjZDI5Y2MxNGQ3ZWUzZDMyNWZlYTc5MzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYzZGJjNTQ0MzI5YjBlY2Q3OWRhNWJjNDFhMDRhYzg2YTFkMzBhMDQwOTI2MjMzOWQ1MzUwMWJkZTQzOTE1NGYifQ"
+        },
+        {
+          "resource": "repo://dev/LEADERBOARD.md#L1-L10",
+          "version": "repo-lines-v1:sha256:f73ad169c395160035f2ad6e096b4b21bbeefc6c7ddc47a28b3d2d74ea55a6b1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkM2E3YTU5OGM5NjhjYjZhNWFmYzM0OTlkOGYzNDgyZDViOTdiZWYwY2UyOWFiMzhlOGMwNjZmMzYzMmJjMjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVjYWM1NTcwZWJlMmNlY2EzNzQ2NWY1ZDg0MjliNmU0MzQ1NDhlNjgwYjNjMWJkMmMxOTc4ZTRjOTJiZWYwZDQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_da6a80497c4649039ff6f6c083db0cc4",
+      "statement": "Setup uses uv with mutually exclusive gpu and cpu extras, runs/speedrun.sh is the full 8-GPU pipeline and runs/runcpu.sh a laptop-scale demo of the same code paths, and any script runs without torchrun on one device via gradient accumulation.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L33-L43",
+          "version": "repo-lines-v1:sha256:60360093705d274cf85cf90cdedc6f76ac768a7d9a50beddfb8d9abbe858f653:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkYmVjYTYzOWVkYTRlMzc4MTYzMjM0Nzk4MTZjZDcwODRmZjQ0MjZmNjYyYzVhNDU0ODVkZTMyM2ZlMjdjODIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMwZDlmNjUyNmUwMzVmMmVlZGI0OTk5MzhhMmI3ODhiZGNkMDg0ZWQ2MmVmMjY5OWQzOWZmOWE4ZjFhYWI4MjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhlN2ZiM2MwYTk4NjA1Y2YyMjg3NzE3MDkxNmIzMzNkNTFlMDkzYWYwNTBmY2U1MTRlNjAwN2ZjNGE2ODExNTcifQ"
+        },
+        {
+          "resource": "repo://README.md#L82-L82",
+          "version": "repo-lines-v1:sha256:5d4f259dda110b05087d5c7cfedc8a43af487d073a84d79177ec39ec5aee94c2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ0ZjI1OWRkYTExMGIwNTA4N2Q1YzdjZmVkYzhhNDNhZjQ4N2QwNzNhODRkNzkxNzdlYzM5ZWM1YWVlOTRjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ0ZjI1OWRkYTExMGIwNTA4N2Q1YzdjZmVkYzhhNDNhZjQ4N2QwNzNhODRkNzkxNzdlYzM5ZWM1YWVlOTRjMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTQyYmZiMDJiZWNkYmFkOGJjN2UzZTFkNTdlYTc1ZjlmODJhNTNmMTNhNDQ0YTgwOTlhM2FlZjIxOTY0OGNkYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWNmOTUyNzc1NTE5MjQ3NDE2YTI3OTFiMWI5ZGEyY2ZlYzcxMzY5ODA2NjQ5MGFmOGE1YzhjNjhhZDI4NmNhNyJ9"
+        },
+        {
+          "resource": "repo://runs/runcpu.sh#L1-L11",
+          "version": "repo-lines-v1:sha256:c14935f7c32de0ad36884cf8da61c768206b52f58d30f709045a0cfaa4f87c42:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NzVmOTI4NTQ2YWVlNzg1NWNiMWRiOWFmYzhhYjNmMWE4YTM0ZDQzZGU1YmJkNjJmNzA3NmQ3YmE5ZjM5MTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2NDI2MTk5ZGVjYjRmMDljYzMzN2I1MDVmMTU1YjZkZWI0YWNhZjE4YjQwOTM0ODg2ZTQyOWNhMjlhZWMwMGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJiMzI4NjYxMzA2YWVjMDIzZDViMmI5MzU3M2U3YjA1ZTIwYjNmOWI3NzA4MmQ3ZDI0YTA1NzQzMGQzN2JmMjEifQ"
+        },
+        {
+          "resource": "repo://runs/speedrun.sh#L1-L4",
+          "version": "repo-lines-v1:sha256:f0a6e933855c1cc301ec2e3496faee7309d7dab10a35b02e0dad949ba320d441:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjg3NWY5Mjg1NDZhZWU3ODU1Y2IxZGI5YWZjOGFiM2YxYThhMzRkNDNkZTViYmQ2MmY3MDc2ZDdiYTlmMzkxNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzkwZmJiNjM1MzEyMzNlODkxMzU0ZTI0ZTIzNzE2ZWExN2VmZDg3MGViNjIyN2QyZGRkZjBkNmQyMDI1NmY2YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjkyMWVlOGVmNjAwNmExYTViYThiZjI4ZmY2Y2Y4NjNkZjVhMmJlNDZmMjFkZjRkNDkyODA5N2VkYjIxNTBkNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_06de472b13ab46b38857becffa87f3f4",
+      "statement": "The project deliberately keeps the codebase minimal and forkable with no configuration objects or model factories, and asks contributors to disclose substantial LLM-generated code they do not fully understand.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L200-L203",
+          "version": "repo-lines-v1:sha256:a7920d450a52648a3d8e8eaabc166be41984983ae5e913ca74dd0b4d92ed5250:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmMzNmMxNGY0ZTlhYWUzMjYyNzY4M2Y2MjE0ZmJjZmI0ODgwNzYxZDlkZDg4MTNiOWNlMTcyYTc0OWRjYTY2NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGU4MzBjM2Y4ZmQxMDczMGFiODdmMjVmOGEwNjkxNzNmOTJlOGYyNWExZWFhNzRhZDgyNGI4YmE2NDk4YjlmYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTdkYjkwZWQ4NTg1MTY1YTkyODg5NzcxYTMzMjc5N2JlZGZjNDUxYzk4MmJlODgxOGE1NmY4M2U0OTFkZWYwNCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

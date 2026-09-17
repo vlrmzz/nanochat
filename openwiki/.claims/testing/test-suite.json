@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:1cbb712a0d31e2ef5d87d51f735c8cc4236bd2f4da21094a588f375bbc0d644b",
+  "claims": [
+    {
+      "id": "claim_858802354f154f6cac1c95264d9113b8",
+      "statement": "pytest is configured in pyproject.toml with testpaths tests, test_*.py discovery and a single registered slow marker that no current test uses.",
+      "evidence": [
+        {
+          "resource": "repo://pyproject.toml#L27-L35",
+          "version": "repo-lines-v1:sha256:754844331cc6b9e567c777d8b58f106e860c158f66e6fef8578fc51b30b67c35:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY3NmU2NDE0NjVhNjU1MWU5ZTljZmZkN2ZhYTFlNmE0MmY5YjcyNDgwOTgxM2M5MDNkN2VkY2I1MmYzMDA2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTQyZjk5ZjAzY2UwZWE5YmQyMDZjMTlkYzYxYzI2MTc2MjZmYzhiZDAzNDYzZGYwOTg3YTBhMjc1MzA0NTE2ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDgwZTYwNGI4MmViZjQyMjBkNTUxZTY2MTc5MjE4NWEzOGY3OWE1NjgyNWJkYmJjNzU2MDIyNDQzN2NkNzI4YyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2da0b11cba034a2796e063224a043f0b",
+      "statement": "tests/test_optim.py is skipped entirely without CUDA via a module-level pytestmark, uses small shared shapes so the compiled fused kernels compile once, and checks fused AdamW against torch.optim.AdamW, bitwise determinism, convergence, and near semi-orthogonality of the first Muon update.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_optim.py#L15-L46",
+          "version": "repo-lines-v1:sha256:007280c06cf936e5657618c1b1312924f646ac0ba779e5817691006a6c319985:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwNTQ1YzQwMTFmZDNiZGQzODRkMGVmZGI1NWJkNzFjMzczZjQ5N2NiZGQyNGFmYWVlZDUyZjA0MGEyOGJjOWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEzMWI0ZDEyNjcwMTc3NjRjMWFjNTRlZTIxMDBiYjUwZmI4YWZhOTZlNDY0MzY4MmEzY2RiZmZjZTNjNzk4YWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVkN2FkNmJlMGFjYjVmYjM5ZTJlMGM3N2Q0M2I4ODZiZjE3NmYxZDk5OGFjMjM5M2EwZDgzNGM3MTQzOGFmMDEifQ"
+        },
+        {
+          "resource": "repo://tests/test_optim.py#L48-L114",
+          "version": "repo-lines-v1:sha256:bdb0138add0968275b04050d9ed59407860293804307ef59ec305f3f82fa1583:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjZGQ4ODQ0Y2JiMDQ5N2VkYTJkNjVmYmUxYWFkYWVkY2NkN2EwM2YyNWE3ZTM2OTE3NTViYmU5ZTY0MDVhOGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU3Zjk0YjRkYTllMzhjZTczZjlmZTlkY2Q2NGZjMTc2NjhlNTlkNDQwODNkYmNiYjJmMWE5MjU0NWM1YTk5YzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEyOTBlMTJhZGY1YTUyYzNjODIyNTc0ZjA5NTc0ODQxZmQ0ODBmNjBjZTA4MzAyZjY1M2Y3YzJjMTM3YTMwZGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_87fc5d65172747fc99f702073a78b6bc",
+      "statement": "tests/test_tokenizer.py trains a throwaway tokenizer in a module-scoped fixture so it needs no cached artifacts, and tests/test_engine.py uses a MockModel with uniform logits and a ByteTokenizer so the Engine runs on CPU without a checkpoint.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_engine.py#L25-L82",
+          "version": "repo-lines-v1:sha256:f001ad363f1ca9c592274307b88ba9c0dfb8002f1cf87995c17fe038d949d8d0:eyJzZWxlY3RlZExpbmVDb3VudCI6NTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxZDkxOTE3NTYxYmJkOTA0N2M0MGFmZmNjNGQxMzlmZDE0MDY5NTgwMTc5ZTMwMzE5ZDU2ODIzODQyMzY2ZDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1NDQ2ZjEzOGRiZDMwODEwMGFhMWNiNmE2ZWYzNzVhZDcwN2NkMzFhNzkyNjM2ZmQ4YTQzYTBlODg3OTI5MTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjZjI0ZThkYWU1NTc2ODNkYWQ4YWY0NWYxOTQ0YWFmYzk0ZTJlN2U4NmQ2ODRiYjE0NDYzYjM5NWU1ZGU3YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE1N2JlODYzOTkyMTljODY2MThjMDFiZTUxZDY5NDRjMDcyNjZkNzU4Y2UyMmY3YzI1NDYwMWVkOWI0NDk2MmUifQ"
+        },
+        {
+          "resource": "repo://tests/test_tokenizer.py#L21-L25",
+          "version": "repo-lines-v1:sha256:eb1f5e7ef2f2ec10e8f81e097a22f2459ca9f539632d8d7cb42aae3d281e70c4:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjNiMjIyNTM1ZDQzMzJhZWFiM2RhYWU3OTkwMWU3YWEyYjMwNzIzNjU5YTMyM2QyOTU2YTgxNTBjNjM4OGU0YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDE0ZGVjNmVkYWRkNmJmNDA5Yzk4NDA1N2RiZDM3M2I0YmE0M2ZmM2Y4M2QwY2Y4NTMxYzFmZWIwZjZhZjlhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODJmZDNiNWYyN2FkYjYzNWU2ZTYzMDkyNzdjMWJiN2M5ZGQzNjliNzY2NmEyOTU0NGZjYjQwNTIzMjEyZmU0YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_fb88f2a0f6fa4087999c844327fd371f",
+      "statement": "The attention tests split by hardware: TestFA3VsSDPA requires FA3 and compares both backends on bf16 CUDA inputs, while TestSDPAOnly selects CUDA/bf16 or CPU/fp32 depending on availability.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_attention_fallback.py#L254-L258",
+          "version": "repo-lines-v1:sha256:111f7f5acb208bf7e38f4fd9fe731853f5ecfd521af21e14269af69f6c6ff212:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODkxZWY1NTVjYmY5MGJjZTJkYTY0OTA2ZTExMTUxZTc0MjAxYTk0NWRkM2ZiNTA0MzVmMjY0MTdjNWE0YmExMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDE5YmMxNDUzNGEzMDMyYzdlMzE0ZjE0ZmUzNTJhMjhjMGZmNTRhZGNkMTVhYWI1YzY0OWJmZjg5MGFkMzY0YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjkwYjYxODJmNTkwNmM3ZGJmYzljN2I1NTJhZmFmOTg4MzY2NGYzNjg4NmJmMWI0MmJlMmU3MzQ5NGU2ZTdkZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjU4YTgzNTcwYWMyN2ZjNzQyNjgwZjY5NGJhNmE0YjM2MmY0MjMwMmZkYmQ4ZTZlYzY4YTRjNGYxZTAwMWMyOCJ9"
+        },
+        {
+          "resource": "repo://tests/test_attention_fallback.py#L51-L56",
+          "version": "repo-lines-v1:sha256:056eaa95f897f42bdd6c891c0fd0afd2e76cb9445f545a18e47bf3c0d712bc41:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmNkNTk5MjZkOGQwZDUwZDAyNjFhNTBiMDc1Zjg4NjgyMGJlZjBiZTI4NjNjMWY2NTVkZGU5NGViZjQ2MGI5OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDk0MmQyYTU4OGU2NDZkYTZkMjJjODlhNjQ4M2VlZTM3ODc2OWRlMDhjNmVjOGM1YTcxMjYxZmNmNGRhN2UxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDY1NWU0YWYyMTg5MzhmN2RlYzExNGY4MGJlZmY2YjA3ZjRjMjhjZmE0MjNmZTM4N2U1MWVlMWY2MDAwNjI2NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2Y4Mjc0OGViY2M2OWJiNGFhNjhmMzFjY2Q0NDVmMzdlNTM0MGM2MzNjYzkwMTM4N2ViYjlhZjc0Y2EzMTVmNCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_25d02e07628a44ac809591cb2f7a53a4",
+      "statement": "tests/test_tasks.py and tests/test_execution.py are network-free and CPU-only: tasks tests use an in-memory ToyTask and pyarrow tables, and execution tests check one sandbox property each.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_execution.py#L1-L20",
+          "version": "repo-lines-v1:sha256:f05dabfe5dc00f6a4d8691eab0e1920eb88144d107cc7eadbff9af71f2caa79d:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4YjJkYjVjMGYzMjAyNDJlOWUxZTA1MWYxMTFkYmE1YWUzNjgwMDBlNjYyYzNiMjlkNmNiYTRhMTc4NWVkNWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE1MzY3ZWRmYmIwMGY2YzQ4ZGYyYmU3OTljMDY5ODFhYjcxMjBhMTE1NTE3ZDE3M2ZmNWMwZGJjYzg2Yzc5ZGIifQ"
+        },
+        {
+          "resource": "repo://tests/test_tasks.py#L1-L26",
+          "version": "repo-lines-v1:sha256:4cd728d5bc1c9f40b4eb3b1a0baf8b09ec221718044eb27095a1e93c4e8f3d1f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM4YWI2ODkwZDc5YjM4MzA1YmMzNmRjNzAyNTg2YmI4ZDYwODlhOWNhOTViNDljZGY5NDRlYTlmMGM4ZDEzNjYifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

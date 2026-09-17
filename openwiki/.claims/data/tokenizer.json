@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:3fb9f55829d72996cee75590930df0073db814dd2f2d83c23192be85a5b2764a",
+  "claims": [
+    {
+      "id": "claim_f51b9a5d444444ca9bd2e33cec516aff",
+      "statement": "The tokenizer uses a GPT-4 style split pattern modified to split digits into runs of at most two, and defines nine special tokens: <|bos|> for document delimiting plus eight turn and tool delimiters used only from fine-tuning onward.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L9-L26",
+          "version": "repo-lines-v1:sha256:c49e295b80af0218bed71bbe480a148f52308c8542fc5d3b46e29863a8db8d27:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkMDA0ZWJmYzNlOWE3MmQ1NjAzMDE2OTBiOGM3ZWUxZjMwYmNhNmU1ZGFhOTBmZWM2ZjZkNDUyY2I4OWY1NTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxNDE1MzI4MjUxODI5MWZjMTEzZmRhMzNlMTM2NGI1NWExOGNlMGY5NGI3MmQwYmJkOGI5YzczZDVmNjdhODgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhMzJjOGZjNGZjMThlY2M4NzliNGI1ZjEyY2YxZDcwYzU3MzZjOGM0MmU2ZDRjMmM1YjRkYzY1MzdmNGZhM2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZjYTc1M2MzYmM1NjE5YjQyYTRjOGE2MWZlOGUyNDU3ZjNhZjgzNTc5ODM1NjE0M2UxNTMwM2ExMWRmNWU0ZTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2deb6d3cb5c946dd8d04247279ca80c0",
+      "statement": "train_from_iterator trains vocab_size minus 9 ordinary tokens with rustbpe and builds a tiktoken Encoding whose special tokens occupy the last ids; encode uses encode_ordinary so special-token strings in plain text are not collapsed into special ids.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L42-L62",
+          "version": "repo-lines-v1:sha256:027753cfabfb186c54f1da29fb30c2b42507e3ee3d9b2bf0b6906f92ae45106c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNlMGNiNzc2MjM4YTI3YTUyOTM4YzgxNjAxYmNiZjE3ZDhlNDQzZGI0Njc4NDNkMDRjZWVlMDUxOWZkYTgxZWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk5ZTJhMzQwYWI5Mjc3NGNhZWE3MmYzMmVhMzA0YTllNGU5NDk2YmI1ODUzNDhjMDBlNTg2ZjE4NTJkNjRhZmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3YTM1YmI0ZDcyNDgwMzYzMzA2ZjYxNWNmMjE5ZTMzOTU5ZmYxZjhhMWU4M2ZhMGYxNDQ4OGIyZDczNTBmNzQifQ"
+        },
+        {
+          "resource": "repo://nanochat/tokenizer.py#L96-L121",
+          "version": "repo-lines-v1:sha256:2c26eb44eeb73458c28d8cf2405184c9e8f7921bae7b668714eaae75aa9dbbfd:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM3M2RiNzFlOWYyODEyMGE1MDdhOGEwMmUwYzEzMDIxY2M0ZTNiNzc2ZWZjZGQ0MTk4Mjk1YjExMDU4ZjUzMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhZDMzOWI4MGVlOWVjOTU1Y2QwMGY2NDQ2ZDEyMGUyNWYwODA1NTQwMzNhZWUyZDQ4ZDAzOTU1ZjAwNjExNmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA2NjFlMjJiNjgyODNhOGM5OWQzZjhjOWNmMDRlYzBiODljZTkzMWQ5ODI4MWRkMmFhZWI0MGY5MDdmYjZiMmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRiNDgwM2JlN2ZmZGIzNGQ1Y2QwMzYwY2U4ZjFjYjExMzdiMGZmOGU3NTQwNmRlODJjZTFlODVlMmIwMmYxYWIifQ"
+        },
+        {
+          "resource": "repo://tests/test_tokenizer.py#L37-L45",
+          "version": "repo-lines-v1:sha256:f1d064c6c68452f4d1036688ef65cc8e6e7b6891e93cc6541639883233006ab1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWVjYzcxZjFiN2ZkMmYyZGYxODQ2OWFjM2EwMmE3ODVhMTBhNGIzNjVmNjVmMWMwYjZhY2U4Mjc3MTc1ZTJmZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTFmMDUyNzBlMjdiYTAwNDRlNWIwYzk4OWIzODY2MGUzZWJjZDU4NmQ3NjllZWJjYWZkMDUzYzkzMzFkYzE1MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDdjNGM3MmFkZTgxMTNlNDAxN2M0MmJmNjdmMjczNTYxODZkODc2OTdlZDU5Njc0ZDRkNzUzYjk0NjUyMzAwOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_04a9126fda864e4d9a781fb0c6b244c5",
+      "statement": "scripts/tok_train.py trains on training-split documents cropped to --doc-cap characters up to --max-chars with a default 32768 vocabulary, pickles the Encoding to <base_dir>/tokenizer/tokenizer.pkl, and writes token_bytes.pt with each token's raw byte length (0 for specials) via decode_single_token_bytes.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L132-L138",
+          "version": "repo-lines-v1:sha256:6ac2075e5db1df2f5d68727974f7806e5fe2d67bc0dbd1be6af6dd93ea2547f3:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGRmMDhhNDBlNWUzMjZiODIxZTVjM2ViNTViYzI3MGUwNTc1ZTFiMDBjNjc0OWY1Mzc0NDQwYjUxYmQyNjQ0MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjJlZTZiZmVhMTVhMTMwZDIzOTc0ZWFiMzZkNzY1YTg1YWQwYzdiM2UzYmMzNWZhZjhkMTg0YWUyMTQxZjhlZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjBmNDRlODIzM2E1ZGI0NjA0YmZlYTI1ZDYxN2VhZDc2YmZkMTFhNmYxM2RkYThmZGM5NDEzZWEyMzI3YTljNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODIyMzEzMDJmODFmYTE3ZTBhYmM1ZDgzZmUzODNmYzdjNjA4MjZhN2RhMmM4MDE0ZmUwNmRjMGM4MTMzYjQ4ZCJ9"
+        },
+        {
+          "resource": "repo://nanochat/tokenizer.py#L264-L279",
+          "version": "repo-lines-v1:sha256:1d408e4c4c58cd82c7de39e9ae481132dc0014d2049e4163e75c81a3436ac3b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyNmJjYmNmZDk5Y2Q1ZWJiZGRjNzNjNTI2OTM4OTgxMTcyODZmYWZlMmVlZTU4YzIxODY2OWM3ZjA2ODlkYmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4NzEwNDYwMTBmMjA4MDVlOTlmNThhZTgwMGRhNzBmYWJjYmRjYzBhNDk0NjdjNDJlNjRhZWY2ZGQ1OTJiODMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjZTk5ZmY4ZTc2MTZiMzBjNmIwNWNjNWYzNGU4NTBmMjRlYTJiN2UyOTcyZDQ1ZDMwMDEyYzM5YjliY2RmOWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/tok_train.py#L17-L19",
+          "version": "repo-lines-v1:sha256:170eb064cccb6dd2dbf42dda28e73a6549b75083e1834e17dfaf6e91dbbbd535:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzRhZjBjMDM5ZTU3OGJkMDYwMTk4MDg5MDM4OTM2NjAyMzg4YTk2ZGM0NTcyNTQyOGU4YTM5YmU5Mjc3MGM0ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjM5M2U2ZGNkMjAzYmVmOGI0NjJkZWEwN2MwMTQ4ZWJhNjlkZWQyMDdkYjc5ZDA0MWZhMWFiOGU1ZDJjMzFmNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTFiNGNjMjJlOGMyMGQ3MGJlMWM2Y2FkNjllMjZhNTkzNzg5ZmQ5OGFkODU1MTc1YzBlN2EzZTk3YWIzOWM2ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGQ4MWRiOTUyYmVmOTk1NDE0NTI5NzI1ZmY5MDY2YjFkNTQxMDA5OGQzZjU2NTI0NTY1MTdlMzU1MTI5NThlYyJ9"
+        },
+        {
+          "resource": "repo://scripts/tok_train.py#L49-L90",
+          "version": "repo-lines-v1:sha256:7becbb14f0f09ad0a49e8202fe5fbaea7510bccbd7932812fb997bb565f1ed75:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyNjE0NWI0MTMzM2I5ODJmYTNjZGNiZjc1MTQwODIyOWQyNGQxMDg5NmQ4MWY5YTI5YzdlMmE1ZWZkZTU0YjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzYjZiZTVjMjM0ZmQxYjEzMWQ4YjUwODU1ZGIxN2U1NGE0MjczNTRkZTU5ZjBiZGYxYjU4NjhjZDcxZTkzNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMzZTQ1ZjU2Zjc5YzZhOWU4OTkyZTMzMDdlMDQ2NTdkN2E4M2E2ZTcxMjA5MTJmZGYyYTZmZWNjYmY3MWJmY2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE1Y2RiNWU3NGUxNmRmYzBhMTc4ZjA2MTkzZDFkNmU1MTFjYWQ1ZDZlYTcwMTZhNjY0ZDNmNTA0MzRjMzZlZTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_eba1dcccd12f48e68cac64c7a16bb02c",
+      "statement": "render_conversation merges a leading system message into the first user message, enforces strict user/assistant alternation, and produces a supervision mask where only assistant text, python tool-call parts and <|assistant_end|> are 1 while BOS, user turns, <|assistant_start|> and python_output parts are 0; output is truncated to max_tokens.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L140-L224",
+          "version": "repo-lines-v1:sha256:90c9205499e62b467823f2043c29983cb0cc0a7bba3528633c1d1377db29d1cd:eyJzZWxlY3RlZExpbmVDb3VudCI6ODUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5NjY3NzU0MzQ3ZGJiNDM2ZGRmM2RjMDExY2I5ZDI0YjliNWUyNjY2NTgyZTIxYzNjZTAyYTBkNTAyM2MxMGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5ZTM0Njk4Y2FhZTcxY2Q4M2JlNzRlZWRiMTRjYWI1OGZmZWRkZWIxZWYxZGQ3NzEzZGI1OGUzNDM3YmI0YzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ2OTFjMDliZjk3MzgyMDk5NGJkOGY4MTVlYzhiM2NhYTcwODExNjMzMDhiMDQzZDI1OWE1M2FiOGY3MGM3ODgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ5NzIyZDQyNDgxZTljYWFiODI4ZTI1NDQ2MWUwMTE4ZGZlODFhZjcyM2U1YjlkZmYzNzBlOTk4MzlkNTVlNTUifQ"
+        },
+        {
+          "resource": "repo://tests/test_tokenizer.py#L61-L115",
+          "version": "repo-lines-v1:sha256:e6c9d126b95353ece62936eacd2307ed4645ddb0d27016a810f5c6ca679a0dd2:eyJzZWxlY3RlZExpbmVDb3VudCI6NTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjY2Y2ZWUxM2NhZmYwZmNlZjI2MzM2YmU1MjMwNzkzZjQ4NDNlMjc0NWZjNDIzMmU0MzI2Yjk2MzdlODBhNDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBmYjRkZmI5NGQxNDg4NzM5MGRkOGJkMTEyMjhmMzU1MTM0OTcwOGI3NTU2NzcwMjUwMjI3YzU2ZDFhOTU2ZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcyZWIwZTBlZThhNzgzMzY3ZWFkYzY1ZTc2NmQwMDA4OWRlOTEwYjM1N2Q4NDVlNDAyNzBkOWZlN2Y3ZTI3MGUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c9a42e9919cb4307a3e4633283726bb6",
+      "statement": "render_for_completion drops the final assistant message and appends <|assistant_start|> to prime the model for a completion; it is used by RL rollouts and by both chat evaluation loops.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L241-L259",
+          "version": "repo-lines-v1:sha256:7498268e9df3ed4f6dafb970fd79f8854eaa0f558381de9e73cfa27ea1654443:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhNDE4OTIyMTQ2Nzk5YTc2MDA3MThlODhjNjFhOWY5OTZjYTZlOTkwNTNjNjY2YWI0YjBhY2EwMWJhODZjOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhZDMzOWI4MGVlOWVjOTU1Y2QwMGY2NDQ2ZDEyMGUyNWYwODA1NTQwMzNhZWUyZDQ4ZDAzOTU1ZjAwNjExNmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI2MDhiYjQwZTEwODI0MGQyMTRjNGUyNjljMzVhNWI1ZTM5ZDgxOGUzZGJmNmY1ZWM2MWZjNjUyMjJiZGViNTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJmMjJiNDU3OGRkMzRkMGYzNDhhMzA2ZjAzNTRjMWRkNzhlZWRjZWI1MGY0OGIzMWU5YjE2ZmJkZmMwOWNiNDEifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_eval.py#L37-L38",
+          "version": "repo-lines-v1:sha256:09f22dff320c5c54a26ad0aff0b6aa9a25ea186a21ce7c267c0cccc26fa6e14b:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTQ5Zjc4ZjNmMmM0ZDNkYWJiNmFjMTcwZmYwZWJiOTZlMWNjMmU5YzAxNmYzOGZiYWJjMzU1MDNjYzEzYTU5MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2I0MjIxZTFmNzk0ZmRiMTRmMDI0MTdiNjhkMDdkNWYzZGNkOTNlOTQ0ZDdiZTc2ZWIzYmI5MzFhNmQ4MGMyMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWMxNjFhYTJmNWE4YzZmNGY5NjQzZTI5NmM3ZTAxMzUzNDdhOGJkMTUyMzlhZDFlM2Y5YmExY2U1ZmJhYjRjMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTZhN2E2ZWYyMDE5ZmJiZWNjMzRlMDMyOWVjMzcyZmJjZmM4ZDM5Nzc1YWY0NGIzYjc5NTE1MTk5MzgzMTNmMiJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L92-L93",
+          "version": "repo-lines-v1:sha256:36ce7a9d35839969d4d7c6e9a3cf01761e49e8d4750c621bc620b7e97a3a161e:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDA3NTNiOWQ4MzQ2ODA3YjJmYTIwNjA3YjczYzAxM2IwNTExMWYzMTY1YmZkNDliOGQyYWMzY2ViOWFjN2EzZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGU1OGZhNGUzZjRhNzA3N2Y4MWI3ZmM2NGE5MDZhYTdiYjYwY2Y5ZTc1ZGNjMmM3Nzk3YTgxMTI3MDNmMTlkNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg4NWMxNmI4MjM0NTcwYmRkN2QzMGZkN2U2ZWRjNGJjOWMxM2Q2YjNkYTI0OTUxMjA0YjRiOWFmY2YxMzBiMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_61540203336f40939130550e4958ca31",
+      "statement": "scripts/tok_eval.py compares the trained tokenizer's bytes-per-token compression against stock GPT-2 and GPT-4 (cl100k_base) tiktoken encodings wrapped by from_pretrained.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/tokenizer.py#L71-L79",
+          "version": "repo-lines-v1:sha256:5ede897f761f372a58cca8d4b0b53f66310326d46c908e060b48b5f936dcb6cd:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTZkMjhkMmM0NTAzZjEyMzA0YjJmOWM1MTU0NjBlN2E4YTdhZDdmMTFhMzgzZDY5NDllZDUxYjU5YTUzY2MyNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTJkZjMzNWE0M2YyYmYyOTU5ZDRhZDdkNjhmNzkzYjQ5ZTk4MDZiOWU0MWZlNzdiOTE3ODkxNjE0MmY4OWY0YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGZhYmQwZTcyZDRjZjQ2OTI5YzZjYmQ4NjFmMzZkMGQ4OWQwNzhlNTE5YmQ3NTUzMWI2OTY3ZWJkNTNkN2ZmYyJ9"
+        },
+        {
+          "resource": "repo://scripts/tok_eval.py#L165-L190",
+          "version": "repo-lines-v1:sha256:6548d9d784e285d883431085af537f25982eff8800cd029e6a2b56db8b50607c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0ZWFkNGUwYjQ0OTRkOGNlMTM5N2U5ZGFhOTk2ZDJjODUxZWFmNDkwODg4NzEwMDRiNjFmNTNhODdmNTk4NWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YjA0NDkxNDY5NzIyZTgzNjNhOTRlNDA0NDUzOGUwMTNhMmEyMTdlMzZiMWU1NjhiYTYwYWNiN2I0YzhmMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5YjBiNTYyZGNjYTVmN2Q4MTM4Nzg5YTk4NmZjZGZlOWVjMGQ2YzU2OTUwNGQ0ZTM0YWFiMmRjNTJmNDFkMDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUxYzY0ZGUxZDZmNDFlMDg2NDFjOTJmMDNjOTk4NjcxOWI2NmMzMmUzZjQ0NzdmYzIxMjk2YzJiOWVhOGIzYjgifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

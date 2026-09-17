@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:a41ba12e437aa453505e66c19c5ad33ace93808f23946e5b6cea313fd9b39c4d",
+  "claims": [
+    {
+      "id": "claim_67d685b3ee59453eb31aa2532c2af4e4",
+      "statement": "COMPUTE_DTYPE is resolved once at import of nanochat.common: NANOCHAT_DTYPE overrides it (bfloat16, float16 or float32 only), otherwise CUDA compute capability >= 8.0 selects bfloat16, older CUDA GPUs and CPU/MPS default to float32, and the reason string is exposed as COMPUTE_DTYPE_REASON.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L12-L32",
+          "version": "repo-lines-v1:sha256:4a1bf89ba0d4d5e05459a18fd9ed239615f798fdf351acd9e65c788fc295dffa:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3OWI5YTNmYjBiNjQwNjA1Zjk0ODNkMjg1MDU4MmQyNTljMDRhZTBjYjkyNjEyNGFmNDEyYjRlNGQ2ZDExYzkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU2NzY4NmI4ZWNhOThhYzQ3OTc3OGY5NjMzZjA5OTcyNzliYTEyNzBjZTY2ZGE2M2EyNDdmM2U5ODQzNjI4ZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJlNmJiZmVlZWE5NTc2OWViYmJjODZhYmY0ZDZhNTZiNTdlMGQ4NzZmOWZkOWVhZmZiMTI4ZmFjODI4YjE4OTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_25a7b65d183746849196157fcdd94e8a",
+      "statement": "nanochat avoids autocast: matrix master weights stay fp32 and the model's Linear casts weights to the activation dtype in forward, embeddings are stored in COMPUTE_DTYPE except under float16, activations are cast to COMPUTE_DTYPE at the start of forward, and logits are cast to fp32 before softcap and loss.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L114-L133",
+          "version": "repo-lines-v1:sha256:ea084876850d9ed838f4e2237b8308401a2681c61406ef1c13960b608e1dfe3a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzMGIxNWM1YjMzZGU5MDgzZWJmYWZhZDQ3ZmM1MGE3ZDVlM2U1NGYwNzNhMWE5OTJlNDY2ZTY5ZTk3YWFmNTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiYWYwMDg4OTU1NTFlNzFkOWUxNjNlNjY0MDQyMDcxM2JkNjk3M2MwOGM4MDUzMDkwOTEwZDUyN2YwY2ZjZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMxMWYzZDMwMzUwMzcxN2YxZjI3NzU3OWM0MGM4ZTgyZDU2MzJjNzhmZTBmNzhjNjYyODYwM2JjZmJkOWJiYTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwYTJhNmE4NzYyNGI4YmM1YzIyNGE5OGVkYWQ0ZjdlZjczYjM0YjIwZTFlZjhkMzdlMTgxNjgxZDM2NDkyNmEifQ"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L261-L268",
+          "version": "repo-lines-v1:sha256:bfb66e73967cc32337adf66635b7d1dc430eaaa8f042b9ab40cf106867ac8044:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmNzk5YTA1YTVkZDM5MWIzNDAwZDFkOTAzN2UxMDdjMWIxY2Y0MDk3NjhlYzVmYTAzYWFhOTYxYjM3MzY4NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTI1YTUzOTE5MWJjMzc3ZmI1YWVkODM3NDc1ZGMxNDAzMjYzMTNhOWM5OGQ1NmE5Nzk4MDJiYzVlZTJhZTg5YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDJkOTQ4MzUwNzlkN2ZlY2U4ZmE1YmM5MDlhMzg5MDEwMWI5NmI2MzE2ZTQ4ZGQ5NDg5MmVhYWE3MWY4NjAzYyJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L45-L50",
+          "version": "repo-lines-v1:sha256:8915af9e0788cea607937303bd3f754c5a825e30cd39117b69826306b8a7df09:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTJmMmE3ODc2OWI4ZDcyZTY3ZGI1ZjkyMGIzNjA4NDBjYzQzMzJhYWVmZjQwODNmYTllMjIyNGQ1YmZjZjEwYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTkwYWJhZWFiYzJmZTYzMzQwNWI3MGI4Y2E3MDc5ZDBjMmEzZDkzZmQ2ZmNkZGNhZWI5OTE4MmYxNTQ5NGMxMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTU1MDBmYmE2ZjViNmYzNmZiZjU1M2U2YmVlNDZmNDNhMjMxZmVlYmY4MDdjNzdhMGQ4NWRjOTkzNGNlMWM3NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDZmYzdhYmY1N2Q1ZTljZWUwMWEwN2E1MjRjNmU3NTMxYzNhZjRjZThiN2UwZDU5MTdlNjk0MDM0MWYwZGI2MyJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L470-L473",
+          "version": "repo-lines-v1:sha256:9c5a3f691f2f9c8e469453b77c4181ee239592ba06d9658ff7c13c600d9d2d37:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjA5YWNjZjUxNTdjYzAxMjcyZGYzYTM2ODhmZjI1ZGYxZjE1ZjA4MDgwZTBhZDliYTNlOWI3MmNhMDE5MzBmZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjA3Y2Y4ZWZiYzU1YzlmMWZmOWEyMzE0NzM1NDAxNmUwYTFkZDE5ZTE0ZDQ2MDQ3NDIxOTdmY2U0NTFkYTMxZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTEwMmRmOThhNzVlZmE5YThlYmMyMGI5NDdhMTI0YWMzZDBmY2Y5Yjg0YmI4YzcyMDA3YzMyNzU4NTAwMjJmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmQ5NGY3NzQ2OTJjY2E5Y2FmZGQ4YWJiMGE4NjQxYjA4NGRjMzUxNzBhNmYwMDYxODg5MGQ2MGFjOTNhMmIyOCJ9"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L514-L514",
+          "version": "repo-lines-v1:sha256:f65ebee6be1ef452c2cee903aa215280b9e22c5f7f6e4cfc8f2477d177f49c2c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1ZWJlZTZiZTFlZjQ1MmMyY2VlOTAzYWEyMTUyODBiOWUyMmM1ZjdmNmU0Y2ZjOGYyNDc3ZDE3N2Y0OWMyYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1ZWJlZTZiZTFlZjQ1MmMyY2VlOTAzYWEyMTUyODBiOWUyMmM1ZjdmNmU0Y2ZjOGYyNDc3ZDE3N2Y0OWMyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjVjZmQ4NjQxNWEwZTMxODY1NjNhMmJjNmVmM2FjNDk1YzIzZGY5MWJmM2RiZjBiY2UxYzU1YTQ1YTBkNjJjNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTI4OTk5NGJkMDY3ZDM1OTZiNDZjMmE4Y2ZmZTY0ZDcyYjg3YmMxZjYxM2JkYThlMGQ1ODMzZmFlMzUyZmM3YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_be22983df7fc430993f8dd56cecc4a99",
+      "statement": "Under float16, base_train and chat_sft use a torch.amp.GradScaler and all-reduce the scaler's found_inf flags with MAX across ranks so all ranks agree on skipping a step; chat_rl has no scaler so RL does not support fp16 training.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L324-L327",
+          "version": "repo-lines-v1:sha256:a4ced4d27763d9b61463efe1a39b92562e541455460f6b7511510b3cd4132e73:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q2MTI2YzU4ZDNhNGViNTU3ZGNkZTViODY5NzFiNDRiZjNlMWI0ODI3OTUwZjViNGQzYzA1NGRmMTY3MGQ1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWVhOWM5OGJiZTU2ZDlhZTg2YTRiNzMxMTc1ZWM1Zjk2NmEyN2M0ZDBkNDUwMDg4NTYyMjA1MzE4N2M3MjE2MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzBhM2IzODViZWZkYmY2MGU1NzFlYzRjODIyMTI2M2I2NjRjYTQ4N2Q4MjRhYjgwZDg1NGI3OTA4MmEyODU0MCJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L527-L539",
+          "version": "repo-lines-v1:sha256:31a4659cad777a492eb6c5d75d116a351a6a4ff514eb9857be269ad18773dd17:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3NmJhMWUxMGIxNjQ1MDY3ODZmNTg2MDFkN2M3YjkxYzE5M2Q5MTgyY2NlZTcwOTFlY2Q0Y2VkOWY3MDI3NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjMmIxNWIwZWY3ZDAxODY5YmI3ODUyNjBkYjU2YmQxYjRmNDJmYmJlZmM4N2JlODRmOGNkMjUwYWZiNGQ5NGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhMDMwNjUzYzJmNmZhMzhjOGIwNDFjNjhhMzM4ODk4MDBlYjNkYTRmOWFlOTE5OGEyZDk0OGE4MzJjMWY0ZjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViZDkyY2Y2NzliMTdlM2M1MGJjZTc2NGMzOTE5YTA3MDRiZDljYzNiMDRkZGI0YTQyNjc1NjU3ODBmZTRmODIifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L152-L154",
+          "version": "repo-lines-v1:sha256:803023c8a7242ce8e722457e79f1a96ad90c3cd108065ec92e6dcbbcd7c27aec:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2Q2MTI2YzU4ZDNhNGViNTU3ZGNkZTViODY5NzFiNDRiZjNlMWI0ODI3OTUwZjViNGQzYzA1NGRmMTY3MGQ1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTdiNThlMGJhYzQ5MjAxYjkwMDAzNDY4ZjYxYWQwOWYzNzhlMTRmZDA2MjBhMGNmYzZiMzc4ZjgzMjFjZGIwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDI0ZDRiNTc5MmFlYjZhNDEyY2ZmMDJlMWViYTc1ZmQ5Y2Y3M2M4MzcwM2Y2ZDA1ZTRmNjhkZGE1MWNiN2E1ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZmVmYzBkZDdmZjQ1YzRmMTRiZDUxNjM2NzMzYTQ2MzFkYTZkNTU4MzVlYjcyODNiZDQ4MWNmMGRhYmRhOWMyZCJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L441-L448",
+          "version": "repo-lines-v1:sha256:e32203a4c42dbe1ae8f8bc06cce3076d2e0b39dd2d134b877683cfbf8f923b7a:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWUxZGExMGY1YTNlYzM2MGViNWEwOTI1MjUzMmJkZjcyYTBjMTU3Y2JjMDVhNGZmMDBmMzc3ZGY5YzhhNjQ2MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzI4YWEzZGQwNDM0ODM3MWJiNmI1YWU1MDFiNTU5MmQ5Zjg3OGNkNjEzM2M5OTYwMGQ0MzI2NmI4NmM1YTlmOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzg1N2VjMjdlMjBlZTFmZWMzMDcxYmQ2YzAxZDZkYTRkZGEyMDBmOTFmYzRlYTQxYzg4YTc2OWJmYWZlNGRhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTVhNzg1MTQ3YjAxYzA4MWVmNmI2NjJiMTI5Yjg2OTE2MWE4OTg5Y2IwZDA5YjNlOWUwNjMzYjgxNjgxNjlmYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7f208fb6aa1849ada228f33f2987ed61",
+      "statement": "nanochat/fp8.py implements tensorwise-only FP8 training: _to_fp8 computes a per-tensor scale in float64 and saturates before casting, _Float8Matmul is an allow_in_graph autograd.Function using float8_e4m3fn for input/weight in forward with fast accumulation and float8_e5m2 for gradients in backward without it, and Float8LinearConfig rejects any recipe other than tensorwise.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/fp8.py#L124-L192",
+          "version": "repo-lines-v1:sha256:2ea672e207f7af4791b75dd7f837cbc6c0659257b26d56c029d95153c94d4fb6:eyJzZWxlY3RlZExpbmVDb3VudCI6NjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlNjhlNTk0NDcyZmE5YmE0MTZiZmU1OTk2ZjQ2MDcyNDRmM2NjNDEwMTg4NDIxNjdhNGU0NDZiZTliNmExNmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwN2NmZDQ0MmFiYmU1MzM3NzY4MWRjY2I4OTFjMzY1NmUwOTBhYTQ3YTQ0YjBjNDM0ZWI3NzliZTM2MTYwMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFkNGMyM2E3ZjEwMzMyNzlmYzI0MjFhYjhmOTcwYzEyNTdjNTc0NTQ3OGE4OTBiY2EzOTdkNDYzZjVkMzg0YzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2MDNlNDFiZmU5N2QyYjk5MjFhZmVhYmQ1ODBiNTk2NGQ1Yzk0NzgyYjE5MDQyMThlY2NhNWY5ZTZkMmMwNDUifQ"
+        },
+        {
+          "resource": "repo://nanochat/fp8.py#L230-L240",
+          "version": "repo-lines-v1:sha256:9d03f939e862621efaa754f22a3b4343531330cec9b14aff8bd8b073f0d28621:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiOThiMDQ1Yjk1ZThhNzZlZGI0ZWU3OTRmNjYxNGJiMWFiZThjNDRmZWVkNjM5M2M0YmFjOTNiODZmMmNiOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkNjAxMDAwY2UyMjdlMWNlYzVmOTVmYjQ2OWM1NzhkZTQ4OTFlODQ0OGJhOGQyMTI1ZWQ4YWNjMTZiNDljYmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmNDY5ZDk1Nzg5Mjg2ZjQ3ZjY5ZjcwOWYyMGRiY2Q1MTdjZWYwY2U5NGRjMDNkZjc0N2MzNGNjYWVhODkwZjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzNGE4YjYwMzNjYTJmYzI5ZDkwOGQ3NzcxN2JhODZjZmU5ZTVmZmE2M2NmNDczOTFiNTNkMzhmNmEyNjk1MjEifQ"
+        },
+        {
+          "resource": "repo://nanochat/fp8.py#L78-L108",
+          "version": "repo-lines-v1:sha256:909bd76f9f11731563f81cbf928f38af86b2385ac8dee3c91343d6aaf4b99cdb:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFlODkyZjRmNzRhZDBkNzAyZTYyMGIzYzY4N2ZjNWVmNjY2MDc1ZmU3OTExYTQ5YzcwMDQ2ZDY2Zjk2ZTcwYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVkNjMxZTI4YzFjNDMwMGEzNWZiNDdkNjEyNDlkYjU2YTIxNzllMWMzMzU5YjQzNDg0ZWUzMTNkODFlOTE4OTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYxNzg2NmI3YjgwY2QzYzk5MTRhOGVmNWNiNjE2NzJhNTA5NjJkODUzZmIwNWQ0NTJjYjcwOTkwZDI2ODUwNzMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1e6331b7bd4c465d979e0e86ac6fdb9a",
+      "statement": "Float8Linear.from_float builds the replacement on the meta device and shares the original weight and bias tensors, and convert_to_float8_training swaps nn.Linear modules post-order subject to an optional filter, so conversion allocates no new parameter memory.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/fp8.py#L195-L228",
+          "version": "repo-lines-v1:sha256:29c2a7d93468101d63e08446a3514833b4cb16f81bcf9f083ca39d3c5f67d2b2:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxNDU4ZTE2ZmM1MjVkMjVjMjhhNGY3NjBhMGU3NjdkMmEyMTU1NmVhODBlMDU5NzUxYzJhNmMzZmZkYTE3YTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0YjgzNjRhNDRiMThlM2Q4NjZjMzRlY2VhMDY4ZjEyNTgzOWU0OWM1ZjRmNzQ0ZTEwYWQ4MjkxMWYyYjdhM2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZiYTkxZDJkMWQ5ZTBmNWYyNjU4NDJkODY3OTBmNDNmNjI3ZmE5MzE1ZGEzYmY4ZWY4MWY2ZDk4YjNjNWM2ZTkifQ"
+        },
+        {
+          "resource": "repo://nanochat/fp8.py#L243-L266",
+          "version": "repo-lines-v1:sha256:d71ee62aeb199dede7c2e63cd8c7d43323d446807344d5f21181012b1f713b77:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVjNDdjYWRiZTcyMjRiM2Y4MzM0NjgyMjkzYjNhMjU2MGJkMTdmODNjZGJlZmM0YWM4YmQ4NzVjZWVmMjBlYzIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2NDU1Y2RjODdhZTc3N2JjOGM5NWZjYTQ1OTdjMDVhYjVhOTk5NDg4NjUxMDY2ZjdiNzI1NDAwMTBhOWI5NTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFmZjVhM2RlMWEzYjkxNGYzZWNhNDM3NWIwZjFmMDk3ZmRiZjY1ZmMxMGFmOTQ5OGFkYjNlZjRjNjIzNzEwMDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_69d291e1ad3348d4a5cb474bf801d4ee",
+      "statement": "Pretraining honours --fp8 only on CUDA, converts before torch.compile, and only converts linears whose in/out features are multiples of 16 with the smaller dimension at least 128.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L167-L193",
+          "version": "repo-lines-v1:sha256:a31fdef0543836a7cdce77e801b3f689958bb55cdc9a6b67c52be1c75f553f13:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2YjViZTlkNGQ5ZWE3ZTEwNjQwNmJjMDE0N2VkOTc3NzViOGUyOGQwNTg4ZWNiZDgzZjhlZGQwMjNjZGFiOGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyNmVjYTY2ZWJmZjliYWU3NGE5OTQwNDI3N2E4YzJhMzVhMDc2NDg4YjM0YzQ4YjkyMzNiMTI2MjhhYWM1MDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA5ZTc0ZWMyOWUxZThiYzVmMjcwOTZhNzQ0YjY5YjRiZDVlNWIzMzk2MTFmNTQ0NDMyN2FiNTZmYmYyOThmZjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_465fdebae27241538be6993bc022d588",
+      "statement": "disable_fp8 is a context manager that temporarily swaps every Float8Linear for the model's casting Linear sharing the same weight (built on the meta device) and restores them afterwards; it wraps BPB evaluation, CORE evaluation and sampling so evaluation runs in bf16.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L195-L240",
+          "version": "repo-lines-v1:sha256:d9336ffe2372261fcc87b9856f2a8fbe6d411d8eccad09ce0117b21d7a22405e:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2MWYzM2MxMzI1NjlhNzQ5NDZiMmZjZjU0NmNhM2M0NDI1ZGEwY2E1Y2Y2YjY4NmMyNjA5MGZhYTlkMTEyYjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZiYjA1Yjg5MzNmNDZhMzVkMTA2ZjZjNGMyZmFkZjFiMGQ4ZjBlYzRkNzMzY2Y0MDFlNzczOGMyMzQ5MjVhNTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkzZTAzYjI0MWVkOTM3OTRlYzVmYTBlMjVhYmQ3NzdkY2I1YzA0YjVkNWViMzg3NWU4YmU2OWQxNGFlNTE0YzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY1ZWFkYTU3MzQ4MDJjNzI3M2MzOWFhOTEzODJkNWI1OTk2OGMwNzA0MDQxMTRmNjNkYzQ1NDUxMDc1ZTlkYzAifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L425-L425",
+          "version": "repo-lines-v1:sha256:c920b7c67589e0e6f91bd527df4eab61e971d25d1acef2812eca36df84e1d3a9:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzkyMGI3YzY3NTg5ZTBlNmY5MWJkNTI3ZGY0ZWFiNjFlOTcxZDI1ZDFhY2VmMjgxMmVjYTM2ZGY4NGUxZDNhOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzkyMGI3YzY3NTg5ZTBlNmY5MWJkNTI3ZGY0ZWFiNjFlOTcxZDI1ZDFhY2VmMjgxMmVjYTM2ZGY4NGUxZDNhOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGYyNTJhNTBmMmE0NTY2MTRiYWU4NTYwYjk3OWVkYzk5MmY0NjkyMmQ0NDdjMjMyMDFkNjBiZTgwZmZhMjEyMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTJhYThmZTI4ZmQ2NDcxOWM0MWMxYmUyNGIzZjM5ZDY3NzBlMTczYWMxODA1OTU2MWM5NzBmZGQ3NWMyMzU5YSJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L444-L444",
+          "version": "repo-lines-v1:sha256:8676d842911d4200c7f535fc6c3197b4225c54ae2a7864c92573ef9a1e1cd482:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY3NmQ4NDI5MTFkNDIwMGM3ZjUzNWZjNmMzMTk3YjQyMjVjNTRhZTJhNzg2NGM5MjU3M2VmOWExZTFjZDQ4MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODY3NmQ4NDI5MTFkNDIwMGM3ZjUzNWZjNmMzMTk3YjQyMjVjNTRhZTJhNzg2NGM5MjU3M2VmOWExZTFjZDQ4MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjUwMWIzYzZkYmExMjRkNGNjNWM4YzM5YTE1ZGUzMDZiNGY1NjkzNjJlYzFkYTU1NjM2NmQzMzFmMGIxNGE5OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzIxMmRlNjM0OGY1MjU2N2Y2NWVlMjMyYWNhOGUxZmU1OWE0MzdjZGZkNTY5Y2E0ZmIyNmY4ZGM1NDVkZGI3YSJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L471-L471",
+          "version": "repo-lines-v1:sha256:350964625548e9399b731643bdbff3321e09ba6088e19a9ffad4f3967e4f6cd8:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUwOTY0NjI1NTQ4ZTkzOTliNzMxNjQzYmRiZmYzMzIxZTA5YmE2MDg4ZTE5YTlmZmFkNGYzOTY3ZTRmNmNkOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzUwOTY0NjI1NTQ4ZTkzOTliNzMxNjQzYmRiZmYzMzIxZTA5YmE2MDg4ZTE5YTlmZmFkNGYzOTY3ZTRmNmNkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjEwMDVjYjFjNGU4YWI5NjNkZTdiMzgwMTQxOWZiZWM4NTNkMjQ1NDMyZjMwNTMwOGZhNzNiODVkYTE5OWQ1YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2M3YzUzMWQyYWU4ZjY2ZjQ2OTA2ZWVmYjI5NjcxM2ZiZTE2NWMwNTc1N2MzY2FlMjAyMmQzZDMwNTk3MjRmZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_48a31bd0ad7340b8bcf7b1c3e213e73a",
+      "statement": "The Engine allocates its KV cache in COMPUTE_DTYPE, the fused AdamW kernel upcasts to fp32 so bf16 embeddings update correctly (including on MPS), and Muon runs its orthogonalisation in bf16 only when COMPUTE_DTYPE is bfloat16.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L179-L182",
+          "version": "repo-lines-v1:sha256:9621a0a1f6896fd82edbc91e8c79bf1c2d132da5518c069523c9351e591ea1a7:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiM2VjMzY2MWFhMTQyYTYxMGYyNzYxODVlZmI0NmQ1Nzg2ZDk1MGYxOGY3NWE2MDFjYWExZGFkZDcyODRiNDhkYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzAwNWJmZjkxZjBiNjJiMTUzMzM3OTJlYmNlNzgwZDgxZjNiOTE5NjA4Zjg5NzAyM2RiZmZlMzhjYTdiZWRmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTY4NTRjMjIxM2RlNDQ4Njc4MWMzOTNlNWRiN2M1MmE3YzU4N2U1YTRhOGE4MWU3YjgxNzZkMmQyMDk1NDYyMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDFmNzczMGNlOTA5MTg5N2U1N2Q3MDkxN2EwNmNlMjQyODg0NTZlMTI3ODQxZmQwZDQxZTJiNjYwYWZjMGQ0YyJ9"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L135-L136",
+          "version": "repo-lines-v1:sha256:15dc6001862910eef8d39b85552b6459b23306021769ec038747dc3f68be5633:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGE4NmUwNThkOWEzYjE3MGViNTI1MjJmNzA0YTk0ZWJkYzI1ZjliZWYxMGUwNzBlMTM2NTFiZDgwMWQ3NzY1ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmQzMTdjZmM2MmUxY2E1MTIzNDU2YTE5MzcwNjk2YTU1ZjViYTM0OGM3ODYxYzQ1OTE1MzQwZjQ2YzFhNDNiZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTE2NmViZTE3MTU2NDEzYzI5N2RjYmZiMDBhYmY0NWY2NTY4NzE2MGJiZTdlMDViYmRlNDg4MjVmYmRlYzcwMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzgzN2YyMGFiZjA3YmE5Mjg1ODJiMGZlZWZlODJiM2JiOWYyOGVhMDcyMTRkMGY3ODU2ZTJiMzM1YzhjZTI2NiJ9"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L41-L48",
+          "version": "repo-lines-v1:sha256:48a34d4f554b0ae6e8c3ab2a07e9d4a8b70fa14eee2f7e271b8e126e56eee199:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjg4OGM5YjBiOWY2NTE5NzBjNGIzZWNjN2ViYWNjYWViNzY0N2U3MzQ1MjhiNzMxZTE4OThjYzJkMGJmNjY4ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmQzNmI5ZmM2ZjNjMDNiMDYxZDhkOGUwNjFiNThiOWM3YTJkZjc3MzlhZjJkODcxNjkxMWE0ZTdkMGUxMDg5ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzE4OTQ4NzRiYjBlNDJlYjMzOTZmYWUwZDAwMmMyNTY0OTMzZmY5ZGFiOWI1OTgzMDhlNDM4YzFhNmVmYzhhMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTU0Mzk1NjkxODgwNjk1OTEwODNlMWEzYzgyYzc3MzY5ODZlN2Y2N2RlMjlkYzU4ODIyY2U2Mzg5MWVmMDFiOCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

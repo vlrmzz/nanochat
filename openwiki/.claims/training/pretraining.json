@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:8022ed1eb0b5a1796cdf213dbb751ea3a9e9e870f1f9497f154de5eaf9daa5cb",
+  "claims": [
+    {
+      "id": "claim_22a7cfc418d44bdba1f92e9af367a7de",
+      "statement": "base_train sizes the model from --depth: model_dim = depth * aspect_ratio rounded up to a multiple of head_dim, n_head = n_kv_head = model_dim // head_dim, with the tokenizer's vocabulary and --window-pattern (default SSSL), built on the meta device then to_empty and init_weights.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L129-L151",
+          "version": "repo-lines-v1:sha256:35062964ee5f1f2d3c7cf05fed45bef5cca28c733bd462a1cf8b176c719817a0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5NjY3ZmJjYjA0ZjdjMzAxZjdmMzdhOTI4MjcxMTE5NzIyYTk0NTdmY2ViZTJhNmFmNzkxOWE2ZGFhZjQzYjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY3N2NhOTRhZmJkOGQ3ZGUwNjQwNjcxODI3MTE2MGFlOTAwZjVlM2RhYTI4NjNiNDc3MDBmMGFkNTBlNDQ0YjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZTNhMjhkYzEyYzczZTk2YTcyNWE0Mjc1YTY3MjZhODAyZTZiZjczM2MxNzg3ZTE3MWMxNWVlM2U0NGVlOGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc1ZTc5YjFmMGUyZWJkMDJjMWEzZThjZTIyZDg1MmU2NmVkYTcxNzYxOWUwM2IzNjY4MjFkMzBkYzNlYmFhZDEifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L50-L54",
+          "version": "repo-lines-v1:sha256:72486c1fedc21ae4c8b6d80c32d3efca6490e737e73b103a03cdb2e64b1b4d38:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDk5MDYyMjU1OTU0MjEwZjU2NTliNWQ2NzllYTM4OWNhMjM5YTdmZjJiNzdkYTZjODdhYmE3NzA4ZGU3MDNkYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2NlMzgyMzJiZTg1NGJkMmY5YWU4MTMwMDAyNGI1NGUxNzU1OWQyYzA1MTFlYTQxMWQ2ZGEzZDA1ZDQ1NjI5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzkyOGUwZGM5MDRjMWVlNWQ4NWE5YTEyNWM2ZDM3MGUwYzIwYWEwNzhiNDY0YTVmODlkMzA4YTI2MjAwMmJiYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTY1YWQzMGU5NGFkYjY1ZmE3M2YzOTAxYTRmYmUwNjk0OWRkNGIwZDMxYmY1Y2M1ZTBiMmJiM2FmNjBiZmExYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_666c0df339364da0b8dd0ca5496b1fcb",
+      "statement": "The training recipe is derived from a d12 reference: scaling params are transformer matrices plus lm_head, target tokens are --target-param-data-ratio times scaling params, the batch size follows B_REF * (D/D_REF)^0.383 rounded to a power of two unless overridden, all LRs scale by sqrt(B/B_REF), and Muon weight decay scales by sqrt(B/B_REF) * (D_REF/D).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L258-L316",
+          "version": "repo-lines-v1:sha256:f2835f01dc8168946598229c3dc11a65dbe086226e43ccd68d1b450cdfedcab9:eyJzZWxlY3RlZExpbmVDb3VudCI6NTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQzOTQwYWYxMzYzNDJiMmY4Y2U0OWMxNjc0ZjZkZWI2YTEyZjYzNWExNDk2ZDJiNGVhNzQ3NTgwZmRmMmYwYzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhZmJhMDUyN2MzOTUzYzRiNmUwZTViNTczOWJhODM2MTJmODA1M2JjZGM5NDY2NzMwMTkzY2QxZDU5MGI0MDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEyYzA2NGYwNTk3MjY4YWJiN2QwZTJiNDlkNjc2YWU3M2JjMGMyMDZiODJlNDdmMDk4YzI1MjQ4ZmE4ZjI3NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY5YmQ3ODk1MTZjMmJmNzk4ZDFjNGZjNjUxYjQ5MmNkZDY4NWZkNWU5YzhmMDNjOWEwZDc0Yjc3MWVhOTQ2ZDcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_54943fe1d4e34bf49cc3f02d08fc832f",
+      "statement": "The iteration count comes from exactly one source in precedence order: --num-iterations if positive, else --target-flops, else target tokens divided by the total batch size; at least one must be set.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L336-L357",
+          "version": "repo-lines-v1:sha256:2f884f36b2a6dbcdc00a7d053d0ca7c772e749cecc60912d2ab031f53213dba8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5MDJiM2I0YWJlODY4NmQ0NzYwZGFlMjgwMWU1NWQwMDZlN2FkMzFlYjgyODU5YTRiNzJjYmRkZjc5OTc5N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4ZjBlNjA1OGI5Nzk5NmZlMTk4OTlkZDVlMTlmYWJkY2Y2YzBlNTlmZGVhNDMyNDYyZTM2NDgyN2ZiMmMyMTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAzZjU2ZDhkNDlhODBhNmEwYTdhOTJhODQ3N2Q4ZWM2NmNjODc2M2MzZWY4NjIzNDExNzc3ZTZjNTQ5MTI4Y2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEzN2NlMzRkMWI4N2U4MmZmOTgwMjAyZTIxOWQ0ZjJjOWY1NDNhODFlZGUyNjU1MDQwZTQ3NGQ2M2Q1NjZiOTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6190a3447371467c8c18cf4fa9ea1ff4",
+      "statement": "Three step schedules are applied to optimizer groups each step: an LR multiplier with --warmup-steps warm-up and --warmdown-ratio linear warm-down to --final-lr-frac, Muon momentum ramping 0.85 to 0.97 over 400 steps then down to 0.90 during warm-down, and Muon weight decay cosine-decayed to zero over the run.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L359-L387",
+          "version": "repo-lines-v1:sha256:b84708938506f58de07c515243165b98e3a9c573c2da6eccb4ffeae28e4a3aa1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMzMjkyODQ5MGU1OWE5Nzc5MjMyNjhiMTU0ZDYwMGQxMzA5MGVjZjIxYmQ5YTViYmRkNGJiYzA4YjFhMDBkOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY1ZThjZTA3YzliYWQwNWE3MWIyOGE3MTlkNjA3MmMzZWQwYjM5MTk5Yzc5NDU2YzQzNDcyODBkMDIyM2YyYjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc2YzQ1NjA4MzU3OWUxMDQ5N2I5ZjFjYmIxMDg4MTMzYzQxZTJiNDUyNjg2NWM5OWZkMzkzMTVmMDgxNGZmOTAifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L521-L528",
+          "version": "repo-lines-v1:sha256:5077938db4c0662b725aa048de0762c3aeb70b87f3b4df1f983589aa15b48dab:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGZhOTZlODc0YTljMjk5ODVhYjJmMzU0Y2MxYTA2MDU4Y2EzMDBlYWM1MGUzNjA4Y2M1NzA2MmY1NmVmZWU4ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTEzMGFmNTYwNjUzZjk1ODRiODU3NTJlYmE5MmJlYzQ1MDkxZDYzMTRiOGZlNWMzMDMwNWRlZTcxM2RiOTI5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDFlOTFmN2JjOGRlNmU5NTE2ZGE2ODg1NDY3MzE4MDExNTVjMWRjOTdmYWJiNGE0ZDU5N2RkZDg3MTkxZTVkYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDk4ZTNmOTRhZWIwOGZhNjcwNDIxZmEyNDc5M2QwNWZjNzRkZDI0MzNhMTFjMTdiYjUxMzU3ZDY2YjI2M2JlNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0f0d98a9e99c40c3ae9e4cb1b9cb764a",
+      "statement": "Gradient accumulation steps are derived as total_batch_size / (device_batch_size * max_seq_len * world_size), asserted to divide exactly, so single-device runs and reduced --device-batch-size runs follow the same optimisation recipe.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L405-L413",
+          "version": "repo-lines-v1:sha256:a422e1fb64ea738b7650056f1356e8f9d52d9484b783fdb75f2bb0eee8c2da66:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZGMxYzdlNjU2MTQyNjBiZGI0N2RjNzc1ZDZjOTk3YTI5ZDM4ZTA1MjQwYWJmNjk2ZTQ4YTEzMjc2MTdkZmI3ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDI2MTAzODE4ZTk5YmMwMjJiNmQ1MDY3MzdkNWRjMTVhZmZlM2I5ZjYwMTBjNWEyZDIyMWMyOTc1N2U3YjY4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjg5Yzk1N2UxN2MwZTI5NTdiZGM1MDM1OThlNDQwNTYwNjlkMzhjYzIyYjBkNjM0ZDQwNjRhM2RjZjI1OWVjOSJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L508-L519",
+          "version": "repo-lines-v1:sha256:1b605dcbfd60f9aaad96548492d2416d895500da3df8bc5288f0553317050124:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhkMWQ5ZGJhYjE0MjJjZmY0ODZiNGIyZWE2YzJmNTlmYTU5MDc0MjU1YTk5YjAxNjE4MTY3ZmNhMGNhZWJlMGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4ZmQyZDE4ODdmZWFmMGQ2ODE3MmQ0OGM5OGJkNmZhM2Y0ZmI3ZjNhOWJlYTNmYWJkMmMwYTE5ZDI3ZmM0YzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNiNmUxNWY4NTY3ODAwZTVlNzhmMDcwNTE0ZDk5MmFjYWUyNTMyMGJiNTE1MDEzYjBkMDM4YWI3YmI0N2I3NzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBiODdjMzQxNjcwZTdkMWJlZWE4YWVhNzViZTVmNmIxYWNmNDUyNDg5ZDEwZDJkYmUxMDEwZTI3ZmExMWYxYTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ae9a1e7a8cee46f4b4a5a76489738b2b",
+      "statement": "Checkpoints are saved to base_checkpoints/<tag> on the last step and every --save-every steps (except step 0 and the resume step) with model state, per-rank optimizer shards, and metadata containing model_config, user_config, batch settings, dataloader position and loop state; --resume-from-step reloads all of it and continues.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L153-L163",
+          "version": "repo-lines-v1:sha256:8abb7791437e45f15db4f2e90dfbbf28cc7daef2af877d359c931deea5de5ee3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ1ZmZlY2UwYTg0MzM3MTdiZGY5OGMyZTI3NmYzYjQzMzAxYTc3NmIxN2JhNDcxNjY3YWIxZTc3YzA3MzE0OTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImExMzJmMjhiMWU4YWYyNTNjZDUwNWZjNjdlZTU2NjZmNDY1NmY3ZGNkNGQxMjFiNTQ5MmNmODM5MmY2Y2Q2N2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjAyNmVjYTY2ZWJmZjliYWU3NGE5OTQwNDI3N2E4YzJhMzVhMDc2NDg4YjM0YzQ4YjkyMzNiMTI2MjhhYWM1MDkifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L389-L403",
+          "version": "repo-lines-v1:sha256:7a3e1da199d4ca7a814d2f7dbd9db7105c78475b9a34614c1f7080ea162ff89f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4YjAxNTE5NzFlNzc1NzA0ZmJjMDQyYTFjOTc3YTUzMTE4OTU4YmY4ZDZiYzFjZGNmY2I4YzU1MTNkMGQzOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJkZDdkNjg1OTNhMTM4ZjMwMzk0YmI1NDJmMWEzNDgwYjBjYTAzZWIwOWFiMTRmNjM5MmIwOGJiNmUwMDM5Y2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcwZTNiNTgwOGRhMzZiN2YzODA5MjJkYzcwM2MyODFiM2MxYzY5NTRiOTcxZTc0NTUzZDc3ZjdiNjY4MjgzYzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwMjJiNjE0ODI3ZjcxYmI2MTVkNzBmMjdlMzk1ZTJjZDQ0MDI1YzQ1ZGE4ZTY5OGMwNjgxMTU0YWE3NTY1YWYifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L477-L500",
+          "version": "repo-lines-v1:sha256:2c249912c8b5cb772483124ae8653d018a40eaa1edbc67c5f4113fc5cb5d57b9:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1MjU0YWY0MTRkMDc0OTgxYjY5OWVkNGRhODc3NWY5YzVmODlmMGZkNGJiYzk3YTcyNTI4YjAwNTFiYjAwZTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiNjk0ZTVhOWUyYjkyZGMyNjk0MDBkOTVlMmMzZGU2NjBiYTYxNWZkYTZlMWY0MmRjZTMzNjIxZTkyY2JjZTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcxZjkyNzQ2MzJiZDRjMzE1ODg3MjdlMjQ1NWNlNjA4MTdmZGNmYTMzOWJiNDc5OTU1ODdlYmJmZjZkZGIyZTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a7d502205a324842881ab6ea74163e12",
+      "statement": "The loop runs num_iterations + 1 times so evaluation and saving happen on the final step; logging prints an EMA loss, MFU against the GPU peak table and an ETA excluding the first ten steps, sends to wandb every 100 steps, and freezes and disables garbage collection after the first step.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_train.py#L415-L418",
+          "version": "repo-lines-v1:sha256:72ab1554a347dfa7c5493f827d7d8ff70ee16a32611db61f7afead96b0f34b17:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZDUwNjRjNWNlM2RjMDkwNjcxODJmNmZiNDQ2MjkzMjZmNjYwMWI3YzI1NGRiY2IzOWE1Y2Q3YTg2ODA1YTE4OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzZmZjBhZWJlZjJjY2YyN2IwNWY0ZDFjNjA2NzFjMDFmYmY2ZGMxNThkODA1OTBiM2U1ZDk1Yzk1YTM4MDc1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYWFlNDdhODJiNGUyNjI4NGU0NDQxNjU5NDc5ZGI4MjU1MzkzODU2NDNkYWQwNjMxYTlmZmMzMjI2YTE1NDE4YiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2U1Y2I2NGZkMjEyYjBjZmNiODIxM2RiMWVjNTlmY2I3YzcyNGNlODI5ZmJiM2QwYjVmYTU3ZmE3Y2JiMzAxNyJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L544-L595",
+          "version": "repo-lines-v1:sha256:3161057cef96739647a76ba1b3b68e52feadb167cf73ac622e26ff7ec34c3951:eyJzZWxlY3RlZExpbmVDb3VudCI6NTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NTAwMTllYzU2MDZmNzE3MjliY2QxMWU1MjI4MGY0YzkxNTE4ZGRmNmI5NjhmZTljOWRjNTJjMTEzOGE1ODAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNmMjA2MTdkNmE1M2Q0ODRmNGQ0ZjA4YjYzOTA4M2I1ZWNhYzVlNmIxYzZhYTE4MjY1YjQ2YzU0NTBkNmEwY2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjliMmNjMmFhYmJiZmFiNmNmNzUyNWE5MGM4OTU1NDg3ZWNhYTgzNWQzZjllYTU4NmE1Y2IzODBkYjhiYTBhZmIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

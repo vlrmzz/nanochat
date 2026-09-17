@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:12d1827f7b05a5a02546c4f8cef1e39f087a8a9ee062e87592c718a0043f6eda",
+  "claims": [
+    {
+      "id": "claim_7ee98658350544de83ffb211f93f08a4",
+      "statement": "MuonAdamW performs all gradient communication itself (nanochat does not use DistributedDataParallel) and shards optimizer state across ranks; on a single rank the communication is skipped and the same code produces full-tensor updates.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L1-L10",
+          "version": "repo-lines-v1:sha256:838231af5a3dbf8d46c8977a734e9ccc8d13941d2d970425c11c4d0304a7e15d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRhYjA4ODg4YjUzMWJiYjIwMWJjN2RhN2MxOGQ5MTRmNGE2Y2QyNGRkN2NmMzM2Mzk1OGM1NDJiNTc3YzRmOTgifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L184-L210",
+          "version": "repo-lines-v1:sha256:d9ab77d8736be626ee70c0b3126aaf0698b927532943d54248857fce44ac963e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMDdiMjE3Y2YxM2UyNjU3ZTM3NjBkNzg0MjYwMTdjOWQ3YTM0YTUzMDkwZmQ1NzU3NDBiNDY2MGNjYjk1NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5YjBkZTZjNWQ1NDllZmRmYTc2MjJlNmY5NGVkYTZkOGI2MzhiNDAxM2UzMTM2ODA2NWI4OWUzZmVjNDM1MmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyOTJlYjMyNzE0NmVkMTZhZGI3ZWNjNjZjOTY4MjYxMmVkNmE1MWRjZWU3NWU2MGM0MWE5NWY1NTlhOTNlMWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjEwY2JhZDQ0YmZmNDc5YjI4MzA4NjdjNmYyNmFjYTQ2MTQ0NDdjZmE0ODU0ZDA1YjRhYjNlMzIxN2QzMDliMGQifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L429-L459",
+          "version": "repo-lines-v1:sha256:30d1ae0d2afe0bcfe104a326f9168c8a1a42448971886664292ffff43ea844bb:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1NzU0Yjg0MzU3Nzg3NTY2OWU5N2Q1YWZkOTA4ZDNkZmE5MmRjODM3MmU2ZjJjY2Y5YmI2NzkxMWY2M2VlN2MiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZjc1NzkyZmY5YzdlZDFlY2I4MTM4MWNmNDI4MTkzMjRhMWUwNmFiNDM0YzdmYWVkZDNiMTkyM2Y3MzJiM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5YTFiZmEwNWY0Y2JkOGEzYTk0YTA4MTJlMzFiZTA4ZmZkOWM2OGM1Nzg1Njk3MzM0NDkwZDRhNThiZmI1ZDkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9159de1cea734d1faa01b2fbaf83f6a5",
+      "statement": "Both update rules are torch.compile'd fullgraph kernels whose hyperparameters arrive as 0-D CPU tensors filled before each call, so learning rate, momentum and weight decay can change every step without recompilation.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L111-L128",
+          "version": "repo-lines-v1:sha256:eecc08e231ff5da538e4cfe14c825f405b91e41683f3e522f4cb32cf126b7a24:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYTE4MTliNGJlNDY1MTI2NmViODlhOTBjNDE1ODg2MTBkOTBiOWI1N2NjNzNiZWJkNDcxZWUxMjkyMmUxMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2YTcxNTI1NzJlZTg0ZjEwOTA2Yzc0YjlmMmE5MjQzNGRkYWIwZTNjNDI4MTNiMDRlNTk3ZWZjZWM5NTFiMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzZDE3MWRlNzU0MzFhMDIxYTBkOTRmYTc2ZmFiZjBkNzEzOWM4OThjMWEwYjQ0YjQzY2E2MDkwM2ZhMWI4NDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdlOTM3YzY3OGJkZDI5ZDEwYWFlZDlhOWYwZGQxODMwZWE5ZDYxYzA2MTUyOTIzYjFiOTI1OWMzNzA1NWY1MzMifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L23-L44",
+          "version": "repo-lines-v1:sha256:838378d77fd11fcf214865bc3eeceb5a3cca6c78dd64d3e4db3d61147bce0919:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYTE4MTliNGJlNDY1MTI2NmViODlhOTBjNDE1ODg2MTBkOTBiOWI1N2NjNzNiZWJkNDcxZWUxMjkyMmUxMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1NzE2MGE2ZDU3NWM3MmZkNDMzODJmYTM3NmI4MDM5MWE1NThlOTExYzJlYjU2N2I0NTcyOTc4M2MzNDFlZjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc3NTBjY2EzNWFjNjNmYTI3ZTI3NzNmODgyODRlYmU4ZjY3OWFkZTgyZTdiNTM3YjQyZDhkZmNiZDE4Yjk0YjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY3MWRiNGQ5YmZkNWE2OWNiNjY1YmI2M2ZiZjU4Yzk3MzA4NDlkOTE0MTZkYTU1MDdmNmYxNjUyNjFjYWVlM2UifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L260-L272",
+          "version": "repo-lines-v1:sha256:206c0d17e1db508365a55f01dbecbfa94c367ae4bddf6a62d8746d1bfe3b7599:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzNjkxMWEyNjI4NzRjMGUyMDAyMmEwNjAxNWI3NjQ3OTllOGIxM2VjZmZkMDY2OGEwNGRhMmNhNDhkNGJkOGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkNzIwNzNjZTY0NTQzY2M5NTgzNzc3MGMzODRhODNiYjk1ZGFlYjdkNWI0YjdhMjMxM2YyOTVlN2IyNWI5YzciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNhMTIwZWE0Nzg1ZDdhOTkzOGU0OTdiODAxZWI5NDRmOTFjMDczZmUwNjEwNDM3MTNkYmM3MTYxOGUwYmQ4YjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhOTQ3ZTNlZDAwNWY3NTU0ZGE5NDA4NGY0NTFlOTMwYjI1ZTI1ZmMwZmZjMGVmMjVhOTU3ZWQ1NTVkOGVmNzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_81143cdef4964837bca0322d052b4bf5",
+      "statement": "The fused AdamW kernel upcasts parameter, gradient and moments to fp32, applies decoupled weight decay, lerp-based moment updates and bias correction, then copies back, so bf16 embedding parameters update correctly including on MPS.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L23-L67",
+          "version": "repo-lines-v1:sha256:f90754b9def373446b45c0aaba92c414069911270b7943f3066b86dff6afa25d:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYTE4MTliNGJlNDY1MTI2NmViODlhOTBjNDE1ODg2MTBkOTBiOWI1N2NjNzNiZWJkNDcxZWUxMjkyMmUxMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1YzQ3ZDE2MGMyMTdlOWM4ZTc1ZWZjYzcyNDhlMDYxNDczY2IxMmI2Y2IyNWQ1MzRjZTRjMjZiNDQyMWIxOTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc3NTBjY2EzNWFjNjNmYTI3ZTI3NzNmODgyODRlYmU4ZjY3OWFkZTgyZTdiNTM3YjQyZDhkZmNiZDE4Yjk0YjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYwMzA0YmE2MmVkMzM5OTg5MDViY2M2ODIxNzc1ODA3YWQ5ZjczMjJlNGQxYTI5ZjZkMGNjYmM5YWRkZDAxYzUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_20229ec7c0d14412a9b25c3b4855730a",
+      "statement": "The fused Muon kernel applies Nesterov momentum, MuonEq row equilibration, Polar Express orthogonalisation with tall/wide variants, Muon+ Frobenius renormalisation, NorMuon factored variance reduction, and cautious weight decay applied only where update and parameter share sign; the group LR is scaled by sqrt(max(1, m/n)).",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L102-L181",
+          "version": "repo-lines-v1:sha256:5bd453d02831a327159e422eb7623a3546f7702c6bfb66e85ccc482c4280b168:eyJzZWxlY3RlZExpbmVDb3VudCI6ODAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1MjAxYmFkNWRhY2ZmMGJjOWFiNWE3NjM2ZTcxMDlhMmRkMzM4ZjRlY2RjNmE0YzFkZTQ0NzYyZmI2MDQ2OTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZiMWExMjA5N2FlODk4ZGY0NzBmOTBiODhhMDRjNTQ3NDgyNTA5MmEwMjNhYWYwODA0OWRjNjE5Nzg1YjhmYjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM5ZThjMzRiYjkxNmVlMDZjMjM0MmRkOTU2N2U1OTdkYzk2YmYxMjkxZjZiZDY4MjNiZmFiZjM5Zjc4MDI5NmEifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L393-L393",
+          "version": "repo-lines-v1:sha256:153dadbaf7355d4e62f5a4d3b2140c9c2b04a1c5dbc4b1223a495846220bebee:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTUzZGFkYmFmNzM1NWQ0ZTYyZjVhNGQzYjIxNDBjOWMyYjA0YTFjNWRiYzRiMTIyM2E0OTU4NDYyMjBiZWJlZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTUzZGFkYmFmNzM1NWQ0ZTYyZjVhNGQzYjIxNDBjOWMyYjA0YTFjNWRiYzRiMTIyM2E0OTU4NDYyMjBiZWJlZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTBhZGMxZGYxMzU5NzY2N2I3NzhjOTE4YWIzMDQzMDExOWMyNThjMjVkYjBmZTYyODQ4YWExOWQwOTAyYjJiMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTc5M2Y0MTQzMGE3MTdjNjRiOTI4NGE2ODUzYjlhODVhOWNhNTE1MmMwZTI3MWExMGM3ZGVkNjIxZjE4YWE1MCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_126c190ef83f41559718f5ba108dc011",
+      "statement": "step() runs three phases: launch all async reduces, then per group wait, compute the owned slice and launch its all-gather so later computation overlaps earlier gathers, then wait for gathers and copy Muon results back with _foreach_copy_.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L419-L459",
+          "version": "repo-lines-v1:sha256:7be952032936d722b2fc3226a905de0b51522c537c830df30dd479c3eed147e9:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjODkxY2JmZjA1NGY0NWVjNzJmNWJjNzI0ZDFkZWJlNTk1NjRhYTVmMWE3MmRhYzI2MTM1NzVkMzJhY2E3MjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZjc1NzkyZmY5YzdlZDFlY2I4MTM4MWNmNDI4MTkzMjRhMWUwNmFiNDM0YzdmYWVkZDNiMTkyM2Y3MzJiM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5MTZmNTI4MGVlZTM3OThjYTEzODFhZmM1YmMxZDdkNGE5YjBlZTViZmRkYzE0NjM3ODY2YjBiNzBkMTAwZDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_69fb01f575234744a85d03e6cc89263b",
+      "statement": "AdamW parameters under 1024 elements are all-reduced and updated fully on every rank, while larger ones are reduce-scattered along dim 0 (asserting divisibility by world size) so each rank updates and stores state for a 1/world_size slice before all-gathering.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L274-L293",
+          "version": "repo-lines-v1:sha256:8a408aba673f8175ca404f21ed24e71d4b7a2d657967d99965a3d651263465dc:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4ZGY3YjA2YWU3ZWZkYTAwOTY5ZDNhMzI5MGYwNmFkMTcxMWY2ZTg4NDQzZDJkOTI4NGUwYWQ4N2JlZWIxNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4ODdkMDM3ZGU2MzVlN2IxOWQ1MWNlOTAxYzk5MWYwZTI5OWEyOWE3M2RjOTQxNWMzYzc0ODVjYjNkZGYyY2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAwMzE0YWU5MmExMzk2NGJkMTcyZTY5OGY0MTk3MmI3YTg0NGQxYzM1MjNhNTY0YjQ1MDFlOWI3YjYwNTEwYmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE5ZTJlZTBhM2RkNzc1NzJkNTViZWY0MzViMjI2MWE1NDFmZTA2NzkxYjU2NGNjNzYwMmZmMDExOGYzMDRmNDkifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L320-L360",
+          "version": "repo-lines-v1:sha256:03c1698f25c017a1d5a01fa5564ea35755b01a4d38c6639c2c1ddd150934f270:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjMGUxNzNkNzgzN2FmNDhhNDJjYzk3ZTg3OWYwOWNmYmVjMmNlZjE5OTI5OTEyZjY2OGUxODc3MzA3NGQwMzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3NGMxY2UzNGQxODczYzJjOGUxY2FjMjI5MzJlM2JhMGI0NWZjMDBlYTIyYzFlMWViNWE2YzQxYTBjMGVlMjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5OThmNzE5YTUyMGY5NjFlNjc0ZWJiNDY3ZWFiOWM0YzdhM2U4MTViN2Y0Y2ViYzZkYTQzN2E5MzE0NTNiZDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRjMWY0NmEzZGVkNTcyMDc5NzkxYWFkODhhNTVhOWU0YmMyNTYxYmZjMjA2NjVhNTA4YTA1MDE4YWMyOTMxNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8c97f035ae72404195cf8022bc92a5a2",
+      "statement": "Muon groups stack same-shaped gradients, zero-pad to a multiple of the world size, reduce-scatter whole-matrix chunks so each rank owns ceil(K/world_size) matrices with momentum and second-moment state only for its chunk, and reuse the stacked gradient buffer as the all-gather output.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/optim.py#L295-L318",
+          "version": "repo-lines-v1:sha256:8ccf16543435e5df97fcd3546975b80a1aca872155eaab7ec4411b9e0414d4e5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQzYmUzMzQ4ZmI0ODc4YWJhN2Q2N2JlNjY2YmIwMTU2MWQ3MjM3MjA1Nzg1OGVhNDQ1MGFhM2M1NGVlMGM0OGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc0MWJiZWZmMjVhYjMwNjNmY2QzYWQyNjM2OTRhYTIyMjY3YjYwODM5ZWI0N2Y2ZDIxN2MyN2I3M2VmODU1ZGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYxNmMxYzFiYTczN2RiYjM3ODNlMWNmYzM3NDhlOGM2ZWJmYmUxMzNmYTgwMjI1NDg3MzZlNmU1OTA3YjE5NjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM5MmRhZjBmNzM1ODVjNjQ5ODZhOTJjMjkxMDFhOWJkMWJkMzM3NmFmMGZlOWU2YTA4NDYyMzBjN2Y1NDBhZTUifQ"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L362-L417",
+          "version": "repo-lines-v1:sha256:bdfb6f6c30dd35bff3b5baa1090417fff9bdfa6fbb933635ef1155e9542bd374:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJmNTk3NGQxZGEzNTQ4ZWE4Njc0ZTk1MTIyMzI4OGZiZTNhMWE1MDZiYmU0NGViNDI5MTVlYTBhY2UyMThhYTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYwMDRkYmUxNWZmMmMyMTExM2E2YTQ1ZTFhYThiYjExNDljY2Q3NmZkOGEwODk0ZjhmOWNmYTU3YWYyMGE2ZjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkwYWY1NDBmNDViY2RiMzA3OGZhZWZlMDdlMTUzMDI1Yzk1NGE5ZjU2OGU0NTkyZDMxZWY3OTBlYWYyMThlZmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgyNjU2OGI4N2JlYWQ3MmY4N2QzMzU3MWY0MjI4NjY2OTlkMjc3YjU1YjVmYzlmMjkxMjQwYjFhNzcyNWE4ZjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_14e830337e9040e29de4755414fe9675",
+      "statement": "Because optimizer state is sharded per rank and Muon state is keyed on each group's first parameter, checkpoints store one optimizer file per rank and resuming or warm-starting requires the same world size and group composition.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L54-L58",
+          "version": "repo-lines-v1:sha256:ca9175d5743ba86f171842946a7325c96b6ce39037843550428cdb1a489eb9a2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTc2YTRmNmZlOWVmNDVlNzczMjZmN2I2OTJhMTVhY2FiZjFkZmM0NmRjOGUwMTFiZGM3YTdiZTc1MzAyYThlYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMWJiYzk2MjIwZTQ3YzI4MTAzY2I5ZjYyNWUwOTlkNTBiMDg3ZGJkZjNjNWJlZjA5NzAzN2U5NjIxNTA1ZjlmYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDk2NjMwZTczNDU3Nzg5OTQ3OWU4ZTFjNTRjMmEzZTAyOGIxMDY0YjZiYTUwMDUzYTAyMGEwZjg1Y2Y4ZWNmYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWM1OTEyNGIxNTViMzJiMDU2NjU0N2VmYTU2NDBjYWEzZjU0NzU2YzFjOTNiNDAzMGE2YzRjYzIwMWVlNDY5YiJ9"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L375-L383",
+          "version": "repo-lines-v1:sha256:e15655df532b34faa2034c2e697ac78efaf69dd5fd123eb94a472c9652c99a85:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjg5NjQ0MDBkNzgwY2Y5ZDhkMTIyM2FhMWVhYTgwMjlkYWYxMzE1Mjg4MGMwOWVlNWJkYjg3YWU2NjZjNWUyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTRiMDZmZTM1YzVjNWExYTg2MTM3MDY5ZjYzZGQxNjI2MWE1ODhjYTJmYzFjYmYzNDM2NzJiNzM5NmY1NTAxMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2Q2ZDliOGI4NjNjMzUwODFkZDZkYjkzYmU4NzA5N2IyNDBmMDE0MTYzYWY3OTg1OWZlMWRiNWM4MThlMjA2OSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7d488d0d6d5458fe0584ce3c2f2f0854428325b44466efc0e1237a39cb43d245",
+  "claims": [
+    {
+      "id": "claim_9e778a532bd94753a782b5ce441f1809",
+      "statement": "execute_code runs generated Python in a fresh python -c subprocess whose GUARD prelude applies RLIMIT_AS/DATA/STACK to maximum_memory_bytes (default 256MB, skipped on macOS), disables exit/quit/help, replaces destructive os and shutil functions and subprocess.Popen with None, and blocks several modules via sys.modules.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/execution.py#L47-L99",
+          "version": "repo-lines-v1:sha256:aa250dfa5709ed893f1e8a92a57224276caac5346b8e1b8de9d013895db2a304:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3YTUyMzZlMGU2MmJhMTBhNjgzZThjOTJjZjViZGI2OTczYWRiNjAxZjQxNmIxMjcwMWEwYTY4NzA2YWJlMTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhlMDI4MGRmOGUxYzdkZjljNmY5NWRhMDkzNDEyM2U1NDlkYTg4N2RiMDQwZTFiMDA5NDg2ZDJjMWRiOWM0NTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkwN2FmMGZiZjI4OGE2NTYwNjk3MTEzMDk5NTE0MDUwMjdmN2QyYjI1ODQzY2Y4ZDNiNWQ5MGU2YzU5MDlkNGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxZDA5OGExYTk4NmJhOTFiZGU3Zjg4ODFkYzdlNTM4ZjU3NTBmYTZhNmNlYjc5NTY4YTVlNTgyOGNmMjJhZTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ed7c0d02ac3845498028225b172a23e7",
+      "statement": "The user code is embedded as a repr literal and exec'd with fresh globals in a temporary working directory that is deleted afterwards, with the environment scrubbed to PATH only, stdin disabled and stdout/stderr captured; timeout (default 5s) kills the child and yields timeout=True.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/execution.py#L74-L120",
+          "version": "repo-lines-v1:sha256:4b99a0641716c63591b3826752a3f3bea6eaa3aa05c4167ccf8bb7abc2954511:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4ZGRjN2Y2ODBiNTE3OTMwNmYzNjY2YWQ1ZGMxZGQ4NmFlMWMzOGFjNmU5Yzk2ZjkxY2YyNDA4MDIwZGI1ZTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MDMyZTk2NGQwOTMyMzUxZTVkMTg1MjY5MjgxYjE3MWEzYTA5YjA4YjI4NmU2NjFlYTQ3MDMyM2M4MmViNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM4YWU2MGEwOWE3ODRiNDdlYTA4NTMxNmJmZjkyYzY4MDExZGQ2NzBkODlmMjhkYWY1ZGE5YmI2YWU0MWJjNDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMwZjQyMmJiNWVjZDgyZDNlYTE0NTE3MjU1NTQwZGI0MjQzMzUwNTQ3OGE3N2QwNmM2MDFiNmY5MmI0MzM2ZmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6c0bf68433b24b458a01ac44954d6ac5",
+      "statement": "ExecutionResult.success is exit code 0, error is the last stderr line or 'Execution failed', and memory_exceeded is set when MemoryError appears in stderr; HumanEval.evaluate treats success as the pass signal.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/execution.py#L122-L134",
+          "version": "repo-lines-v1:sha256:35e183e2b9346a3b8f16abad1ff1f0ebac0130c01a344eed08e1b000afb7faa7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhZTNjZWFlYWZmOTAyZDJkN2VjM2VjMTg0NjIwNThmZGY4NGQ3MjNkZDlhNzQzYTAxYmU2MmM1MjMzYzdhYTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhMTFjMDU2N2QwYTVmOWU5YjEzNWY2NWNkMjUzNzJkZmQ2Mjg3NzVmN2MxZWQyNTNmOGJhZDQyZGQyZDY2NjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRiNmEyNzM0NmE3YmNiMGNkNWVmNzFjNTM1YzQ3MDEyMzMwNWRmNjcyZGQ3ZDI3MWUwMTMzOTk2MjYyYzNmMmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://nanochat/execution.py#L33-L40",
+          "version": "repo-lines-v1:sha256:aaface1df47b21225ba603608934830fdac4990a4b9ae9227e2de59444c9ff0c:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWFmZWRhNzNjM2JiODZlNjk3OWNlNTYxYmE4Y2E0MTcyZDhmOTkxOTE4OWNkNWI3NmZkYWY1ODJhNTM0NmQ5OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGVmYjczNjVkZDFiNmZkMjRhZDNlZTI4M2MyN2Y3ZmJhOTE4OTY2YTEwOGYxZWExODY2Y2JlNTZhN2NjYTUwMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjQ0ODdjZmM0MDJmOTViNmFkNGI0MDdkNWI3NmViZjIwNGM2MDJiNzM5OWM3YmUxNTliY2RjNmNmYjQwMzMwZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMTU1ZDMzNmJkNDFmZmE3ZTUxNTlkNzQ3ZTUwN2UzM2YzZGFiMzdjMWQwMGYxYzVjMzhiOGM5MTI2MjYyYWJlZiJ9"
+        },
+        {
+          "resource": "repo://tasks/humaneval.py#L95-L97",
+          "version": "repo-lines-v1:sha256:b154246be7dcb790c4cc18ebefb7574bfcfc729f2080423ee5c4e9877787bcbb:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWEzYzhmNTM2N2E4YTYzY2U2MmIyMjlmOWUxOTFmZjFkNGFmM2EzZmI4OTc2NDk1N2IxMDEwMDBmNDZhNmZjMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2ZiMDFlY2MwMmJlZDBiZjhiZmI2ZWIxZmQxYWIzNmZkNjExMzBmMmQ5OWY4OTRiYTBmN2IzMGU0NWUxNDVkOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmI2M2FiZDkyOGFjNmQ4NzE4OWMyYTc5OTkxZWI3MWY0MWMyOTI1OWNhZTczZjZiODNlMThlYmNhYjE5ZTczZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_729a32deb69c4a12b78bd5052fafad51",
+      "statement": "The module explicitly states it is not a true security sandbox: network is not blocked, ctypes-style dynamic features can bypass it and there is no kernel-level isolation; it targets accidental destructive behaviour during evaluation.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/execution.py#L1-L22",
+          "version": "repo-lines-v1:sha256:e9ff3eda175c4c0984fa6d83b3df7b7d285ff7b0fb668a68a350e056f1485c06:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVhZTMxODgxNjYzNjFiNmFmYzM0ZWZjYjAxMmRkYTY0Yjg4YmJlZmNjOTcwZGJkZjU0ZDM4MGNjNGNkMzQwNTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_99fdbf77c984405ca8d6cfd39d7d8d68",
+      "statement": "The chat calculator tool in the Engine (use_calculator with an alarm-based eval_with_timeout and a character allowlist) is a separate in-process mechanism and does not use execute_code.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L24-L79",
+          "version": "repo-lines-v1:sha256:7780849724135fcf754154582711e79f90728dada4a59411391ece68210ba535:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMDVjNjU3ZTE5Yjc0ZWVlNDBiMzEzZWM1NzA0MjVjNWRjNDA3NzZhMjU4ZTIzZTk4NTNmMjJiMmQ1YzU3YzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlkODRkNDYzZDI2YTIxZWZmYjlhOTc4ZDQ2ZmFkOWQ0MDcxNzllNjZhMWE0MWUwMThjN2U5YWZkYTI2NGQ3NDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3NjU1MmNmN2YwZjI3NTY1YmE3NmEyNDhkZDcxYmY3OWMxODQ2YzJjNzNhMGRkMjhmNzZlNzRhN2JkNDU4ZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI4N2ZiM2MxMGE0YTVjOTk1NDAyNjJlMWNkMTM3OWRlYWFlZTdmZWY0ZWYzZWZkNmQ5YWE5OTk5OGFkYTI2NzkifQ"
+        },
+        {
+          "resource": "repo://nanochat/engine.py#L259-L259",
+          "version": "repo-lines-v1:sha256:b4f3b309a3d3a3873bf1ef3d1f424121edec7bfbe67522456b70b512907f4db3:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjRmM2IzMDlhM2QzYTM4NzNiZjFlZjNkMWY0MjQxMjFlZGVjN2JmYmU2NzUyMjQ1NmI3MGI1MTI5MDdmNGRiMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjRmM2IzMDlhM2QzYTM4NzNiZjFlZjNkMWY0MjQxMjFlZGVjN2JmYmU2NzUyMjQ1NmI3MGI1MTI5MDdmNGRiMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWNiN2QwOGJiODg2MDQyY2FmZWJkNWExNjI3ZGQwMWIwYTdmZjljZmZlZTAwNTI2Y2RjYjg4MmI2ZjJkZjgxMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjQ1MzdkOTMxOWFlNDUyMmZlOGY4YzBlMmJiZDM3OTgyNDgzNmY1YmRiNWYyMTliYjZjNjk2YmE0OTlhN2M0NiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

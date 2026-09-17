@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:89fd306ca3cfc3a190ec6981dbaab3a9b4db9718fecd41b4e7f02352e0a556a6",
+  "claims": [
+    {
+      "id": "claim_ed27e8394f9848fa97a86dbcb60620cb",
+      "statement": "pyproject.toml requires Python >= 3.10, pins torch==2.9.1 and offers mutually exclusive cpu and gpu extras that select the PyTorch CPU or CUDA 12.8 wheel index via uv, with a dev group for pytest and notebooks.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L33-L43",
+          "version": "repo-lines-v1:sha256:60360093705d274cf85cf90cdedc6f76ac768a7d9a50beddfb8d9abbe858f653:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkYmVjYTYzOWVkYTRlMzc4MTYzMjM0Nzk4MTZjZDcwODRmZjQ0MjZmNjYyYzVhNDU0ODVkZTMyM2ZlMjdjODIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMwZDlmNjUyNmUwMzVmMmVlZGI0OTk5MzhhMmI3ODhiZGNkMDg0ZWQ2MmVmMjY5OWQzOWZmOWE4ZjFhYWI4MjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhlN2ZiM2MwYTk4NjA1Y2YyMjg3NzE3MDkxNmIzMzNkNTFlMDkzYWYwNTBmY2U1MTRlNjAwN2ZjNGE2ODExNTcifQ"
+        },
+        {
+          "resource": "repo://pyproject.toml#L1-L60",
+          "version": "repo-lines-v1:sha256:7a4325398f645323ddf3913d0f63efde9cbc22dbdb22f2cbeb5c37ae7128ef1b:eyJzZWxlY3RlZExpbmVDb3VudCI6NjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwMmE4MWMzODM2ZWRlZjJkMGJhMTFkMjM1M2ZiNmRhYmM3NzcxNTBhN2NhODNlYTBkOWU5YTcwMzEzZmVhYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY5NDE2ZTA5Zjc4YmEzMTZjMDMyNTY4MjEzYjg1NWVlNzU2ZTQxNTY1ZDkxOGYwOTUxOWM4MWZkNjIwZjQwNjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg1Mjk4N2JhNGQ4OTE1MDYyMWE1Y2MwZjlkNDgwYTg1M2M5NzY3YWQ5ZDMzODhjYzViMDg1MDIxNTUyOThlY2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_14d14ebfa1ee4f3e994cd0bfbd744247",
+      "statement": "compute_init validates the device type, seeds torch with 42, enables TF32 matmuls on CUDA, and initialises an NCCL process group bound to cuda:LOCAL_RANK only when RANK, LOCAL_RANK and WORLD_SIZE are all present in the environment (a torchrun launch); otherwise it returns a single-process world of size 1.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L137-L209",
+          "version": "repo-lines-v1:sha256:9aa38a4b158510559708e2f7dc580598e3d5b18156a56c86024c4d2668b6c7e5:eyJzZWxlY3RlZExpbmVDb3VudCI6NzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzNzYwM2FhOGJhOWMwODA5MmExMzY3Yzg5OTkxM2NlNWMyY2E0ZGQ4NGNjM2I3ZTA3NjIxMGVlZTk2ZjNiNGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlZDdiYzFhOGFlMmQ3NWEzNTRjMWZlM2E4ZjE5M2M5YzEwNmYzM2Y2ZDI1MjkwNjliOGVlNmE1NDhkN2E2YjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNiZGVjNjY3YTczNzE4MDQyYWMwZDUwOWJkMTkxMGJiYTE3MjZkYjlkYTBlNjcwNWJkODQ3Y2ExYjNkNDJlNjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE3MmM3NTU0M2ZlYmNjMDFlZjY4MGE0YjM0ZTYzNTljODRhOTI4NmM5NDJlNTZmY2IwNjhiN2NmYjEzYTkyY2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1131dfc1db1f4e9394a0b2f255844543",
+      "statement": "autodetect_device_type prefers CUDA, then MPS, then CPU, and every training/eval script exposes --device-type to override it; DummyWandb replaces wandb when --run is dummy or on non-zero ranks, with projects nanochat, nanochat-sft and nanochat-rl.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L163-L172",
+          "version": "repo-lines-v1:sha256:6274065c3260cad5e96e6f1d5ca28f42cac5aeeef41535228da511e5ab91eb72:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0YjY1NzcyOWExZmRmYjBiNDVjMTY4YzJhMmM1YTk4MGZjYjQxODk1ODlmNTFkMmI4ZTZiOTYzMmQ1ODk4OGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmYzNjZWE2ZDkxOTFhMzI2NjBjZDY2ZDI1MzE3YjZkZTdkNjEyNzQ4MzFiODU3M2I0NTQ0MDc5OGJmNTgzZTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRhMDQyNTU5OGE2NGM4OTkyYTY4MjljMmFhYmE2MjNiNmViMWVjNWQ1ZWIyNGQ4MjFkMjVlZTljMmE2NWQwODgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBiNWY4OTU5NmY1ZWFjYThjMjI0MDgwYTNkYzE3MGEyZDM5YTVmZWMxMWViMzY2N2JjZTE1ZjA4M2RjNmVkMGUifQ"
+        },
+        {
+          "resource": "repo://nanochat/common.py#L216-L224",
+          "version": "repo-lines-v1:sha256:860eb56ff842a8aa9bb90639bd4b8b50cd0984af437cb181d615819a79ad8fdb:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmE0ZjI4ZDA0YTc1MTc2Mjc1NThkYWE5Y2RhMzQ2MmNjYzhiMDAxYWZjOWMzNTg2ZThlZjAyNGIzYmIyYTliZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGY1ODNjMDBkMjNlZmQ2MTBmMzM1YTkwY2E4YmRmYTIwMzYyZTVlNTRlNGM4OWZmY2VhOGQxZjMxODE0NTVhNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmZhZDE0YjljNGI4ZDUwZjNlYTFjNzk4NDFhNzViYzE2ZGIxYmYxOTUzMTQ2YjFlMmY2NTU0OWMzMDk4MWI0OSJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L99-L100",
+          "version": "repo-lines-v1:sha256:d6bcb242a54adc62704722c6605db63808618f04c8bed3ecc551667999fad531:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1N2M3NDA1OTg3MWFkOWY5OWYzZTdlZjBiNTU3YTFkODU4ODUwMjVkNjFhMDFhYmQ2YzJlODAwNDYxNWYwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmM1NzkwZjc0MTQ3YjhkMzM1ODUxNDc4NGI5MmJhM2E3NDM2Njc5YjcyNWVkMTVmNjFhYTM4MjNiNzAzMDZkOSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODlkOGU0OTMzZjYzMGFiNjRkZDc0MTE5YmFlMzAwZDg1YTAyNjk4Y2ZmY2Q1ZTUwNmI0Njk5NGM2ZjI5ZTNkNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjlkNmRjNGE1Y2I2M2U4ZThlMGIwOWUxNTBhMDU0ZWM2NDlmNjFjYWQ3NTMxNWRjYjA1YzE5ZTU5YTRkY2JhZSJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L70-L71",
+          "version": "repo-lines-v1:sha256:650740225e7c24f699a18e2622c9fdad3015c663d70438e65f1093c83ab6d944:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1N2M3NDA1OTg3MWFkOWY5OWYzZTdlZjBiNTU3YTFkODU4ODUwMjVkNjFhMDFhYmQ2YzJlODAwNDYxNWYwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjE2NWI3YzUyMjZkMTFhYzQ1ZjVhZmVmOWUxMDI2NGVlOWNmMjA4ZjQ1NGIzMDEwZjNiNzBlOGJkYThiM2I4NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2UyMjFiZmEyYTdkODg5YTkwOThmMTc0ZWMzNDliODg4YzkxMDFkN2ZlN2M3ZTljMjI4ZTMwNTYwZmIyOWI2NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjBmZWViNDM5MzhjMGNhYzc5NTg0ZmUzYzU4NDM0NWQzNGJkZDY3NGExOWQyMzExZDg4YTVhZWYyMmZhNzQ2YiJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L86-L87",
+          "version": "repo-lines-v1:sha256:ee436bf9abdadbfd9b08075366bdead93c708dc3514cbd4df80ea718be529bcc:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1N2M3NDA1OTg3MWFkOWY5OWYzZTdlZjBiNTU3YTFkODU4ODUwMjVkNjFhMDFhYmQ2YzJlODAwNDYxNWYwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTA1N2M2MTdhZTlhMDE3MDNkYTBhMDNkZTUyOTc3YTAxYTkxYzFkOTlkNWQ4NzU5YjZhYzBiYjEyMzdjNzVmNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTNkZjU2MTEwMzM1YmRmMmMwMzY4NTY0MTA2MTBmNGNkZDA5YzIwYjZlZWFmN2M1NWU0ZTdmMDIxZGM1N2NiYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWRjNTMxZDY5OWRmMzI3OTJkYzkwNDE2MWZlNjNiNmY2YWFjMGY2ODM4NWQ1NGFmM2U3NDBmYjAxMWNlYjBjNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b33937d2fb8c4798b232235645072964",
+      "statement": "build_model reconstructs the GPT from the checkpoint's model_config on the meta device, converts bf16 tensors to fp32 on CPU/MPS, strips the _orig_mod. prefix added by torch.compile, applies legacy patches, loads the state dict strictly and asserts tokenizer/model vocabulary agreement.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L76-L114",
+          "version": "repo-lines-v1:sha256:ce4085be2f71533e256037519349aeede92bd8dff5e7991d34a7786aaf42d563:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImExZmMyM2E5ODUwNTk4MjBlMmNlMWU2MjcyYTA0ZDhhYjgzZWQyZTEyYWY3MjllODdlMzg4MWYwNWEzYjUyYzkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI3ZDUyZGM4ZTU5ZWExNGNkMzRhMWFiZjg3YWI0ZjdmZTcwNTc1Njc0NzRjYzJlY2YwZWQ1ZTVkMWViM2NhOTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA3YzliN2JiYTVkODYxYTYwYTZiODI0N2ZkNWMwYjdjN2Q2MTc0NTU5NDYyZWIzYWEzNjA1NTBkYWFiMTUwMDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNmYWQyNGQ0NWIyYWJiOWIwNmQ4NzEwOTIwYWMxODE4MDFiNjdjZDdmNDM0MDNmYTkyMDVjNzE2ZmM1OTk5NWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c8b3abdb0be24c7cbe52122fe756dd3f",
+      "statement": "With no explicit tag, load_model picks the highest d<depth> checkpoint directory (falling back to most recently modified) and with no step the highest model_<step>.pt; load_optimizer_state returns None with a log message when a rank's optimizer shard is missing.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L117-L192",
+          "version": "repo-lines-v1:sha256:cfc9b6df3e8791a271e23db49ea64dba0c2bfa21dc272b34987781fa499238e1:eyJzZWxlY3RlZExpbmVDb3VudCI6NzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQyYWZmMmYzMmY4NGNiMjU2MzRiOTEzOTA5M2YwOGExZmVkMzM1ZmI5Yzc5ZjJlOGQwMTdjZTEyODUwYTk3MWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyNzQ1ZWMzMDcxZGFkODU2MzYzNWI4ODYzNmVjNzQxOWYzMDdhYTVmNjc1NjQ0MTAyMGU0ZmNjYzZmNDQ5MmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc5MDA4ZDk5NTJkYzYxOThjZjRkYWM3MjM0NmU0ZWJkYmM0ZWY2ZmJhMTgyYzY5YTk0ZGI0NTJmOGZiNTJjODMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQwYTE5MjRjNzZiNzM2MmMyMzM2OGNmOWVmZjZkZjFiMjQ4MDQyNzhiZDJiNWYyY2ZjN2MyNDA4NjMwODVhNTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_feed07eef33645a0ac7fa0fef642bd9e",
+      "statement": "download_file_with_lock downloads into the base directory under a FileLock, rechecks existence after acquiring the lock, and runs an optional post-processing function, so concurrent torchrun ranks fetch a file only once.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L82-L116",
+          "version": "repo-lines-v1:sha256:0122c494b5ee7ed0f026c987a5255904e10de1464945e065eb6568ac629ad400:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJlYjY5ZjJmYzY5ZWYxMGQyODJjN2RmNTk1OTNmZDQ3NzIwYTJjZDY2OGE1NWMzZjU4YmU4YTUwYWEyMjEwZGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzNGI0OWU1MTFhMDRmYWY3Y2U4NDg4NzNmYmU2MTBmYTgxMDgxNTI3YTBmYzc2NGEzZjU1NzlmYTc5YjVlMWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmODBiMzBmYzllYzA5Y2ExNzkyMjE2NDFlYTk5YzU1ZThjODMxMjRlOWNiYmM1NDE5YjBhYjc1NjQyNzJiYWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ0NjU4Zjk0NDdmZDE4NDRmMDY0ZmQ0MDk4M2YyNDNjZTVjM2FjMzJmMjM3YWIzYzJkOTQzZTlhOTY5ZmRjZGMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bc34586cd8ae4edab27c254b3d358cd0",
+      "statement": "nanochat does not wrap the model in DistributedDataParallel; the same scripts run without torchrun on a single device and README documents that this switches to gradient accumulation and that GPUs under 80GB need a reduced --device-batch-size.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L82-L83",
+          "version": "repo-lines-v1:sha256:d660a00fdf965dc156e0ddf0078555027bd349818037c87f3d20b813ba412083:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ0ZjI1OWRkYTExMGIwNTA4N2Q1YzdjZmVkYzhhNDNhZjQ4N2QwNzNhODRkNzkxNzdlYzM5ZWM1YWVlOTRjMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzlhZjE4NTE1NWJjMmQ2OWRhNGIwZjYyOGJlYzBjMDkyOTI3ZTMxMjY1N2RmMmMwYTdiZjcwODRiODYzZTA1MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTQyYmZiMDJiZWNkYmFkOGJjN2UzZTFkNTdlYTc1ZjlmODJhNTNmMTNhNDQ0YTgwOTlhM2FlZjIxOTY0OGNkYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDBjNzk4MDI4NWE1Njk5ZTBmZDZjNjUzYWE1ODIyNGFkYzdlYjdiYmQwNmRlYWY5NmY3MDdmNDZiMjkwYzgzZiJ9"
+        },
+        {
+          "resource": "repo://nanochat/optim.py#L168-L172",
+          "version": "repo-lines-v1:sha256:c8233ce6145a770fcd9ee8ad7338138446df312051c91a56c1b747efbbb73d2d:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWZkYTNiYTE1NWJhOTc1NjMzODU0NTNhYzNkZjg4M2Y2ZjE5YTgxNjQ5MTg5MTk2NWJmYTAwNmUzMTZiNTI4NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzdhMWFiNGJjMWRiYTA0YTMwN2Q3MTk1ZTY1ZGU1OWYyNGMwOTlmNzIzMGQ5MzBhODM5MTQ2MjhjZjdhYTFiMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDg0OGVjZDU0OWJiZTVjNDdlZDI5YzIxZTI1YTAyN2ExYzg1NzM2MDhhYmY1OWZlN2MyZWQ3YjkzNTVjMzRkMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODFlZjI0OGRmN2IwYmU2N2VlMzMyMmI0YmQ3N2VmOTkyNjgzZjE4YmQ3ZWQ4NDgwNTkwOGUwOTA3NzEyODlhNCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

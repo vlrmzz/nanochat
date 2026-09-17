@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ff582011049f965453d58113d52fc74eb9a544cc251c275404fab8b0cb70bedf",
+  "claims": [
+    {
+      "id": "claim_089be83776f04c959df2fd7a0d03fe07",
+      "statement": "infer_bench requires a CUDA device and a single process, clamps the prompt so prompt plus decode fits sequence_len, and builds the prompt from real repeated English text cut to exactly the requested token count so greedy decoding does not degenerate.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/infer_bench.py#L84-L122",
+          "version": "repo-lines-v1:sha256:d35c07fa987dd0bea0f0a7ca554adc8b8cad7a502a972e7fe6e6aa9237236647:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM1MjJjMGMwZDFhODUyMGExYWJhY2IwNmMyYmRhOTBkY2ZjNzc4Mjc4OTJhN2FjMTA5NmZkNTMwZmI2MDkzYzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2ODZiZDJjMDVjMDlkYTAwNzY2NDhmZDAzOTk4MWUwODE1YzgyYmQ3YmM2Yzg4YWQ5NmE1NGI2YTNlOGUxOTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI1MDMyOTIyMjkxZDEwYmVjMjQ3N2ViM2MwNWM5NjFiMjE1ZjIwMDE2NmI2ZGRiMmFlZjJmMzgwMjE4MGYwOGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkYThmZjk1ZGQxNzkwNzM4MWZhMzkyYzcxZWQ1MmU5NzgwMTY5ZmYyZDU1ZDRhZjBjZWI3Njk4YWM1ZTllMTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a533f0fd20fc4ed08221b56216729399",
+      "statement": "bench_generate times the first next() on the Engine generator as TTFT (covering batch-1 prefill, KV replication and the first sample) and each later next() as one decode step with device synchronisation, recording peak allocated VRAM.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/infer_bench.py#L55-L82",
+          "version": "repo-lines-v1:sha256:70efdd76329f3072750d497b37df0f9322f45db732f267bc3ff9d9c3686a76c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjViZGQwODc3ZWRhOTU3YTQ3YTE1MmFhOWVhZmU3NGMxNzg5YmYyMzkzZjM2ZWIzMjRiZjU4ZjNjNWQ2Zjc2NjAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRjNWE5YjljODQ1YTE5MDZjNzI5N2U2MDIyZTZjYjZiY2FkMTRmY2Y3MWM4YzIzYjIwY2MwN2UxNmFmNDhkMzYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1N2NkMjI5OTA1NzQwZWI1MGEzMmIzYmE4ZWM1ZDJlMDBjZWY3ZmI4OTdhNzRmMWU0ODAxMDAxOGFmOGNhMTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhmNGM1NzliYjdmY2M0M2NmNGM1OWRiN2I4NDI5NjVkYjEwZjBhMDU0MDhjNWVjMTJiMzQwNDViMmI5NWM0N2IifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d3a1c733e433467d822a108d012e8246",
+      "statement": "Decode MBU is (weight_bytes + batch * kv_read_bytes) / median step time over peak bandwidth and decode MFU is batch * estimate_decode_flops / median step time over peak FLOPs; prefill MFU uses estimate_prefill_flops over the measured prefill time; the static card also reports a batch-1 ceiling of peak_bandwidth / (weight_bytes + kv_read).",
+      "evidence": [
+        {
+          "resource": "repo://scripts/infer_bench.py#L127-L140",
+          "version": "repo-lines-v1:sha256:d36ee53181e7c0b7e03b06309c94ac1080e764d539bee9c640c8cf6f3688facf:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUwZDUyYTQxMTdmZTczZTAxYTY1NmYzNjNmYTY1ZWUxNmZkMmY2NmMzMmIzY2NlMTRkZTFhOTFlNzkzZjM1NzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkOThjYzBlZTYzODExZTE3M2EwOWE2NTczMTc0Mjk5MTA3NGFjOGQ2OThlMDUyMTEwYzE3YmRjMTk1MjE0NWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRiYzllM2U2M2Y0OWI0Y2M3MTc1ZDM3YzBmNTk5NTljYzA2ZDg2N2YxNDNmNGJlMjU1ZTk4NzljZjVjNDM2NzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRjZTBmNjc5YTYzZWZmMDc5NzlhYTIzY2QyNzI0YTNjZTc1MzMwMjczOGExYTI4ZGU5ZmUzMTIxMjA5ZmMxYWYifQ"
+        },
+        {
+          "resource": "repo://scripts/infer_bench.py#L184-L223",
+          "version": "repo-lines-v1:sha256:7ee907075f2caf23287e93324ca69922bd7c6c4ed64f5e5fa020b9381c4eef02:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhYzZlYzRlNDc1NWY2NTlmOTAyNDUzYWY2NjU4YmY3YWJlNjk5MTc1Yzc1ZjIwYjZmNDJhYWE4ZWMzNDA0ZGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZhOWJiZDc4YmJhNDA3ZjE2YTJkYWJmNTI1YzQxMTk4MjM3ZDQ5YjE1OWVkZDRhNWMyNjIyZTRiMzE1YzMyODciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJkZjI2ODU1ZjQ1ZTU4MjRlYTk1ZjhlMjVkZTNjNzRiM2QzMmRiNjcyNmM5MzQ0MTlmYjY3ZTcwMTVlMGRkYTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRkY2Y0YjVlZDBmYWYyZTk4N2ZlOWJiMTFkYmRhN2QwZjA5ZTVjMzUwNzU5OWQ4ZGIxNGFjYmYzNDFjZTk0ZDAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8fa256df405e4b1aafc61940077542b7",
+      "statement": "The last line of infer_bench stdout is a single JSON document containing the static card, prefill result and per-batch sweep rows, with unknown GPU peaks emitted as null instead of infinity so the line remains valid JSON.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/infer_bench.py#L158-L182",
+          "version": "repo-lines-v1:sha256:8a43bdd122d58652cb71686147ce8c6d6f125a76c7979c6aa4457a904d41b09c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1M2Y3NzNlY2MxOWY1YmJiYzhiMzEwZTdhNGE4MjViM2NiMTM1MGJiMmZmNmVlOTVlMDU3YzU2NzgwZTZjODAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQwMDVhMjQ0MDBlMjA0YzJhMjVjOWQ2YTA3ZmQyMWUwYTZjZTI3ODU1YjBmNzk4NDJkYWEyYjcyMWZjYTgyMjEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNhMDhkNjFjMGY2OTViNjIxYjEwNTc5YTA4MTU5MWVlNzUzYWE2NzgyMGRiYzg4Mzk2ZTUzNzM4NWU2ZTBmMTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJhOTE3YmNiYWUzYzM2M2U4ZGMzY2EyZjE2Njc4MWZmNDE1NTJmMWZlZmNlY2M3NDRiN2I5Yjg5MzcwNGI5NjEifQ"
+        },
+        {
+          "resource": "repo://scripts/infer_bench.py#L224-L241",
+          "version": "repo-lines-v1:sha256:910b2454a03a2fef5a5a53a4ca0f75c07c95c003612300a35f28a52f3b8575f5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdmMTllZmE4NDE2YTA3MjUxYzZmNjBhNWNjODBkNzk1ZjY1OTlmYmM1ZTQ2OWJlOTlhOTZhYWE5YjQzMWY3ZWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5MjJhNDgwNjhhNzJmYTdmMmExMzMwM2I0OGI0OTIwOTUyZDdiMWVlYmZiMjI5MDE2NmUyYmM2ZWQ4YzQ2OGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4MzVlZTY3MGU3OGQ2ZTE0YWFhMmZhMTBmMGUwNWJjMTRjYjA1OGMxOWYxODBlZTg2MWU3NjZhMDgwOTg2OTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImExNDg1MDllYTEyNzg4ODFkNGYwYWM4YTY0ODY4ZDgxYjUzMDRhMmQxZGUwZGFmMGYyNGM2YTVmYmE0OWI0OGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_dab1ee42cd144c9584b8427253ec79c6",
+      "statement": "GPU peak FLOPs and bandwidth come from substring-matched lookup tables in nanochat/common.py that return infinity for unknown devices so utilisation reads as 0% rather than a wrong guess.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L228-L328",
+          "version": "repo-lines-v1:sha256:ddfdf57822ad0a08357f2ed68f49358201fb55c7c3b55c491f9aa3dc3000cc23:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyYThlY2QxYjE0MDM0MmU0YmNlZDNmNzYxYzE3MmNiODI5YWFmNWY2NGZhMzQ1MjRlZTk2ODBjNGQxMmExOWRiIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIyYjliY2Q4NjM0OTU4MjUyZWYzZGQzMGI4YjkxNTQ3OTY0ZTAyN2E3YzVkYTQ0OWViYTUyMzAxMmYzNDQzMTExIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJiZmFkMTRiOWM0YjhkNTBmM2VhMWM3OTg0MWE3NWJjMTZkYjFiZjE5NTMxNDZiMWUyZjY1NTQ5YzMwOTgxYjQ5IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MCwiZm9sbG93aW5nQ29udGV4dEhhc2giOiJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1In0"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

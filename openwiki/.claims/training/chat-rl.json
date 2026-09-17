@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:bad9fe1f77e46e9ffb848bbb5062dcf998182e2a98d37062fe02f63efffe79b9",
+  "claims": [
+    {
+      "id": "claim_5c0ae2f7bd754bc4b81be2b8b4455516",
+      "statement": "chat_rl implements a simplified GRPO that its docstring describes as close to REINFORCE: no KL trust region, no PPO ratio clipping because training is on-policy, DAPO-style token-level normalisation, and mean-subtracted (not z-scored) advantages.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L1-L17",
+          "version": "repo-lines-v1:sha256:b88768cd4a082c1a0ee1c1733184a87ef7d42e1e5e85dfc0e6fb4988758052b2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhMzU5ZDQ5YzQxZGM5N2VjNmVhZDgyZDJmMjRhODU0YmViMDU0N2Y5YjdlNGRlNWRhYmU3ZjIzMTc0N2ZkNjIifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L140-L146",
+          "version": "repo-lines-v1:sha256:90335df34f6778a0cad9ecadfb473545d40624fb31fcab60ca89f7727d01bfea:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDU2Y2I1ZjUzOTA2OTljNDliN2IwNzRlNGQ4OWJhODg5MDU0ZGM1YTA1Zjg4YzQ2ZDFlMTUyNTc3NjhkNGU2YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzBmOGFlMzVjMjk4MjM5NGFjYjZmZmFkNjI5OWYyYzZkZGI5ZGU1N2YwOTE0NWIxMjQ1N2UwODQ5ZGUxYmUzMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTFiMzcwOWMwMTlkOTNiODNjYWM0MjczNjlkZmNiYWM2ZTQ1M2E2OGQ5M2Q2MGFmMWE4OGQxNzNiMmUxZmM1MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODIzYTQ5ZWYwNzI4ZDc3MzAzYTI3NjRiOWNiZTQxMDJiMmQ0MjM1MGRlMGU0M2JkZWNkOGIxZjI1NDczY2VhMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a13f391f13dc4992b9036733878c4809",
+      "statement": "chat_rl loads the sft checkpoint, computes num_steps as len(GSM8K train) // examples_per_step * num_epochs, scales all optimizer LRs by --init-lr-frac (default 0.05) and decays them linearly to zero over the run.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L196-L212",
+          "version": "repo-lines-v1:sha256:155773a5e15c88510429ce30b7a374b24243bd4c77b60b8dfba560d239478f52:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2ZjVlMDQ5ODQzMzlmOGYwOTMxZTBiMDVmYjYwZDcwZWYyNjY0NzQ5NWQxMTFlYjEzMmQzMDBmM2M1YzE0MDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiNDQ4NmI5ZDQwMjRhMTgzOGUwMTJkYWJjYWQ1M2VlYTk2NzM0NTgzOTFlOTk5YzY3MTJlOWE4Zjg4MjQxZjUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc2YzQ1NjA4MzU3OWUxMDQ5N2I5ZjFjYmIxMDg4MTMzYzQxZTJiNDUyNjg2NWM5OWZkMzkzMTVmMDgxNGZmOTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIzMTI0ZDc4NTgyYjQ0MGUxMzNmZDExN2E2YjY1MWI1ZjkzNThjZGU2ZjBlNGQwMTllODMzY2JiYTUyYTA3NWIifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L74-L82",
+          "version": "repo-lines-v1:sha256:3de3bb8251b694a6d6cca88da63569755ce83812910a9d42ed5895675ddde074:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjZhYjU4YWNjNzYwMjkzZTJiMDU2MzM2ZjA0ZGU1ODQ2MWY3NGEwNzdiOTM1NjUxNjg5NWRhYzUwOTllYWMyZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWY2YmMxZjBiZDMyMmI1N2I1ZWIzZWMyMDI2YzkwMzE5M2U0MTY4YzhhNjEyNGU0NDExMmUyMTQzN2Y0OTY3NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjFhMjc1Mjk3YTUzOTE2OWViZjFmMTI1ZDdkYTAxNDY0Mzk2YjM3MzAwZTEwYWRmZjY1MjkxNDQwNDE2MDkwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2I1ZDEyMDMwMzQ0Zjc5YjI2MWVlOGU3NWZlYjRkN2E2NGYyZTdlZmY4MDE5NjQ4NWMzYjYzZjY4ZWMyNWQ0MiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_e0b9ed59e12b4d51ad8d95349334952d",
+      "statement": "get_batch cycles over this rank's share of training examples, renders each prompt with render_for_completion, samples num_samples completions in device_batch_size chunks with a seed mixing step, example and chunk, scores them with GSM8K.reward, and sets targets to -1 wherever the Engine mask is 0 so prompt and forced tool-output tokens receive no gradient.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L86-L146",
+          "version": "repo-lines-v1:sha256:5ef802cd50a4fc6b8474ecafd50eb38609857dd085e717ff6566c9764be6e756:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0ZTQ0MWEyYjgyMzc0ZTZkYTY0YWJjZDcwNjhkOWQzNjIyNWE3NTZkZTFhZDJiMWY3NDhjYzIxZmJhY2RjMGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwZjhhZTM1YzI5ODIzOTRhY2I2ZmZhZDYyOTlmMmM2ZGRiOWRlNTdmMDkxNDViMTI0NTdlMDg0OWRlMWJlMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNiNWQxMjAzMDM0NGY3OWIyNjFlZThlNzVmZWI0ZDdhNjRmMmU3ZWZmODAxOTY0ODVjM2I2M2Y2OGVjMjVkNDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgyM2E0OWVmMDcyOGQ3NzMwM2EyNzY0YjljYmU0MTAyYjJkNDIzNTBkZTBlNDNiZGVjZDhiMWYyNTQ3M2NlYTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e4407a1bf46247f6b2483348eb9a20d6",
+      "statement": "The policy-gradient objective is sum(logp * advantage) over valid tokens divided by the valid-token count, the number of passes and examples_per_rank, accumulated across all passes and examples before a single optimizer step, with examples_per_step required to divide by the world size.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L214-L218",
+          "version": "repo-lines-v1:sha256:b6d08f22d4eb6b78bed403958126d7cf6c83d90fcf0274234c578d707b879e25:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTI4YTAzMzk5ZGVkZTI5MTY1YmJkNmZjZWI1MTQzOGFjY2U4ZDExZjE4OTEzYTVjYjFlNjNiNjliMTZkMWE0MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTZlNTk0MDZkZmY3NjBiMGI4YzM0NWI1ZTMwMGE1ZjM1YWY2ZTA1NDIwOGI0ZmU5MDViNTQ1YTQxNzE5MzVkYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTlmNmU1OTQ0ZTVlNjlmYzM2OWViZDI3YjYwN2E2MGFkYzM2NjZhNjdkODI4YjQ0OGMzZTdjMjJlZjMyZDY0NCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2MwYWJkMDA5ZGQ4ZDA2MjE4ZjA0YzgyYmRhNWU3ZTUxYWQwMTVhMjg2MTU4NGUwMmJhNTgzZDM2NDIwZjExMCJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L249-L275",
+          "version": "repo-lines-v1:sha256:09938ad46d3277e7678e26d6c6922a7678cb38172ef9eb4011786a8f86f9d3a9:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxZmUzY2Q2NDM4YzVjZmIwODk1MjI4NWNhZmY4ZmQ4ZTA2ODMyOTRjNjczNjI3MmQzYjM2MGQ2ZmU4ZTAzYmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1Mzc3NjM2YzNjODk3ZDlkNTJlYTE2MTJkN2QyMGFkMDE1MjZhNjBiZjI3MTIyYWJjYmU2ZTc5YmU1OWE2ZDUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzNTdlMzgwYmVmNWU4ODI5MTBjYzFjMzVjY2NhMmRjYzgyY2VkMmE1NDU5ZDdiOWY5ZTI3MmVhZTk0MmIyYWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE3MTE3YjlkYTA3NDgyYmYxZGNiZDUzYjVjYjU0NGQ0YjZiODQxYTVmZDFlNmMxY2ViMDcyYTM1NmQyNWNlMGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_54fbbd8cba0c483abd118d29eae6c5eb",
+      "statement": "Every --eval-every steps chat_rl evaluates pass@k for k up to device_batch_size on --eval-examples test problems sampled at temperature 1.0, all-reducing counts across ranks.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L150-L182",
+          "version": "repo-lines-v1:sha256:2fb9ea4975e57e9625ed9577ac6bd0821c7a091ba976e51e177d200e997c9d93:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2ZmU0NGE0M2RhYmM5NmFmYTI2N2ZhMDQxNjEwYTcwZDdkZjA1MTJhYjZmMmM1YWNhZjA0N2JmZDA4MGRlM2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjYWE3NjAxZjFmNTMxZDY0NTEyY2VhYzgxNGRkNjVkODg0ZTk1ZjE5MzNkMjE4NzA1NzZlMTVlOTQzMGEyNGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgyM2E0OWVmMDcyOGQ3NzMwM2EyNzY0YjljYmU0MTAyYjJkNDIzNTBkZTBlNDNiZGVjZDhiMWYyNTQ3M2NlYTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMyMjkyZDY4MjRkNTA2ZWVlMGRmYjU5ZWQ0ZDkxYWU0YzA5OTMwZWRhM2EwMWMwYjlkMTBkYzEwNzA0NmExMGYifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L222-L242",
+          "version": "repo-lines-v1:sha256:6d744a7700ce279622ee2e7336638093fc856d2880511ca71e799dab931c2fbf:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0ZmU4ZWIyYzJjMmE3ZGRhOTc5MDNhNGFmMDc3ZDVhNGMzODdlMTRmMjY0NDI0MjYzZjk4MzQ0MGYzODQ2NmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MThiOWY4Y2QzYTc1NmEzMTEwMDg0NTMzNjBmNmY3NWFjZjJhYjIxNjRiNTVjMTM3MmQ3NWZiMGVhMGNmMDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjMGFiZDAwOWRkOGQwNjIxOGYwNGM4MmJkYTVlN2U1MWFkMDE1YTI4NjE1ODRlMDJiYTU4M2QzNjQyMGYxMTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMzMGQwZjQ1ZGRiM2Q3MGYyNTcwNmE3ZDdkMTM3OWQxN2FlZDQ0NDZlMzA3NTI1YTBlOTIyZDIzYWZlNThiNzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_3b7ef726fd544734b694e6353ee35211",
+      "statement": "Rank 0 saves RL checkpoints without optimizer state to <base_dir>/chatrl_checkpoints/<tag>/ every --save-every steps (skipping step 0) and at the last step, with the tag defaulting to d<depth>.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_rl.py#L306-L323",
+          "version": "repo-lines-v1:sha256:76bf0fec77e345111c73fbaec186ea746cdc79171adcb1ab3ba98a8e6a6efe91:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzY2I3Yjc0MmY0NzI3YzdhZTIwZDU4ZTc0YjhlYjVhNDgyNDllZmQzYjdjNjA1Mjk0NjRlYjFlYjEzNjc1ZmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMxNDEyZjY3NjY0Y2E4N2RjYzhlMzBmYTE2MGQzOWIyNjYzNzE3ZTcwYTkxOTA0MDMyYjk2MDk4MjAzYjk2ODgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRiNTJmZjgzNWY5NDI1NGJlY2E5MTJjMWJhMjkzZGMyMjliZDE3ZWM1ZWUwYWUyOWIyMjA1OGFhZWRjZjBlN2QifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

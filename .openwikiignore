@@ -1,0 +1,21 @@
+# OpenWiki: paths the documentation agent should not read
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+/data/
+dev-ignore/
+eval_bundle/
+wandb/
+.env
+.env.*
+*.db
+*.db-*
+package-lock.json
+uv.lock
+*.ipynb
+*.png
+docs/design/*.html
+!docs/design/*.dc.html
+.DS_Store

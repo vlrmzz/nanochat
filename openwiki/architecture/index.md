@@ -1,0 +1,6 @@
+# Files
+
+- [Flash Attention 3 and SDPA fallback](attention-backends.md) - How nanochat/flash_attention.py picks Flash Attention 3 or PyTorch SDPA at import time, the shared (B, T, H, D) API, sliding-window and GQA handling, KV-cache semantics in both backends, and what the fallback costs.
+- [GPT model architecture](gpt-model.md) - The Transformer in nanochat/gpt.py - config, meta-device construction and init_weights, rotary embeddings, QK norm, value embeddings, smear and backout, per-layer lambdas, sliding windows, logit softcap, FLOP and KV-cache accounting, and how parameters are grouped for the optimizer.
+- [End-to-end pipeline](pipeline-overview.md) - The nanochat stages (data download, tokenizer, pretraining, base evaluation, SFT, chat evaluation, RL, chat) as one system - which script owns each stage, what each reads and writes under NANOCHAT_BASE_DIR, and how the run scripts chain them.
+- [Precision, COMPUTE_DTYPE and FP8 training](precision-and-fp8.md) - nanochat's explicit mixed-precision design without autocast - how COMPUTE_DTYPE is detected and overridden, fp32 master weights with a casting Linear, bf16 embeddings, the fp16 GradScaler path, and the tensorwise FP8 matmul implementation in nanochat/fp8.py with its enable/disable flow in pretraining.

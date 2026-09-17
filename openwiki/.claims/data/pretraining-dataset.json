@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:318e020f1a0466f2e6abc839ae80d237a5fbc8b545003cb285793fbf327f3749",
+  "claims": [
+    {
+      "id": "claim_35f898e402374dff8b3f4ad97a42b339",
+      "statement": "Pretraining text comes from the karpathy/climbmix-400b-shuffle Hub dataset as parquet shards shard_00000 through shard_06542, stored locally under <base_dir>/base_data_climbmix.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataset.py#L20-L27",
+          "version": "repo-lines-v1:sha256:c7b6eac0fc62c1f3ce62ef280b0bed78cfd4b2c5e7cb87b4c3e4eb172890e791:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjc3NTFlN2M0MjQwODY0NWQ4MmYwZDhjOTM1YjkyN2Y0ZWEzZGJiNjJmYTVkYjc4OGNlNDQ3ZTIyNWJhZDQxZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzIwYTliNGI1OTFlYjZiZDc0Y2Y3NWI0ZjNiYzMzMDgwNjVkMjdkMThlNDBkZjQ2MDJlMzk4NzNjNjk2NDlhYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZGY3OTQ0NjU3MGU4OWE4MTAzOTM1MzhhN2M0YzUyOWY4Y2FjMjRiMWFmOGI2Nzk5MTQ3YjM3MjAzZDI3YjViYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDg0ODllYThmZDIxOTQzZWEwOTVjNDJiMzVkZGJkOTA4M2I5OWJkYzk0NDUxY2ZlMzNlZjg1ODQ0ODg1OGY0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0fa80d7683c147939df0eaf87ba8bc54",
+      "statement": "The last parquet file on disk is always the validation split and the download command always fetches the pinned validation shard 6542 in addition to the requested training shards; both parquets_iter_batched and the dataloader's _document_batches implement the split the same way.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataloader.py#L36-L38",
+          "version": "repo-lines-v1:sha256:d42a61e51db0aca78274f56ff3f12d58b3ad2737ebbe7826847249fc6b08bf53:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjEzODQ3NmJiMzUzYzdkNTk0MmE1MGIxMDAwMjYyMTdlOGJlMWE5ODAxMzZlYTAxODQxOTg3NTNiYzRiMmQxMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTZiN2VhZGMyNWE2Y2JhZDQ3OTgwOTliMTYyZmRjZTgzNTc1OTg0YjY1ZTE1MWI1MWE4Zjg1MmViNzljNDA5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjc5NTJlOGZmMDg3MDUxYTFkZDQ2ZWJhNTRjNWViZDgzOTRkYmQ5ZTEzMWFlZTM4OGI5YmZjZDJhZjE2YjhjMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmZhYjkzNGViZTVkYTY3YTJmNGFmODRhOGFiZGEwZTU5ZTUzYjQ0OTQ5OWRiZDlkOGVjNzU3ODYxYjViZDJhNyJ9"
+        },
+        {
+          "resource": "repo://nanochat/dataset.py#L145-L149",
+          "version": "repo-lines-v1:sha256:57a45ecd44579e71903e4f74cac5ec25fe801295f088a73056d53839df66e775:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjI2NjA5MzU3NDkyYmMxNWI2MTY2NzIyZTUwNDEyOWJjNjY2MDk4ZmU4YjczOGZiNWY3NDA2MjRkYWMzMzU2ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmVlZjhiNTE1YjIyNGM1MTY2ZjA4MmFiY2Q0OTExNzdjYzRiN2Q3NDg2MjAwOGQxYjdhZGIwYmE3MWU4YzZhOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODgxNmNiNWM5ZWNhM2UwMGYyZDI5NDdjMjFkNmY5OGU0ZDk3NzhhOTFjNzZjYjNlNTY0OGYxOTA0NzhjNDEwYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzgwNDZjMmQ3YWU0YmRiNDJkYWJjYjkxNjUxYmRhNmE2ZjlkY2VkYjM2YzBiZjgzZmI0ZWMzMDBjY2JkMjIwMyJ9"
+        },
+        {
+          "resource": "repo://nanochat/dataset.py#L67-L75",
+          "version": "repo-lines-v1:sha256:4624264cdd3480c645b3dee90b9ee1594eaeca6839624968971dacaf9b246d21:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTEwYjJlNjA0NjQ4MjAyZTExYzE4YTM3ODRhNzc3ZGQ1MzU5Mzg0NGE2ODBmN2FlYTFhMjZiOWE2OTdjYjVkMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTZiN2VhZGMyNWE2Y2JhZDQ3OTgwOTliMTYyZmRjZTgzNTc1OTg0YjY1ZTE1MWI1MWE4Zjg1MmViNzljNDA5YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNGU1MDM3MzkzNDgzYTY1YzUzNDcxM2VlMTg3ZTE2ZmYyMWJjZjZjNjFiNmM4Yjc4ZjhlYWU4ZDY2YjE4NDdiMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODg3NGM3YzAxNzQxOWViODA5MDUxYjc3NTgwYWRiNzdlZGU3N2EyNjliNmI3ZmUxMDgwNzUwNzJjMjZiNjJlMiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a8d8762ecb8d4e58a9d6e6031368fb53",
+      "statement": "list_parquet_files falls back to the legacy base_data directory with a DATASET UPGRADE REQUIRED banner when base_data_climbmix is missing, and ignores .tmp files so training can start while shards are still downloading.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataset.py#L32-L65",
+          "version": "repo-lines-v1:sha256:94d4e438eb6d738234088626c3525793be920b382504c23b4680a28c362e9dda:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM4OTcwMmRiYzE0MTFkNWNhY2ZiYmVhNWQwYWQxODA1OWVlMmM3NGE1NzIxMmMyNTg5NzkyYmE2M2Y0NjY0MGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIwM2Q2YmNlMTNhMWYzZGEzNTA4N2IzOGNjZDY5OWYxNzQyZjkxZTA5ZDI4YzQwMDc3NDczOTllM2M2N2RmN2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVjMDA5NDZiOTgwMDFjN2MyMmEzMzM5YjNkMWFiODQ5ZTVhNzg3ZDI2YjQwNTY3N2Y3MmYzN2NmZDU3YzQ3YjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNlMjM1MDIzYjQyOTk1Nzk5NWIyM2IwZjU4Mjk4MmI0MGVlODI1ZmI1Zjc0Yzg3MjQ4MDg0MzJmNDgwM2Y5OGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e59cfc5666f44c95bf4717eddd2c5367",
+      "statement": "download_single_file skips existing shards, streams into a .tmp file renamed into place on success, retries up to five times with exponential backoff and removes partial files; downloads run in a multiprocessing pool.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataset.py#L152-L156",
+          "version": "repo-lines-v1:sha256:9ba0be165096b57758bcd85af2cb7379e4bb52ab7e74663e4efe0f22138c8232:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTIwNDE4N2FjNWNhOTFjMzljMDUwMTI5NWFjZThhYmNhYzRmZWQzNmRlNGEyOTY4YzQyOTI0OTY4ZjFjMjRjMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmNmMTNjMmQzZDBmYTAyMjlmNzcwZDA3Zjk4NzEwMzNjNTkzNDM0YzBjM2U5MzBmZGJhZjNiYzhjZDMwOGM5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWRiMTBjZTMyZmQ0NjY3MzU5ZDBmYzFkYzNlYmU4YTcwODgyZjJjY2NhMzZhYmRkNzQxM2RhN2M2OWQ4MGEzZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDk3ODdkMjQ5NjVhNGRiZGE0MDdjZTYxZWEzYzhmZmVmZWIyMWRhMzRiODk1ZmQ0MDdkNGEwYmJmNTMxYzVmZCJ9"
+        },
+        {
+          "resource": "repo://nanochat/dataset.py#L84-L131",
+          "version": "repo-lines-v1:sha256:5795fa498e732fdf034d5bc4334547aad6e0ad0ff48935366f4474e7310c0fae:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4YzJhZTYxYzg1YWZkMDhlNDRkNGRmNTkxNDFjM2NkYWQxZDcxMzg3YzJhMzg1NzgxN2FjMDRiMDllNjZmY2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4NWFkZjNjZjFlYWVjMzIxNmMxOWZkYmFiN2VkNjBmOGUzOWQzOTgwYzM0OTQwMjlmNDBkMjhmZDUzY2MzNDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIxN2JmMGI2OTU3MGM4MGI4OWU3YmViMmIyYzNhMDk1N2ZlNzk2ZWI2MWUwMWRiYWQ1Zjc5MTBmZjA1NjNhYTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZiN2NlNGQ2YzRmNzk5ZmEwNDcwOTVjNTQ1ZDIzODgwNzAwZTg5YzgwN2RhZjJjNmJlYmVkOTI5NTVlMWZlZGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f1443a224d6e4c0387846ec7011fd8c2",
+      "statement": "_document_batches shards each parquet file across DDP ranks by row group (rank, rank+world_size, ...), yields document lists with a (pq_idx, rg_idx, epoch) position, wraps to the first file incrementing epoch, and on resume advances one row-group stride past the recorded position to avoid repeating data.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataloader.py#L25-L72",
+          "version": "repo-lines-v1:sha256:39594f0f86c3893d8d30048682b54281779f3ee04e6271231f9147a1c1c9e878:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyZmQyZTJmMmNhYmI0YzYzY2VhZmQ0N2E0YTVkMjI0NmFjNzMyODg1MDY5ZWYyZTcyOGIyY2FkZTA0YjFkOGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZkNzY1OTA1YjYzMDU2MDgwYzcyNjY3MTdhMGFiOGRkMzc2NmE0NTJkZmZhNDU5NDVkYTNhNjgyZmRmNjg0NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE5ODM1ODZlNjUzZTg2MmYzZTQwYWVjMzE3ZWJiYzA4ZGFhM2RlYWJjNDMxMDBhMDViYzg5Mzg3ZmM5ZDcyY2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ef1df66baad544f2aa8ce0536c213642",
+      "statement": "The BOS-aligned best-fit dataloader prepends BOS to every document, keeps a buffer of about 1000 tokenised documents, fills each row of capacity T+1 with the largest fitting document and crops the shortest buffered document when nothing fits, yielding 100%-utilised rows with no padding at the cost of roughly 35% cropped tokens.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataloader.py#L1-L23",
+          "version": "repo-lines-v1:sha256:bb8349de9b0cabcea41e41e58dac009e1836fe79aca4e4998f0c7e960b205386:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhZmIxMTNjNjZlOGZiYWUwN2FiNmVmMjY1MDdiNWEyZDU5ZTcyNmQ3NTYyOTNlZmI1MDVkYTc5OThmNjMyY2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ1MzlkZmE2ZTk0YTUzZGMwNmNlMWE2NGQ3M2Q1MjgyNzRjODU3NjY3YTk0ZTNmNTA4NzhmMmIwZjE0YzI4ODIifQ"
+        },
+        {
+          "resource": "repo://nanochat/dataloader.py#L74-L155",
+          "version": "repo-lines-v1:sha256:576599fedd9273f233f85e7c5c177f585eda389990e180fd672ecc22c4c7f770:eyJzZWxlY3RlZExpbmVDb3VudCI6ODIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwNjQwNTc5ZjE4YjcwMDk0MzczYWE0N2Q2N2Y2MDg0M2E1N2FjYTFlZWZmM2IzM2VkZGEyZjdkNDY5YTRkMjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM1M2I5ZDRiNzU0YjRlZGU2NmVhNjNiMmM2YTg5YTg3N2FmOGI0YmVhMzFiMDMwMzIyNjcwOThmY2RmYjUxYTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2NjEyMjhjNWUwZjlhYjI3ZmE4ZGVhNGVlOTYzODYwZDlkZTlmZDUxNmJhYThiNTllMzRhNzg3MWNiMWIxZDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEwOGUwY2E0Zjk2YjNiMWI4MWYyZjNiYjVhNjhmMDhkMDQwNDU5NDBhZmU4YmU4NmNkY2I2Y2EwNmIxOTI2Y2YifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ec59facd8e55457da3cf307711ace265",
+      "statement": "Batches are staged in a pinned CPU buffer laid out as [inputs | targets] and copied to a persistent device buffer in one transfer, so yielded tensors are views that are overwritten by the next batch.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataloader.py#L111-L161",
+          "version": "repo-lines-v1:sha256:52eebf5cf438ed69315f2589334c9a025958d738fc78288ca231f24fce84d3cb:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkxZTFlODBiMTM3YTdkMDhmNDQyZjE0NDM0OTUxYzAyNDdlY2VhMDQ5MzA4ZTFlNzhjZjgwZGViODFkYzgwNjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNmODEwYTc2MjU1YzRkYzJjZTI1NWNiYTE2N2E0N2ZmOTYxMjQ4MjdiMDlmZTc0ODlkYmE4YWQyNTVlN2NiYjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJjYmJjMTMwM2QwOGQwNTAyNDQxMGNhNTBmY2RlODJjMDg0ZWMxMGQ0YzA4NGNjY2FmNGE1OGFjNWYwZTAxMWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM3MTcxMTkzYjEwN2IwY2QzZDZiN2VkZDViZTg5MTcxMzk0NDQxMzc5YjE0ZWZiZDk1ODFlNzBiNjg2NDg4MTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ba431258530e46a5a38a16bd52eb3ab4",
+      "statement": "Each yield returns a {pq_idx, rg_idx, epoch} state dict that pretraining saves in the checkpoint metadata as dataloader_state_dict and passes back as resume_state_dict when resuming; the stateless wrapper drops it for validation and base_eval loaders.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataloader.py#L157-L166",
+          "version": "repo-lines-v1:sha256:da92c552f5fd36f83a6647f8c3be516beda0d9d71b78bda219460f8e86fd68d5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNiOWFmZDJjZGUwNDg2ZjM2Njg3ZDgyOWY3NTI3YWZmMzk5ZmQ3ZmFhNDVkZTM4NmM0OTFkNDgwZGJiYTc2MTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM5N2FiNjAzOWJkOGVjNDEzNzZkMTk0ZWY0YWVjMzljMmM3Y2Q5ZGNiMThiZWYyMmM0YzRiMTBkODhkYjRmNDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxZjVkZDdiNzE0OTRjNDkxYTZkZjJiMDlhNmE1ZjNkMDJjNzkwNWNhM2ViNGFkNDZkY2UzYzU5NGMxOTJhYmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L330-L332",
+          "version": "repo-lines-v1:sha256:ea9311e8937466fcedd3cb8dd060297ec0764c61ee6911c054c41b4c1d6e9184:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmFiYmI2YmEwMDA2ZmJjMzA5NDc2ZmZjMThkMmZkMDZiZTIzMDdmMWQzOWE1ODIzMDE2NTgxMzI2MGM2OWZjMSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjgyYzU2MzAzYzJkMGJmZGI1OWZkM2E4MGI1Yjg2ODk4YzIzOTMyM2IxMjZjMDA4NzkyZWU4NzNlMjhmMjUyZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzg1MmUzZDIyY2Q1YzMxZDc0MjY2MWFhMjVlMWE1YmQ3NmE2ODdlOTBjMmVjMTdhNWI5NWZkMWI1NTU1NWY4ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDNmNTZkOGQ0OWE4MGE2YTBhN2E5MmE4NDc3ZDhlYzY2Y2M4NzYzYzNlZjg2MjM0MTE3NzdlNmM1NDkxMjhjYyJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L491-L491",
+          "version": "repo-lines-v1:sha256:5f8745f74d6796c2b6584d93d354d488526184f30fb2d78bcfb85f5b7d029cb2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWY4NzQ1Zjc0ZDY3OTZjMmI2NTg0ZDkzZDM1NGQ0ODg1MjYxODRmMzBmYjJkNzhiY2ZiODVmNWI3ZDAyOWNiMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNWY4NzQ1Zjc0ZDY3OTZjMmI2NTg0ZDkzZDM1NGQ0ODg1MjYxODRmMzBmYjJkNzhiY2ZiODVmNWI3ZDAyOWNiMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjYwNWI2NGZhMWYzNTEwMWI3MjBiYzg4M2QzZTU0MzI3YjIzYWMxZGIzMDNhMzI2NzZmYTY3ZDNhY2Q1M2ZiNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTVkZmNiMzJjZmU2YmViYmU5NjBiYWE5OTI0NDhiYjNmMWM3OTM2YTA2MzY1M2MxMjNiN2I4ZTFkYTAwYzM5MiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

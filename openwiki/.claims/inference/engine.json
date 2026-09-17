@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:e98388def0c1af35158cd1abde687684926f44631d1e5a11c487cc394a295aeb",
+  "claims": [
+    {
+      "id": "claim_a778d214de00412fafa8439fcd2a0f17",
+      "statement": "KVCache preallocates k/v caches as (n_layers, B, T_max, H_kv, D) with a per-row int32 cache_seqlens, carries prev_embedding for the model's smear mechanism, and prefill copies a smaller cache into an empty larger one (asserting matching geometry) while expanding prev_embedding to the new batch size.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L82-L138",
+          "version": "repo-lines-v1:sha256:0441e3ed384f58579721ef7a0fc014095357f730e6ca161031dddfd1bf130b94:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxNWRhZmJlNjM2YjA2ODRiMDg2ZjU5MGZlMTRlZDdjNmEwYjE4OTM1YTI3ZDkyNTIwY2FhYWFkOTZmNDVjNzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhhMGJjMjI2MGJjMDY2MjU1NWE3ZmE3NGIwMjlmMjQ3ZjQxNTQ4YmU3MjYyZDMxYzQ4MDM3NDkyNDFiOWIyYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc5NDVkNjkzYTBhNDM4MDRjMWViNmExYTk4NmU0YTkwMGI0Yjg1YjE5NmM3NzhiNTU4MTlmZDJjOTY2MTJmZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f16afa1efdd04946935f41c12e227849",
+      "statement": "Engine.generate prefills the prompt once at batch 1, expands the last logits to num_samples so the first token is sampled independently per row, replicates the cache into a decode cache sized len(prompt)+max_tokens (or sequence_len), frees the prefill cache, and loops until max_tokens is reached or every row has completed on <|assistant_end|> or <|bos|>.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L176-L250",
+          "version": "repo-lines-v1:sha256:45826e2d4931d6949f576a6e999c4a2ed4ff7b297581311613c9e12b35141b67:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MmZjMmFjNGYyNTc4YWZjNDZmMDY2OGMxMTNhODQyNDZiZjcxYjVjNThkZTkxNWIxOTk2ZDhkNWVkNTEzY2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJjNzI0ZDUzNDQ3MjhkODk3MzQ5MjFkOWQxYmRhZGIzOTA4NTdjNzQ0MjI3NTY4Yjg3MDk2NzVlYjI1MTA4Y2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY4YjNjYzU1MGFjNjI4NGRmNTI3N2NmZDkzY2RhM2JjNjk1MDA2MGE4MTE5MGRmYTczMjVjOGZlNzRlZWI1MGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ2ZDNiZDZlMTI3MTRkMWI5MWUzM2IzNGI3N2RhZWJjMGU1MzQ1NGM1MmI3NTdjMjNmNjg3ZTI4NTBiYmU3MDMifQ"
+        },
+        {
+          "resource": "repo://tests/test_engine.py#L158-L198",
+          "version": "repo-lines-v1:sha256:dff650b971c93b3617660520137f6381db3be6b56cf6c673b00bad845a7d03b7:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhOTVhN2NjZWQwZWRjNTAzOGU1MWQ1MjAwYTg1NGU1ODhiZGMxODA2YmQ1Y2NiY2RhMjdmNDRlNzdiMTM3MTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzFmMTg4ZjE0MmVkN2E4MjQ2ODBiMjA3MTcyYzU1MTliYzYxNGE0OGZkYTdjZjE2N2VkYjhkZGY3OTk1NmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJlNDY3ZGNiYWQxNzRhZWI5ZTY5NmM3ODdlZjliNzJkMzM5MmYxMTU4M2ZlYTQ5N2FmMTIyOGMxMTM0NmRjNGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY2ODkzNDVhN2VmYWRlYjk5MjRlZWFlOTY2MmM2MDYzYmIxNzNmNjY5OTEyN2VkODdlNjVjN2VjMzcwNTMxMzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7228077b474c40439a10710c97975591",
+      "statement": "Each row's RowState implements the tool-use state machine: forced tokens from a deque take precedence over sampled tokens and are masked 0 while sampled tokens are masked 1; <|python_start|>...<|python_end|> accumulates an expression that is decoded and passed to use_calculator, whose non-None result is queued as <|output_start|>, encoded result, <|output_end|>.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L160-L167",
+          "version": "repo-lines-v1:sha256:4d84890e6b8f1f15ee22c749f4dd99f1c1323a0993dc74b0e5350b911ab6d70c:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDA0MzE4OTkyNDVlMGMyZTY5ZTM1MDIxMGYyNzI2ZDhhZjlmZGI2ODY1Y2U1YWViMWZhYmZjMGM4YmFlZTBhYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDRhMzVjYmY1Zjg0YWQ3MDhjMWJkZTQ3M2M5MTVlNTdjNTU5ODFmNWU0YjQ2MTVmZGI2ZDQ0MGIyZTY0MzZlMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDI5MmViMzI3MTQ2ZWQxNmFkYjdlY2M2NmM5NjgyNjEyZWQ2YTUxZGNlZTc1ZTYwYzQxYTk1ZjU1OWE5M2UxYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2NmMjczYjNkNTE4MDVlODhjZjZjMGU1MThlMDVjYmQ4MmM5N2Q4ZWUxOTlmZTM5NjEwMTNmOTVlYmRhNDJhNCJ9"
+        },
+        {
+          "resource": "repo://nanochat/engine.py#L236-L270",
+          "version": "repo-lines-v1:sha256:d40864dd2aa7bcb1d30464b7abad426cca910d52d02aa5167f09b33629c3245a:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwMjgyNWM5NmExZmIxOTJiMjUxODJjMGQ1NTE2NDdkYjM2NGQzNzQ2Y2ZkZWQ2MDM5MWY0MDEyZGMxZjE5MzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2MjFhNDcwYjlkN2FkMWM1MDNiNzM1Y2Y3OTc1Zjg5N2UxM2EyMjA4ZWI0OWQ3OGZjYzRmOGFiM2JlMjRkMmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVkODQwYTM2ZTBjMjQ2ZjFkOTQ3MDI2ZmYxNzAzNDg4MTQzOWM5MzliNGI4ZDExNzhlOTcwZjFmODNjMDdmYWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_502bcf6d3cbd48c49f8dd76c13f89738",
+      "statement": "use_calculator evaluates only pure arithmetic without ** or restricted .count() string expressions free of dangerous substrings, under a 3 second SIGALRM timeout with empty builtins, returning None otherwise.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L24-L79",
+          "version": "repo-lines-v1:sha256:7780849724135fcf754154582711e79f90728dada4a59411391ece68210ba535:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgzMDVjNjU3ZTE5Yjc0ZWVlNDBiMzEzZWM1NzA0MjVjNWRjNDA3NzZhMjU4ZTIzZTk4NTNmMjJiMmQ1YzU3YzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlkODRkNDYzZDI2YTIxZWZmYjlhOTc4ZDQ2ZmFkOWQ0MDcxNzllNjZhMWE0MWUwMThjN2U5YWZkYTI2NGQ3NDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3NjU1MmNmN2YwZjI3NTY1YmE3NmEyNDhkZDcxYmY3OWMxODQ2YzJjNzNhMGRkMjhmNzZlNzRhN2JkNDU4ZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI4N2ZiM2MxMGE0YTVjOTk1NDAyNjJlMWNkMTM3OWRlYWFlZTdmZWY0ZWYzZWZkNmQ5YWE5OTk5OGFkYTI2NzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ff6dc6b4f2e644d0958672922f939073",
+      "statement": "sample_next_token returns the argmax when temperature is 0 and otherwise samples from a softmax (optionally top-k) using a seeded torch.Generator, which makes generation reproducible for a fixed seed and deterministic at temperature 0.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L141-L157",
+          "version": "repo-lines-v1:sha256:d0fe78c70132450a99e1d85b5af369acbde3fcb89ee7e25d8a112fb54d45c787:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxY2VmZGFiYjIzYjQzODNiMWI5ZmVlMjMyOWY1NmI5OTEyZWVlYWI0ZTI1YmUzN2UwNDFhZDA1OGE3OGZiNDQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY3Y2ZhZDVhNTJhZjI5NTE2OWQ4ZDZiZTE3MjkxZGU0NjJlZjBjYTZmNmU0YjQ1NTIyZGY4YTg0Mjk1MzEzYjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdmNGFiMmZhNGE3NGE4MWExNGZlNDQyODQwODJjMWUxOGQ1MmZiY2I3MDMwNmNiY2NlMGExNmM3N2RiZmI1ODQifQ"
+        },
+        {
+          "resource": "repo://tests/test_engine.py#L201-L224",
+          "version": "repo-lines-v1:sha256:d9e5389ba10cc8a2bd66f06162d66d6ffad8fe7f06d2cae7dcbead7e5221fd4b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZkZTBlOGQ1NzRkY2MzZDlkYzYwYTdkYWRjZmQ1NzEzOTY4NDg3ZTA1MzZhMzY0ZDg3NDYyYjAyNzQ3YjU4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjYzRhN2QxY2M3OTZhYmEzZTQ2NzIzMzI3ZjUxN2U5ZjgxMTk4MmQyNTBmMDcwMjk4NmU0YjU3NjRhZDk1ODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM0YTg0YjE5OTUxODA4NGZmOGZjZDM0MmQzZTY5NDg1NGJhYTUzODZmZDI5MjE3ZTVkNzk3ZTNkZmQ5OTY5YzAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bfe98aab9b674932a5cb212eee611e64",
+      "statement": "generate_batch drains generate, appends tokens per row until that row's terminator (excluded), stops when all rows complete, and returns results with the prompt prefixed and masks with prompt positions set to 0.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/engine.py#L277-L299",
+          "version": "repo-lines-v1:sha256:2a47db524140d3b4c9599d376f154d923185087f9f34ed52c68180fee1646e11:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkODNhNGE0ZWFkZjY2YjZmNzBmOGExMDUxODRiNTRjOGYyYWZjNjBhNTg0NTUxNDA3ZWRmMzU0ZTA2NWQ0Y2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI0YTJlZjIwOTE0YjBkYzIyMzI4ZTk2NGQ0Zjk1YzJlNGMzNGM3ZDc4ZWE1NGJhZTE1NzY3MWFhZmYyZTY0NGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI4NjQ3YzM4Yjk1NGIzZWMzZWZiN2RlNzFmZWQwMDJjYzQ4ZWVhZjM3MGFiZWZjYjM3OGFiMWI4OGVjNmFmZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkNDEzNDBjYzIzOWExNTljZTliNjAyMmU5ZjYzMjI4MzJlMmVhZDc2Y2FlOWU0NzU0ZDIxMGViOGZiNmQ1ZTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_89626aaacf6f4fdd88763ad2c46bc4a5",
+      "statement": "The chat CLI keeps one conversation as a token list starting with <|bos|>, wraps user input in user delimiters, appends <|assistant_start|>, streams up to 256 tokens from the Engine, and appends <|assistant_end|> itself when generation stopped on the token limit so the transcript stays well formed.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_cli.py#L43-L100",
+          "version": "repo-lines-v1:sha256:2a51f6963ed3864aaa05bb7893ede29d5c3523a13635ce176b3a0d43e3e10ecd:eyJzZWxlY3RlZExpbmVDb3VudCI6NTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkOGZiYWZlYzIwMTVhZWU1NDQ0ZmRhYjM4MmQyZjRlYWI5Nzk0ZDkwYjNlOTBhMjc1YWI1YjY2NTExNWM4NmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZkNzI5MDVhMmQwYjhiM2IyM2I1ODc2NTA0NDc2NmUzY2FjYWNhZjkyOGEyMTVlOTQzOGZiZjFkZmRkZmIwMDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI0MDMxYmQ4NGExOWJkZTViOGVkZThmNTJjZTBiYTNlYTU4ZGIxMDQzYTRhYTlkNTYxOWZkMWM5MTNiNTg2NTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

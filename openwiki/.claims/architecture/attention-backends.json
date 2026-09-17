@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:b5c3fbe16ce13fe1a51bf14e774475f475e10f3f51f4c4a88863cbe5e1f6ec89",
+  "claims": [
+    {
+      "id": "claim_1202a76a20ef422a875859405454b44e",
+      "statement": "FA3 availability is resolved once at import time: it requires CUDA, loads the varunneal/flash-attention-3 kernel on Hopper (compute capability major 9) and kernels-community/flash-attn3 elsewhere, and any loading exception is swallowed so the module falls back to SDPA.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L23-L50",
+          "version": "repo-lines-v1:sha256:7128d2415896b49f117c72cc675e03088a9dd8f14e7bc8981558b5b0414284d0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0ZTg4OWEyZmVlNzYzMzJhNTE3MjgzNGE5ZGM3OTM4Mzc5NmFhOWIxOTM2YTlkM2NiNjkwM2U3NWExMWQwN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFhYjA1ZDFmNjBjMDVjNTkyZmJhNmM5MGZkZWJhOTkzOWU3MDExMmJkNjZlZGI5M2MxZDI3NWE3MGQ5ZmQzZjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJhY2NhYjE0ZWFhY2FkOWI1ZGVjMmRhYjRkNDFkNDc0Y2ZkOWFmMzRkYzM1ZmZiOGM1N2Q5MDJjNGE4ODI5MmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcyZTRhNTk3Y2JlNjc5ODUxMmVhYzc0YmU2Yzk0NDNhYzIyODgwOTAwZWRjY2UwOWE4NjgwM2VkZGE2YmZjNDgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a665e34cc75641758746c9c6715c1cbe",
+      "statement": "FA3 is only used when it is available and COMPUTE_DTYPE is bfloat16; fp16 and fp32 runs use the SDPA fallback even on FA3-capable GPUs, and a test-only _override_impl can force either backend.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L53-L71",
+          "version": "repo-lines-v1:sha256:5c970f1f5a8c2dc7112892eafad3c758d5665522e4425c578de860fa07ec700a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ1YTY2Y2I3N2U4NmQyYTljOGMyZWZmZWY4NmVlNjM3MWM5YzgzZTViMjRmNzVjMDE2NGM5NTQ3MDAxMGQ2MDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmNTFhNmEzNmE3NzdmMjIzM2YzNjA5NDM4YzE4MWIxOWJiNGJlZGUyNjY2ZTY5ZGM4MjcyYjRkZmVjYjllOGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5Mzc1MWMzMWYxNjFiY2Y2MDEwMmRjMzZjNzZiZWM4OGZmZmU3Y2E3MThhODk1NjBjM2U5OTBmNmJlY2I5YmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzN2VkNTI0YzMxMzA4ODg1ZTEzODI1MmI5M2Y1ZTVlNTU5ZTU0OGU5MDgzZDdkMWMwYmQ5Mjk4NTdmMjdiNTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9b45abdd909a42b0843619dc369901bf",
+      "statement": "Both public attention functions use FA3's (B, T, H, D) layout with a (left, right) window_size tuple, and the SDPA fallback transposes to (B, H, T, D), enabling GQA when the query and key head counts differ.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L115-L137",
+          "version": "repo-lines-v1:sha256:2baeb07075ba21139f32ea8216b7310bff30aa966c1b82b386b120633bad3398:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM2OWMzZjc3MTA3ZGQwMjU4NmFiMjJiZDU5NTMwZmYxZmQyNGMzMGEwN2FiNjJmOTE5ZWFkMDhiN2VlN2EzOTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3NDQ2MWU4OWE0MjdlZjcwMzViMGVmMDgwNzExZDUzMTE2MDk0N2Y4NWRmOTM3YmIwOTI5ZTIxNzZhYjUyODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE0MTZlM2I3ODRmNTU4YmI5MjczNDdiOGYyNTBhNDY3NDAzNjU5Y2NjM2YzZWFhMDYxNGFlODYxNGIwZjNhMjkifQ"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L110-L116",
+          "version": "repo-lines-v1:sha256:0fc16a317516f94a1e8cfd42c353905dfe7cd026192e3682c330dad4ad4092ed:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWM1ZTE1NjFhYTIxODM0ZTc3MWU0N2Q4YzBkOWEzOGQ5NDMyNWE1MWE4MmVhNGRiYTlmZTJiZDY2OWUzNDA2OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjNhMDUxNzg2NDI2YjFhYTg3MjBkNThlZjRkNTI4ZjlkOGY1NzQ0YTk1OTQyOWYyZmM0ZTM1NTA0NmIxYmFhNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzUyNDc5ODkwNzc0NzFmODA2MjJhYTVjOGY5YmI4ZjllNjYyZDYxYzRjZmYxM2UwODllZmZkYTUyZTE2NWMwZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmNjNmZlMjBjM2NmZmQ3NjFiMDVmM2Y0ZDU0YjkyMTdiOGFjM2E2YWM5ZTE2ZDdlYmJmMTQwNjcwMTliN2E1OCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b7ac7ab060f249269d9cd888b9fcd5ec",
+      "statement": "The SDPA fallback has three paths: native is_causal SDPA for full-context equal-length inputs, key/value slicing to the last window+1 positions for single-token decode, and an explicit boolean mask offset by Tk - Tq with the window constraint for sliding-window training or chunked prefill.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L77-L112",
+          "version": "repo-lines-v1:sha256:57475daaf384e003cc20f6416716cff25c5e6a3c2cb4cdff69d680caca1f9026:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhYzRiMGUwMjQ5MGVhYzlhYjgyNWEyNDk0ZDIzOWQ1ZTI0Y2IxZDZmNjRjMWFkMWFiM2Y2MzViYzBmZGZiNDciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2OTNiZjc3MGM0MDFhNWMzYmU3MzRlMWUxOTg4Mjg4MmIzMjRhNjlhNGQxMzdmMTljYTljMjliNTZiODRkN2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA5MWM5ODBhNGMwMzllMzZjZGUxYjYwM2EwMWI3ZWExNjRjMGVhNjI1OGFhYjU5YmUwOTQ0MzBmY2JiZmQ3NGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQyMGE0NTFjZGQzZjY3Y2QzMWYxMzc4MTVlMGMwZGQwNjYzNTE2YmY0MWE3OTlmYTYxMjYwYzllMGUxMzQ4MWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c24141e953924892bfaa3e3a81eda5d7",
+      "statement": "In the KV-cache path the SDPA fallback mimics FA3's in-place cache update by reading the position from cache_seqlens[0] (assuming a uniform position across the batch), writing the new k/v into the cache, and attending over the cache prefix; neither backend advances cache_seqlens, which the model advances once after the last layer.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L139-L189",
+          "version": "repo-lines-v1:sha256:45a6f5eadfc95243c83697bb33fa651bec3b100abdc57005704ce8b3047b2b7b:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkNGI5OWVhODdmZjdjOWEzZjU4OTM3NzYwMjgwMzJjMDdhMTYzYjNiYjgyMDFkOTgyODNjMzIzM2VlNWE5ZGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1MTg1MWQ4OTBkYjA1YTczNDZiNTZhMGI5Nzc2Mjk4ZmRmNzY0Y2EzOWE5ZTBiMGI1MzRkMjcxMWNjMmViZmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQxN2QzNWNmMGYwZjU1NmQ2ZmE1Y2QwMWUyZjQ2ZjcxNWVhNjFlYzZlNjZlM2M5ZmJmMDhiYTRmNDgyNmRiNTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhNzI3ZDc1Y2M4YWQ0NjUwZTk0NzFiNDEwODdmYTU5M2UyMjAxMDU1ZWQyZTVhMTUyYjY2MjdhMmMzNDdlZDcifQ"
+        },
+        {
+          "resource": "repo://nanochat/gpt.py#L112-L123",
+          "version": "repo-lines-v1:sha256:2dc26f3f536fbf39ee1ae5e3b82be42458afa865fea4a16e9e0a2d34bb8bdfd2:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkOWM4NjY2ZjRmNWZiMTkzYzM4ZTUzNjUyMjZlOTkzNDM3NjlhODk3MDE0YjM1MGEyMGM0YTYyZGJlNDNjNWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkMGIyYTE3ZWIzY2ZmNWVhNTc1NmQ5MzUwZTUwMzY0ZDJjODE1MzE1NmNiZmM3ODVjMjZjYmJjN2I1NjljZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMxZTlkY2NjZjRmMmVmYmIxY2E3MzM2YTlhY2JmMDU0NGNmMTljMjcwYTlkZjYzNjgyOGE3ZTljYmFlMTE2ODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQxY2I4NGQwZWQ4NTdlNWMwNDY3MTRhYWM4NWJlNjI3Zjc1NTIzYmIxMGJiZGU2YjY5OTYyYzE1NzNiN2MyNTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_664fc1da0d094968a9a14a56696f2229",
+      "statement": "The GPT model derives per-layer window sizes from the window_pattern string, rounds the short window up to a multiple of 128 for FA3 tiling, and always gives the final layer full context.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/gpt.py#L287-L314",
+          "version": "repo-lines-v1:sha256:9573f6ca8593fe8d7bc4a8ebfed1be2431c23ea91182bf0de287ab37bff40bed:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2MGFkMmE4ODFkYTU0NzJkMjU1NWE2Yzg5NWUxY2JhNTc0Y2ZmMzUxZWQxYThmMGVhMDU3OWM5ODRlOTRkOTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYmZmYmEzMTdhZDkwYjQ3MTFiZjUwNGY2MjhmOGZhYzBlNDRkN2RmYjBiYzYxM2I0YTI3NDQyZGQ2YjVkNjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRhY2I1OGRmMzkyZWM1ZWI4ZmU3NTQxNzk2MmY4YjI0NWJkMDJhYjA5Zjg2ZTk5OTU2MmMxNmMxY2ViNTY1ODIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVmOTJkYTFmYTY0MGExYWExZTAzYmMwZjU0YTU4YjZmZGRlMjUzYzJlZGYyNTIwOGZlYmI3MDc5MmFkY2ZmNTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_539b680830564024b2704dc3cce7e6f5",
+      "statement": "Pretraining warns that the SDPA fallback has no native sliding-window support and recommends --window-pattern L when FA3 is unavailable, because the fallback materialises an explicit attention mask.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/flash_attention.py#L98-L112",
+          "version": "repo-lines-v1:sha256:0bc0f09afd0b5c9d9ea758908d8d325186db229394b9bb512642b7551fdbdd86:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2OTNiZjc3MGM0MDFhNWMzYmU3MzRlMWUxOTg4Mjg4MmIzMjRhNjlhNGQxMzdmMTljYTljMjliNTZiODRkN2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmMjU4ODQzZDQ2MmI3M2FmYmY2MTVkMjlkNjRjNDAyOGJkYjgzZTE0YzliZTBhZDcxZTM5MTg4YTY2YTRhNzYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQyMGE0NTFjZGQzZjY3Y2QzMWYxMzc4MTVlMGMwZGQwNjYzNTE2YmY0MWE3OTlmYTYxMjYwYzllMGUxMzQ4MWIifQ"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L103-L117",
+          "version": "repo-lines-v1:sha256:f7a7c4b828606c1e6c239a7b5646a0ec24ecab450ddbc31eec1764390886ce7d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE3OTQzZjQyZDc4NWNiOTc1YzcxZTI0N2U3YWEyMmUzYWI3MjNkNGNjZjg2ZTRlMTUyMGMyMjg5MzgwZTQ1Y2YiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3ZTc0MDA0ZmU1MTA1MDIyOTRkYzZlMWNmZDhlNjk5OGViYzYwNDU3ZGY2ODIxZWM5NjA3OGVlYTgwNTM5ZTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRhYjY1YzhjMjg3MmE2NTg3MDVkZjg0MDAyYWM2M2FlYmI0NmNjZjVhZmI2N2VlZjVkMDE3YWQ4ZmIzN2MyNjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE1N2Y3OTJlYzVkZGYzZjRkOWVmNDljNGM1ZWE1M2M5NWVmZjhkODU4ODM0NDRmNjBiNGI1NTQ3YmU3MDMxMWYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a84c6c4ef59b4a5887dd728bec2d0f9f",
+      "statement": "The attention tests are split by hardware: TestFA3VsSDPA compares both backends on the same bf16 inputs and is skipped without FA3, TestSDPAOnly runs on any device, and a dedicated test guards windowed single-token decode in the SDPA path.",
+      "evidence": [
+        {
+          "resource": "repo://tests/test_attention_fallback.py#L182-L184",
+          "version": "repo-lines-v1:sha256:c5a10979ff5a278228db773e395b3fbd1572999c9cb1b46bd37dbc61864ca731:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjcxZWU2MGQ3OTllYmNhZDMyYjUzZDM1NmQyYTNlMmU4MWVhMGMxZTBjOGMwNDYxOGY1M2ZjYjViNzBjZTQxNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzBiNWZiMjRmMjBiYmQ2NWQ2ZTBjOTZjZTAxNGZhMjNlNzE5MDVjMWU5MDM1OWE3N2VmOTM0YjY1NzNlNDc1NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWU3YzI3NDliZTIxOWZkNGIzOTY3MTMxNGU1MDUyN2YwMDU2NmQ5NzY5MTE4ZDFjYmJkMmFmYjRjOWViMTdlZiJ9"
+        },
+        {
+          "resource": "repo://tests/test_attention_fallback.py#L23-L52",
+          "version": "repo-lines-v1:sha256:b55c9afc74001b41301b6a07905e29100cbb592cb90db0e116d75917c471f3b2:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI0MDAxZWRmOTc1MDNhZjdiYzJmZjU5NmMyZjdiYjRmMjc5NWNiOGNlM2M1Y2ZhNjYxMjQzZDRlMzU5ZTQ3ZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwNTIzOTVlOTFjYjAwMDg5NDExNjE3MjdjYWQ3YWVkNDg5NzRkMjZkNWFjYWQ1ODZjZGU5MDFhODNhNzU3NmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc1ZTZhZGE1Nzk0ODc4NTY5OTlmNjU5NGU4NzEzZDkyZWQzYzJkZjk4MDIyNThiNjFiZDhlYWE2YjI4ZTM4OGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZmYmQ0M2MzOTM4YmYzYzY2MTc1OWVhYTc5MjY0MmY4MWRlNGE0ZGYzY2Y0NGY0NzJmZDhkODFhYjQyYjdjZmIifQ"
+        },
+        {
+          "resource": "repo://tests/test_attention_fallback.py#L254-L256",
+          "version": "repo-lines-v1:sha256:42bf90d6fe458e9ea88f2f61fe65404301963a3786f3155b7de226fe49bc57b5:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODkxZWY1NTVjYmY5MGJjZTJkYTY0OTA2ZTExMTUxZTc0MjAxYTk0NWRkM2ZiNTA0MzVmMjY0MTdjNWE0YmExMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjkwYjYxODJmNTkwNmM3ZGJmYzljN2I1NTJhZmFmOTg4MzY2NGYzNjg4NmJmMWI0MmJlMmU3MzQ5NGU2ZTdkZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWIzZGFjNzZmYmRlYzJmNDIwNTRmYTk2Nzk3MGYxODYxMmYzYWEyNmU4MzU2YWIzOGU5OTE2M2EyNWJkMjg2MyJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

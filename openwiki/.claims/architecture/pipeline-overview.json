@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:bd4efbeb414b25d68c11d33fb00b85fc1903cc17e256c58e64605bbd2b983d35",
+  "claims": [
+    {
+      "id": "claim_16759d9e96ec4cc1876cf34cdd5d6c63",
+      "statement": "All nanochat stages communicate only through files under get_base_dir(), which is NANOCHAT_BASE_DIR if set and otherwise ~/.cache/nanochat; the run scripts export it explicitly to that default.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/common.py#L71-L80",
+          "version": "repo-lines-v1:sha256:6bbc35cde2a6019643df1630f4c84f34addc6b4b8cc066a5a38105f048225aa9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0ZjczOTU1YWE1YTNjZTEzY2M1YzQyNTBlOGJlZDY0MjkwYWQ5NWJjNGZiOGRmNTAwZjdmYWI1YzhmZTQ2OTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjODgwZjEwYWE1NGU5MTlkNTdmMzgyMzQ3MjVhYjFhNzc5NzY2MDBjZjBkYTE0MzJjNmVmN2VlMjk0ODQ2NjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhlMTgwZjdiMzhhNzdhMDczY2UzOGJhYTIxNGEyNDc1NTNiYmVhNzA1YWM5YTc2OTJlZDdmNDhhNmU3NmU2ZGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNiNWQxOGVlYzk5OTRjZDNlODUyOTdiMmRlYjk1OWM3OWY0Y2Q2N2FjNjg0N2JiNDA0NTM2MjE3ZGVjNjFlMjgifQ"
+        },
+        {
+          "resource": "repo://runs/speedrun.sh#L15-L16",
+          "version": "repo-lines-v1:sha256:4a2e5099be77fe1890b0ad7737485b6a4dcc8e5199658f5a59e026502f81339b:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTkxN2JiMThjNDgwYzk2MDM3YmJlNjk0N2YxZjY3YTQ4OGNjYmMyZTZlZGM1Yzc4NzFkMzkxYmMwNzkzMzQ5OSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjIzMDE2OTJkZmE1YjQ1MWYwYjgyOWQwN2JjY2U2OWIyNDgyYzE4MGVkNDc0MDhmM2QyYmM2ZGJhYWVmODk0NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmVmZDgxNjI3ZTU0ZGZhODI5YzcyY2UwODQ4OTFiZGIzYmY0ODE4NDU3NGU3MzBmN2VjNjQ1YjZmYWVlZTBkYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmQwYTJlNmNiMWQ3M2IwOWFlYWI3Y2M2MmJiM2M2NzMwMGZiY2JhZjI0NTVkNGJmYzg2NDI4MjlmM2RlZmY1MyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a0afc08d2d534d22a9a9f20e2f64f4a6",
+      "statement": "Checkpoint roots are base_checkpoints, chatsft_checkpoints and chatrl_checkpoints, selected by the source names base, sft and rl in checkpoint_manager.load_model, and each checkpoint directory holds model_<step>.pt, meta_<step>.json and per-rank optim_<step>_rank<r>.pt files.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L163-L171",
+          "version": "repo-lines-v1:sha256:3a5b52e5ebcdced11273e2c61c3e983d53a8f96e49ca552453a5b040f534f72b:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTBiZTYwNmJkZGZmNWFmYTU3OTY5ZjIxNzBmNjdhMGZmZGI5YTA3MWZjZTI1MTBmMWJjNmViMjE4YWFmYTgxZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTYwYjE1NDgwZjY3MzEyNDg5NDA1NzdkZDE5Y2Q5MjU2NDcwZGExYjVlM2IwMmNlOGQ0MTUzYTFkYTEzNDc5MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjZlZDI0NzAyNDU0MDc2MzdiOGU3NTFjNGU2MWNjYjZhMjAxMDI2ZjYxYjM1NDhkNGY0OWMwNWVmZjdmZTllMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTQyMGVhNmQyYjJkZmEzNDVlMjY0OTc3MjcxYWIzZWU5ZDE5OTUwODc4NzFjN2ZlNGY1MDdiYzJiMmZkNTA1MiJ9"
+        },
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L41-L58",
+          "version": "repo-lines-v1:sha256:32094850dd76eb37e8b0020bbf38c773b8b865cbc5802c75c4592dd6ddad3122:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJmMjI2MDg0N2NjZThiMmJkMzFkM2UyYzFlMzY3YjMyOWE2OWIwYzEyZWY1ZTc3YzA3YTQyODI2NWMzMjVkODQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFiYmM5NjIyMGU0N2MyODEwM2NiOWY2MjVlMDk5ZDUwYjA4N2RiZGYzYzViZWYwOTcwMzdlOTYyMTUwNWY5ZmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAzOTk5OTcwNzAxZDk1MjYyMjNhNzFmOWVhYmIzMDExOThhZDgwMzY2Mjc3NjZiNTIxYzA2MDdjMWQxNWJhODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFjNTkxMjRiMTU1YjMyYjA1NjY1NDdlZmE1NjQwY2FhM2Y1NDc1NmMxYzkzYjQwMzBhNmM0Y2MyMDFlZTQ2OWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f707cde7afd24df8ba675d7640813730",
+      "statement": "The stage owners and their checkpoint roots are: base_train writes base_checkpoints, chat_sft loads base and writes chatsft_checkpoints, chat_rl loads sft and writes chatrl_checkpoints, while base_eval loads base and chat_eval, chat_cli and infer_bench load a user-selected source.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/base_eval.py#L150-L150",
+          "version": "repo-lines-v1:sha256:b316a5a6f65ecca4a0702029b0f857d1dd6856cb194be4cfa6fe9cc7f89e2d8b:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjMxNmE1YTZmNjVlY2NhNGEwNzAyMDI5YjBmODU3ZDFkZDY4NTZjYjE5NGJlNGNmYTZmZTljYzdmODllMmQ4YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjMxNmE1YTZmNjVlY2NhNGEwNzAyMDI5YjBmODU3ZDFkZDY4NTZjYjE5NGJlNGNmYTZmZTljYzdmODllMmQ4YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzVmMmU5NTM1NzFlZDRlOWY4YmJkZjg0OTAyZTJiNDAwNGI3MmNiYTRjODQ4NWYxYTMzZGRkMGEzOWFkZmMzOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDkxZTU0ZmQ4NjYwOTlhOGRjMzgzOWI4OTAxZjc5NWRhZWE0YzhlMTA1OTc4NmU3ZTk4NTEwYmFmYTJiMjQ4YSJ9"
+        },
+        {
+          "resource": "repo://scripts/base_train.py#L156-L156",
+          "version": "repo-lines-v1:sha256:41bc1295ac6f3ff29a3170f0690c489fe0a768349f90e29380fc2e46b8dca5e2:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDFiYzEyOTVhYzZmM2ZmMjlhMzE3MGYwNjkwYzQ4OWZlMGE3NjgzNDlmOTBlMjkzODBmYzJlNDZiOGRjYTVlMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDFiYzEyOTVhYzZmM2ZmMjlhMzE3MGYwNjkwYzQ4OWZlMGE3NjgzNDlmOTBlMjkzODBmYzJlNDZiOGRjYTVlMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjhkZjY2N2Y1OTE0NmNiMzFlYTgzYzI0ZjQzYzEwMjg3YTU2ODhjZDQxNGRkYWNhZTA3NjJjNjkxNTFlOThmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzc0OWYxYjRiNjMxYjI2NGUzZTVhYTRhN2FjNDJkYWUwMmMyZmI3YzM3ZTkzNDE3NjczNWQ4Y2U2N2YxNTZiNiJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_eval.py#L198-L198",
+          "version": "repo-lines-v1:sha256:e51d1c391250d5fa14d5af6714be3c8d6164e7ce1804d992bb659fc3397c8e95:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTUxZDFjMzkxMjUwZDVmYTE0ZDVhZjY3MTRiZTNjOGQ2MTY0ZTdjZTE4MDRkOTkyYmI2NTlmYzMzOTdjOGU5NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTUxZDFjMzkxMjUwZDVmYTE0ZDVhZjY3MTRiZTNjOGQ2MTY0ZTdjZTE4MDRkOTkyYmI2NTlmYzMzOTdjOGU5NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDg3MjdjYmU2ZWM3ZTA5Njg1MDU2ZTc3ZWI1NGNiOGI0YTgxODlhMDdjOTI5ZWUyMjg1ODNkNWZhZGRhOTA4YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmM0ZjhhYThjMjYyMjE2NWRkOWUwMTMyZmRjODE5NWI4YjQxMDg1NzYxMmVlMjkyYzVhZmMzMjBjNjQ0N2QyNCJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L312-L312",
+          "version": "repo-lines-v1:sha256:9e4565887ad3f8aab7bc24d9b637ff1684ab1f9f8c0284deb0528531091e8265:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOWU0NTY1ODg3YWQzZjhhYWI3YmMyNGQ5YjYzN2ZmMTY4NGFiMWY5ZjhjMDI4NGRlYjA1Mjg1MzEwOTFlODI2NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWU0NTY1ODg3YWQzZjhhYWI3YmMyNGQ5YjYzN2ZmMTY4NGFiMWY5ZjhjMDI4NGRlYjA1Mjg1MzEwOTFlODI2NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTYxOTg4YjE1OTBmZDc4Nzk2MjliMzlmODM1ODRkMmRmYmZiOGNlOTA5ZjU4MWQ3YjUxNjIwZWQ1NDNmMjM1YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWVkMDMwZGQzZDYyMmJlMTZlNTNiMjc1ZTdhZjViZTE5YzZhODQ2MTFiY2Y2MWRiZDc5MDQ4N2Y0NmMwYmU0MyJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_rl.py#L74-L74",
+          "version": "repo-lines-v1:sha256:66ab58acc760293e2b056336f04de58461f74a077b9356516895dac5099eac2e:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjZhYjU4YWNjNzYwMjkzZTJiMDU2MzM2ZjA0ZGU1ODQ2MWY3NGEwNzdiOTM1NjUxNjg5NWRhYzUwOTllYWMyZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjZhYjU4YWNjNzYwMjkzZTJiMDU2MzM2ZjA0ZGU1ODQ2MWY3NGEwNzdiOTM1NjUxNjg5NWRhYzUwOTllYWMyZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjFhMjc1Mjk3YTUzOTE2OWViZjFmMTI1ZDdkYTAxNDY0Mzk2YjM3MzAwZTEwYWRmZjY1MjkxNDQwNDE2MDkwMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzYxOTM5Y2VhNTgwY2M1MjE2MjEyOTYwZDZlMDIxZmRlN2NkZWNlOTEyNzJlNTk4NGYwNWE3NDNiYTBjYjljZCJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L394-L394",
+          "version": "repo-lines-v1:sha256:960f65e2acc43f08fdea0338fe00bb2a0fa1d5c46a82505bee5c5bca79e32e07:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTYwZjY1ZTJhY2M0M2YwOGZkZWEwMzM4ZmUwMGJiMmEwZmExZDVjNDZhODI1MDViZWU1YzViY2E3OWUzMmUwNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTYwZjY1ZTJhY2M0M2YwOGZkZWEwMzM4ZmUwMGJiMmEwZmExZDVjNDZhODI1MDViZWU1YzViY2E3OWUzMmUwNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDEzMGQxMzY1M2U5ZmZiODBhMzY3YjEyYzYwOGQ2ZjQ1ZWQ4ZWI5Njg2Y2Y5N2JlYzFjOTM1ODA0Yjk3MGViMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWYyYjQ1YjAzNjhjOGIxYjU1NTkwM2MwZjQ5OWViYzUwNGE4ODJkMzM2ZjMxOTRiODgzZmUwM2M2NjcyNTlkZCJ9"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L94-L94",
+          "version": "repo-lines-v1:sha256:15296142ef5993f04df8cab2067648ff1a6b346b15e47de09cd30316ab0ebf2c:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTUyOTYxNDJlZjU5OTNmMDRkZjhjYWIyMDY3NjQ4ZmYxYTZiMzQ2YjE1ZTQ3ZGUwOWNkMzAzMTZhYjBlYmYyYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTUyOTYxNDJlZjU5OTNmMDRkZjhjYWIyMDY3NjQ4ZmYxYTZiMzQ2YjE1ZTQ3ZGUwOWNkMzAzMTZhYjBlYmYyYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYThlZWZmNzkyZGExMDgxNDc2OWU3OTIzNThlODkyMTcwZjYyMjM4ZGEwZTAwZDFhMmJmN2FmODBmZjM0ZmI2MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjg4YjY2N2NiMjA1MDJjNmRkYzM3NDJmMTFkZDgyNzhjMzViYmViNDU5N2E3YjkzYWEyYTA4OTE2M2U4NDE1YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_de25cd79d04a41f290d02985763e2e15",
+      "statement": "Shared data artifacts live at fixed base-dir subpaths: pretraining shards in base_data_climbmix, the tokenizer in tokenizer/, the CORE eval bundle in eval_bundle/, task parquet shards under task_data/, and base_eval CSV output under base_eval/.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/dataset.py#L27-L27",
+          "version": "repo-lines-v1:sha256:720a9b4b591eb6bd74cf75b4f3bc3308065d27d18e40df4602e39873c69649aa:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzIwYTliNGI1OTFlYjZiZDc0Y2Y3NWI0ZjNiYzMzMDgwNjVkMjdkMThlNDBkZjQ2MDJlMzk4NzNjNjk2NDlhYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzIwYTliNGI1OTFlYjZiZDc0Y2Y3NWI0ZjNiYzMzMDgwNjVkMjdkMThlNDBkZjQ2MDJlMzk4NzNjNjk2NDlhYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI5YzBiZmU3OTYxMWYwZDU0NzhlYjVkYTdlYWMzMjQwMDUyNjJhOGMzODhkZTNkYjk3OWRlODU5NGZkNmI2NyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDg0ODllYThmZDIxOTQzZWEwOTVjNDJiMzVkZGJkOTA4M2I5OWJkYzk0NDUxY2ZlMzNlZjg1ODQ0ODg1OGY0OSJ9"
+        },
+        {
+          "resource": "repo://nanochat/tokenizer.py#L264-L279",
+          "version": "repo-lines-v1:sha256:1d408e4c4c58cd82c7de39e9ae481132dc0014d2049e4163e75c81a3436ac3b7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyNmJjYmNmZDk5Y2Q1ZWJiZGRjNzNjNTI2OTM4OTgxMTcyODZmYWZlMmVlZTU4YzIxODY2OWM3ZjA2ODlkYmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA4NzEwNDYwMTBmMjA4MDVlOTlmNThhZTgwMGRhNzBmYWJjYmRjYzBhNDk0NjdjNDJlNjRhZWY2ZGQ1OTJiODMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjZTk5ZmY4ZTc2MTZiMzBjNmIwNWNjNWYzNGU4NTBmMjRlYTJiN2UyOTcyZDQ1ZDMwMDEyYzM5YjliY2RmOWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://scripts/base_eval.py#L225-L228",
+          "version": "repo-lines-v1:sha256:fcde0ce3a84aa7af7ebec3dd6d9631964a7d73e7030cca31cf236f7e73a48b43:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODcyNDIzOWU3YzY5ZWQ4NDIyNmE4ZWY4NzRhMTJhMDA2MmUwOGIxNjJhZGQwMjcwOTMyZDJiNWRhNTEyNDhiYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDA5ZjkwOGM2OTkzY2QxYjA1Y2VjZjM4ODBmMzY3YjFlZTMyMWU1Nzg1ZDI5ZjA0M2VjMzUzYTNkOGY4NTA5YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMGUzMGIyOWQzMWExMDFhN2U0M2ZmYTNmNjg2N2NmY2M3NDQzMGFjZjI1NWNiY2JhZDVmNzc3NDRjNWE3NjJkYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjM5YjhjY2M5NGQ1ODE3NzA5MTBjZDdkZDdmOGRkNjI5OGYwZDdlZjVhM2QyZjY1ZWM3YzM4YjNjMDUyZjQwYyJ9"
+        },
+        {
+          "resource": "repo://scripts/base_eval.py#L46-L50",
+          "version": "repo-lines-v1:sha256:defd1f59f183101c15aa726ad907604a4a9686ba52543c680bae10ab74d75f5e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTExNGNlYjU0M2MyNTc2MzE4Y2JiM2ZjNDcwMTlmZGZlZTFhYzc1NWMwMDdmNTA4ZTJjYjZjMmU2ZWNjYTNhMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWY4MjM5N2YwMjgyNDBiMzhkY2UyNjFjOTRkMmU2MDY5OThhZThhNzUwOGUzMWZhMmI0OWMwYzUwMTQ3Y2I0NSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTg2NzMwYjNhN2RiOWJjMmE2MjhlYzBlZDViODdiYzU5MzBiZDc1MThlM2Q3NGExYTc4YjYyZDhmMjllZGNhMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWQ4M2ZhMzZlMmQxOTc5NzJlOTczOTU1ZDhmZmY4YzI1YmU2MDc5ODlkMWFjMWFiOGRhMzJmOWM4MzBmMThjZiJ9"
+        },
+        {
+          "resource": "repo://tasks/common.py#L52-L56",
+          "version": "repo-lines-v1:sha256:fee7d4b38d0885c5cdfb9adb16c8daefa77c4a6be9fcde2a03586a43ca86df4d:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmNkNjg5NWM3MmU3ZTc1YjlmZjlhNWIwNGJmZDkwZmQ5MDRkMGE0NmZkMWE0ZGNiYjY0NjE3YmEwOGQ2ZWI4YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjhlODdlYWI3Yjk2NzlkNWRlNGExNzEyMDRmNWFjY2NiODljOGJkYmJkNmE2NzkyM2FlMTAzODgwNWU2YjhhYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTQ4NzY2YjhiN2ExM2ZiMDdiOTZlOTc4MWQ3YWQxYjg3OWUyZGFjMzRjYmI1NWE1NTU2MTgwOTY1OTdkZWVhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGM5YTEwM2MwZmRjMGU4YjU3YjczM2NiNGQxNTc1ODI2Y2EwNjRlN2UxOTY5NzA1ODMyMmZhNjVjNzgzYWM3ZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_20ceebfb5de04ce8a57dfe88a234cb59",
+      "statement": "runs/speedrun.sh is the reference pipeline: it downloads 8 shards, starts a 170-shard download in the background, trains and evaluates the tokenizer, waits for the download, pretrains d24 with --target-param-data-ratio=8 --fp8 on 8 GPUs via torchrun, runs base_eval, chat_sft and chat_eval, and defaults WANDB_RUN to dummy which disables wandb.",
+      "evidence": [
+        {
+          "resource": "repo://runs/speedrun.sh#L36-L79",
+          "version": "repo-lines-v1:sha256:99d6acf67509c44de4106ee5b5eb7479500181aacc224deec077cdc8549d4855:eyJzZWxlY3RlZExpbmVDb3VudCI6NDQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwMmY3ODQ1ZGQ2MDFhZjU2MDVlZGNkYjIxNmNmNjlhYWVmNWJhZTk3YTNlNGE3M2IyM2E1NmMyNjA0Y2NiYzgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxNmMzNDdiYWM4NjAzYzkwZTI2ZmQ0MmQyOWVlZDRiOTEyYzNmNDFiMjc1YWVkYzQ4ZGI3MTgzMjE5ZmUzZWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIzNDc5NTgwZjI4MzlkMDM3OWI0NDJmNDg0Y2RlMTA1OWVlNDBmYTcxNTRmOTMyYWQ4M2Y0NzQ1Mzg0Y2NjNGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_44100ed8b92047c89c18805f90194ca3",
+      "statement": "runs/runcpu.sh runs the same stage sequence shrunk for CPU/MPS (8 shards, a depth-6 model with --window-pattern=L, reduced eval, short SFT) as an educational demo rather than a way to obtain a strong model.",
+      "evidence": [
+        {
+          "resource": "repo://runs/runcpu.sh#L1-L58",
+          "version": "repo-lines-v1:sha256:68bcbc16f3c2024cba6344a44d8c09f002d001a3ddcbe96b8027d1fe61a1d4ea:eyJzZWxlY3RlZExpbmVDb3VudCI6NTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NzVmOTI4NTQ2YWVlNzg1NWNiMWRiOWFmYzhhYjNmMWE4YTM0ZDQzZGU1YmJkNjJmNzA3NmQ3YmE5ZjM5MTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU3ODAwN2ZhYzJkMGJiYmFiYmI4MGNlM2I2NTIwMWEwNzFmYzFkMzc2N2M0MjI0OGNiNTQ1MGU5NGQzNWFhMTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a4eab6447eb0438aab114962204c9273",
+      "statement": "runs/miniseries.sh sweeps depths 12 through 26 with one base_train per depth and scrapes logs into a results CSV, while runs/scaling_laws.sh sweeps FLOP budgets times depths using --target-flops with --target-param-data-ratio=-1 and skips runs already present in its CSV; both reduce --device-batch-size at larger depths.",
+      "evidence": [
+        {
+          "resource": "repo://runs/miniseries.sh#L31-L60",
+          "version": "repo-lines-v1:sha256:78576107399692ab51614bc69166ee27117f5c4482933e1533d72a5068a7b901:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFlOWQyMzFjMzlkYjRkOWYwODY4ZDAyZWRmMzVmYjEyY2Y5ZTA4YmI4ODEwZGY4MjIxZmFlN2ZlYTMyY2NkOWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5NzJlNTlhNzk3YWJiOGRjMjlmYWMzN2M3ODQ5YmE5YzhmNjhkODViYmQ0MDE0YjkyOTY1MjhlMWYxOWQ3ZmMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVhMTA5YmM4MGZiZmJiNzExYjczY2YyMWUzNWY2ZDhkZmIyMjI0MmY0N2Q1MjRjYzAwZDhiM2QxNTY2MDc5YzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI5OGM1MjdmOGQ1YjgxNjEyZWRkYTEyODczYmFkMWY2YjYwM2JmYmY1NGE1NDJmMzIyYWUzMDUxNjZjNTNjMTkifQ"
+        },
+        {
+          "resource": "repo://runs/scaling_laws.sh#L35-L85",
+          "version": "repo-lines-v1:sha256:417fa42909963deaccc6ec6c41cd298f3aa7e8ec6cd2a046a1ec0b56313e7186:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwMjcwNmViZjcwZTA4NTViZTIyODgyZWRmMmYwNTk2ZGQ2NmMzOTU1M2Y2YjhmZTM2NWNlNGVmZDk5YTZhZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJlY2EzMzcxNDNiYjI5MzQ0MTJkZTY5MTMxNzA3MTIxZTQyMjUwYzliMDYwNGM4YWYwMjI3NjIyNDhiNGE0ZTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ2Mjk5N2MxOWNmZGQ2NmI4NDVmNTE3ZmVhY2ZkMmViMDQ4YjlkNzgwMTkxM2YyMGI0OGQ5ZDhjYjZhY2JjZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY2M2I0MTZmYWUzYjU4NjE4YmJmNDMxY2FlMTkwYjkzMzljNTM1Y2E3MjJkN2Y4MzE2ZmIwZmE5YTRjZDc5ZmIifQ"
+        },
+        {
+          "resource": "repo://runs/scaling_laws.sh#L5-L11",
+          "version": "repo-lines-v1:sha256:2579744bcbaae7496b7a4c458bcaf4660cf3f030c9b9fedcf273970151853137:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGE4ODIzYTI2NTk0YzExNDFjNmU5MDA1ZDM0NzcyNzI3NTUzYzZiYmFlYjg2MDA0NDE1NTRlZTNiOWE4NDZlOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODYwNmZkNTJjYzA4ZTkwZDBkYWY3OGM5MTYxOWUxMWQ5OGM2NTdmYTk2MzQ0YzVkY2Y0M2YzNGZhNDZiZmYxMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWY2NjRjNTI3NzUwMGE1NjM4MDdmMTQ2Mzk1NTRhMDEyMmZkMDIyYWFiYWFhM2YxODkwN2YyOWE4OWM0OGU0NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2FiZmEzZDgyYzIwYzMyYTBkYWVjZTY1NDRlZjgzOGQyZTlmZWIxMTFmNGM0ZTVhMzlmZDdiMmUyYWFmZWMzOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2f63b2630b61483bbd05aa5d564e59ac",
+      "statement": "build_model asserts that the loaded tokenizer's vocabulary size equals the checkpoint's vocab_size, so retraining the tokenizer invalidates existing checkpoints.",
+      "evidence": [
+        {
+          "resource": "repo://nanochat/checkpoint_manager.py#L110-L114",
+          "version": "repo-lines-v1:sha256:261b7309e6b4b95379e42fe838e9c5a1ba98a9b864691c22935c837263e0ccce:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzZmMjZjYTQ2NzA1MzBmYWZjMmE1YzcxZTc1ZWRiMGUzMDM2YTRkNGMwNDljMzAzYTA3M2IyNGFmZjY2OTBjZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjdkNTJkYzhlNTllYTE0Y2QzNGExYWJmODdhYjRmN2ZlNzA1NzU2NzQ3NGNjMmVjZjBlZDVlNWQxZWIzY2E5OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTBmYWYxODcxOWRlMDczOTcyYzA4MjJjNmUzNDVlOGQwYTc0OTU4ZGNhNTQ5ZjllMTYzZjU5YmMxOTFmMTJiYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2ZhZDI0ZDQ1YjJhYmI5YjA2ZDg3MTA5MjBhYzE4MTgwMWI2N2NkN2Y0MzQwM2ZhOTIwNWM3MTZmYzU5OTk1ZCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

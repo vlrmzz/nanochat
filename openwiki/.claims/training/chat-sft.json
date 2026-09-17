@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9e070a5239f07ba8e710960df1f4b081052eada54b7244f0bdd53b22a825c5d8",
+  "claims": [
+    {
+      "id": "claim_4b6920d9ff924333ad480841fd509996",
+      "statement": "chat_sft inherits max_seq_len, device_batch_size and total_batch_size from the base checkpoint metadata and embedding_lr, unembedding_lr and matrix_lr from its saved user_config unless flags override them, falling back to hard-coded defaults when the metadata lacks a value.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L94-L115",
+          "version": "repo-lines-v1:sha256:062ddb323a7205ef3684b1fee1860d737e2a462e0e9e688dd3ed4eb5ae3a74ef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1Mjk2MTQyZWY1OTkzZjA0ZGY4Y2FiMjA2NzY0OGZmMWE2YjM0NmIxNWU0N2RlMDljZDMwMzE2YWIwZWJmMmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNiMTVjM2M0YjViY2NhYmNkNTNjOWI3OTBkYWFjNzhmMDU1YzMwODJmN2NlMmIwYTlkNjQ0NDFmZDU5M2U4ZjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE4ZWVmZjc5MmRhMTA4MTQ3NjllNzkyMzU4ZTg5MjE3MGY2MjIzOGRhMGUwMGQxYTJiZjdhZjgwZmYzNGZiNjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ3NWVkMzdlMTUwNzY4NTNlODE3MjY2ZmFiNTJhZWU0NDA0YjM5ZDUyOTA2N2Y4Y2FhNWY0NWJiMTljMWMzODgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5c1b2886d423411bb182c9c4068751cf",
+      "statement": "SFT builds the optimizer with weight_decay=0 and by default warm-starts it from the base checkpoint's per-rank optimizer shard, saving the fresh learning rates before load_state_dict and restoring them afterwards because the pretraining LRs had decayed to near zero; a missing shard produces a warning and a fresh optimizer.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L130-L160",
+          "version": "repo-lines-v1:sha256:c5f189ff7050260fefac60014cca4814b97d07085cddd9cf3b7fe5ab5ed14444:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ5MDE3NTg3ZTZiNDJiYWM0ZDFiZmM1OGEzYWY4Y2JhYTUwYmM1NDY4ZmVmZGIyOTg0MzkzZGYxZTAyOGZiZDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJjYjc2ZWIyY2M2M2RiZmZjNmM5Y2U2MDU2OWIzYmY5NTFhYmU4NzM4OTg3MWZkNTQ1YzA2YzY4NjQzNzZjOTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJmOTUzNjY4MmViMzRlYmY3ZTYxMmQ5MmZhMTlmM2EwMjQ2ZjYzZGIyNGU0ZjQyZGM5M2QyNmMwZTAxODUzYTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_081ac785ea7d4e2eb6c796df7dc9159e",
+      "statement": "The SFT training mixture is SmolTalk train plus --mmlu-epochs copies of MMLU auxiliary_train and --gsm8k-epochs copies of GSM8K train, validated on SmolTalk test plus MMLU test capped at 5200 rows and GSM8K test capped at 420 rows.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L162-L174",
+          "version": "repo-lines-v1:sha256:367e915dfde6c12f05f7acf497992e7b8ebb21b052d8d9c1e64676a6932dde75:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVmNDFmYmNhOWQyMTJhODZiOTcwYjE3MDY3OTQ3MjQ2MzkyZDRkMzM5ZjJhY2ZhNzJlZjgwYjEzZWY4ZTgxOWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEyNDEwNzM5N2JlMjQwZWJhMzkxNmRkNDg3MGUyNWJmOWQyYTQzOWFhZjg4YjM1MDFlZWYxMzY0YWNiNDRjNjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBjYTUyNDMzNTgxNmEzMjVjMmI5NGZkYjMxZjc4NGM5MjY1NGYwYWYyOGM4ZDM0MjNmZWFkNjkzMWJjNTFkYWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY4ZWNlOTY4YmI3YTJmYWE3NTI4Yjk1MWFlNGJmMGIzMDY4YTE5NzkwYzY1NmM4Y2U4NTk4MGU5MGFiODEwYWYifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L65-L66",
+          "version": "repo-lines-v1:sha256:20044038284dbbdd0b37700619ea967b3fb580fa18c4754ab25f62e28a895295:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ4ZjE3OGExY2EwY2UwMGIzMjNkNGZlM2RjNDRjZDNiMjNhMzA1OWE1OWNjN2E4YWJjM2MyYTJhY2UxYWJlNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjZjZWI2MTQ5NzUzZjk5YjZiYzMyZWNlNTU5ODNjZDI2OGUyNTJmMGE1ZWY5ZmQ2MzFkNDQzMGQ2ODA2MGFlYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzhlZTNjMTlkODk0MWQyNTBlN2RjOGViOTJkNzNjNjNmMWUzNzk2YmU1ZjQ2NzgzOTEwNDZkNjJiMTg5NTJiNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzc0ZjY3N2NlMDg1YmVlY2JiY2JmYTI2Njc3ZDdhYmIxZDk1MzVhOWQwNzk5OWVkMmViNGUwMTA3YmU4NWI0ZSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ce8dee1142b14680a40244e74250a187",
+      "statement": "The SFT packer renders conversations with render_conversation, best-fit packs them into rows of max_seq_len+1 and pads with BOS instead of cropping when nothing fits, then masks targets to -1 wherever the render mask is 0 and at padding positions so only assistant tokens contribute to the loss.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L180-L300",
+          "version": "repo-lines-v1:sha256:b81eb9ac70be36f511522c56adf3e674e9ab3af2966efbfac92b3e95609edaad:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJjMTViZjNjNWY3N2E1NTM3YzJmZjFiZWU3N2M5YTA1NmNjOWEzYWJjZmUyNjg4MDIyZTAyNzRjNGNkNmU3ODk2IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI3Y2RjOWIyYTYwYjEzMGE0YmJjY2YwNTNlZTBjMTUwYmNjZGIyOWQxNzhkOWZmM2NkYjAwZWZmNGViYTQwODg3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJlODE0M2E3YjQzMjAzN2Q2NTllMjAxODg1MzYxOWY4OGE0ZWFkYzhkNGM1ODNlNTljOWExN2ZmNjhmY2Q2NzIwIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI5MGM3YzIzYTQ5NTQ4YWI0ZmFiOTkzZjRlZjg1YmM4YzBlMzY1OGQwNDBiMGJiNDRiY2MwMjIwNGIxZWFiYTY1In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_50b514d4a4a741c1b0548242873fc963",
+      "statement": "Training stops when --num-iterations is reached or when the consumed conversation count reaches the dataset size, the generator exposes approx_progress for a progress-based LR schedule (warmup ratio, constant, warmdown ratio to final fraction), and last_step is all-reduced with MAX each step so all ranks stop together.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L262-L280",
+          "version": "repo-lines-v1:sha256:4efeb9430917d3276906ad5d8743785d89266766cccee1b96564699c2f4b39ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM4ODc3YmQ3NjJlMjI4ZTk4ZTU5NmFjNDFlOGI3ZDBhMjY2ZmQ5ZDg5ZjM4ZTM2ODMzODE3MTg3MjhjMDExZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYwNDI2OGY4ZDU0NzJiMjA1ZmY2OTAwMzJiMjAzYTQ2MDQzMjllZDA2ZTY3MGIxMGZmNDMzZDJiMDQxNDRhZTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM0OGJjYjFjNTEyOGM4OTMzMjVmZjI5NmM4MmY1ZWExMTgyNjYwMmQzOTc2NDEyNDQzNmQ3MDFlZWVkNjk5OGEifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L303-L338",
+          "version": "repo-lines-v1:sha256:fdd03a6cb5762d702a959443e04ad745ec04e3724fa72d65c343d552f61feca9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU2ZDllMTA4NGI1OTU2MzRlOTA2ODViYjk0ODQxZjNlOTg4MTU1YmUyNmY3NDI5ZWZkN2RkN2ExNWYyNzIwMjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNjYmU5MzExOTQ2MDZhYWQwNGVhZWQxMmQ1YzU4NDk3NDdhNjZlYzIzZDA4NDU1Yzc2MzhhZjJkMDE2MWU5OTYifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L434-L434",
+          "version": "repo-lines-v1:sha256:bb4634e16bdf716cd82d0b79b86c3a9e07e5ba4d13007ccafc96c62f38e641ee:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYmI0NjM0ZTE2YmRmNzE2Y2Q4MmQwYjc5Yjg2YzNhOWUwN2U1YmE0ZDEzMDA3Y2NhZmM5NmM2MmYzOGU2NDFlZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYmI0NjM0ZTE2YmRmNzE2Y2Q4MmQwYjc5Yjg2YzNhOWUwN2U1YmE0ZDEzMDA3Y2NhZmM5NmM2MmYzOGU2NDFlZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODlkMDdmNGUxNTFlY2JmNjY2YmY1M2Q3ZGE5MDM0NGJjNzU1MGQzODk4MWJlNGNlYmE3YTdkMGZkODkyNzM0MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjU5YjBjZDc4ZmIyMTkyMzVmMThhNDY3N2M1YmQ5MTBkZTBjMDYwOTk5Y2RmYmUxODUyOWE5ZjU3ZGQ4ZTM4MyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2d9a24918163471380eff41ccd3673f2",
+      "statement": "On the last step every rank saves to <base_dir>/chatsft_checkpoints/<tag>/ with the uncompiled model state, its optimizer shard, and metadata including step, val_bpb, the model_config with window_pattern, and the SFT user_config.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L391-L414",
+          "version": "repo-lines-v1:sha256:ab134ab19c84fc3374f6fce51d3a769331b28bc5e1167421fa648bfb9074f8eb:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhMjgwNzM5ODU1YmNhZWUwN2Q0YjJmNWJhMTc2ODg2YjgyMGNlNWU2ZGFhNTlhZTFkODhjM2IzYjkwYjRmY2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkYmQ1Yzk3NGQyOTFmOGI0ZmFkOTQzNmVlZmM0MWU2N2U0NGRjYzdkYTliZjkwMzBjNWE5OGRiY2I5YTlkNDUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1OTllOGNmM2RhOWQzMzdiYzlkMmI3N2RhMWEzMDQ5Zjg1NzE4YTRmZjdjYTBhYTFiY2JhNmVmM2EzZjdjMjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFlYTRhOTgzMDVkZGNhZjYzODMyMTJjN2RiNTMwNjZlNWExZDc3NTY0MjA4MmJlOGM0ZWI5ZjRkMjk0YzljNzcifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}

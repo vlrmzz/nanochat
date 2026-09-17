@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9ec5bfeb11edf09839c35243f16b96cc54a68df2abc556af82183aebde7ee65e",
+  "claims": [
+    {
+      "id": "claim_2fcea6512b284706827f22e01ad1e827",
+      "statement": "run_chat_eval dispatches on the task's eval_type from a fixed table of five tasks (HumanEval, MMLU test, ARC-Easy test, ARC-Challenge test, GSM8K main test): generative tasks go through sampling and evaluate, categorical tasks through logit scoring.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_eval.py#L156-L176",
+          "version": "repo-lines-v1:sha256:4b9d1bad1be6864e71edb46962f64ba2dc1f4ab15dfd10321c7e7d55742ccbb4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ2MDI5NDEwM2RjZTgzNTNmOWIxN2NmNGU2ZThjYjA3MjUxNDE0MmQyODQyMmExZjFkYzc2MWM0NjAzZDFhMjEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyOTJlYjMyNzE0NmVkMTZhZGI3ZWNjNjZjOTY4MjYxMmVkNmE1MWRjZWU3NWU2MGM0MWE5NWY1NTlhOTNlMWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ3ZWE1NmYwOTI1MGE0MWY0MTU4NTJhY2RkMTkxZWM3MDJiZmQ0ZjdlNmYzMTgyYmNhYzBjNjZiOTE0YzBlNjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cc6814e309b94cd3ad03251b0599b074",
+      "statement": "The generative loop renders each prompt with render_for_completion, samples num_samples completions through the Engine, decodes only tokens after the prompt, calls task.evaluate on each, counts a problem as passed if any sample passes, strides problems across ranks and all-reduces pass/total counts.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_eval.py#L28-L84",
+          "version": "repo-lines-v1:sha256:445fff66969396317b35eaaa5fe9a2cb57bcf6c1b4f5821beeb37b746b936e42:eyJzZWxlY3RlZExpbmVDb3VudCI6NTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYwM2ZhMDI3YzM1ZmEyM2I2OGMwMDVhN2E4MjVjYzk3NzZlOGJiZmU0MzNkNmNlZmI2NjA4ODY0ZDYyMDYyMzUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzZjRlNGRiNDRiZDM3OTM2MzVhZmNmODI1MzMyYWM2OGNjOGVmNDQ2NDZjNzk2NmJjYjMzYTlkNDVjYWYxYTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxZmMyMWE4NjYxYTI1OWEyYjU0OTkyODI0OGM4MjMzYjk0MWZhYTA2ZWE5OGE4MjBlOTk4ZTBkYzA2NzRlZGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA3ZTY3MDE3MjA5OTY0NjNkMjc3ZDU5OGU2OGJkZTU1ODQ3OWU5MjZkY2ZjYTZjOTBiZjI3ZDJhMmJjZjc0NWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a895a8a6db142efb1ab16a15978de80",
+      "statement": "The categorical loop batches prompts padded with BOS, forwards once, restricts logits at the last prompt position to the token ids of each problem's allowed letters (asserting each letter is a single token), takes the argmax letter and passes it to task.evaluate, then all-reduces counts.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_eval.py#L87-L153",
+          "version": "repo-lines-v1:sha256:90647e8fc398bc8f07ac70978d8c7d6425ab97439925b2db494f1cfc4a7b0987:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg5NjFiNTJlZjNiOTcwMzg1NmI2NTE1N2RmYTRjYWQxOWYxYWYzZWRmN2E4MmQ1N2ZiYmViY2JhNjliNjY2OTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE2M2UwMWUzZWEzODZjMDI1YzQ0NTQ5ZjA5YTc4OTk0MGUwMTA1YmY2N2U0MjA2NzBkODY1NDJmM2E5MWYxOWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMzNDY0NDExMGU5ZjI0MGE4MWU5Y2EzOGNmMTVlNjA5NzRhNjJlNTQ1NWM1MjNjMjI0ODgwNDQ5YjZkMzAwMmQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6be8112028db480f85ee43acc1c97360",
+      "statement": "ChatCORE is the mean over the five tasks of (accuracy - baseline)/(1 - baseline) with baselines 0.25 for ARC-Easy, ARC-Challenge and MMLU and 0.0 for GSM8K and HumanEval, reported only when all five tasks were evaluated.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_eval.py#L202-L238",
+          "version": "repo-lines-v1:sha256:7707f571f8bf6bde00e587b728bee5b986d479f8f4d7c09f210a5ab483f3e949:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNmMzJhMDYyYWEyZjg0Y2M2MDExY2FiMzBiZWNhYTJmZDkyMDkwYmQ4YTdkZDgxZDYyYjc5NmYwOTA0MmMwZGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmMWY0MTE3ZDgwNzE4OTYwNTllMzE4NWM1ZDFjNjI3YjMyZjZhNzkzZmE4ZjEwMzdhOWFkM2QzYmQxZjlkNWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJjNGY4YWE4YzI2MjIxNjVkZDllMDEzMmZkYzgxOTViOGI0MTA4NTc2MTJlZTI5MmM1YWZjMzIwYzY0NDdkMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoyLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNmN2E2NjUyMDQxYzM5ZDZhMTJjZWYwOTI3MWY1ODU5OTk3MjQ4MmQ1YWVhNWFjOGMzOTUwZmQyMGIxMWM1OWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0ea095d5e01843ba96d91e50518f27dc",
+      "statement": "chat_sft reuses run_chat_eval every --chatcore-every steps and at the last step on the uncompiled model, capping categorical tasks with --chatcore-max-cat and generative tasks with --chatcore-max-sample (default 24), and logs chatcore_metric and a categorical-only chatcore_cat.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/chat_sft.py#L356-L389",
+          "version": "repo-lines-v1:sha256:5ba31e79b4166f4c4fc5c3cfda7a0d03f09456c45e3b1c24d70112e82bc7f1c0:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyZmNhMTcxZDEyZTU2Nzg3MGIwN2I3ZmI4NGJjNGE5N2RkZjc1MWJlNGM5YTdlZjZjNmI3NDU4MDAxNWYxMjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxNTQ2NzY0Yzg1MWNhNDY0YWU2YjhhMTRjZTc5MGIyMjVhM2M4ZWI2MzAzMDIxNTcwNGQ2YzdlMTdjYzQ1MWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1OTllOGNmM2RhOWQzMzdiYzlkMmI3N2RhMWEzMDQ5Zjg1NzE4YTRmZjdjYTBhYTFiY2JhNmVmM2EzZjdjMjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhZDczMTZhNjMyMWFiOWYzZGI3OGQwNjA2ZjJhZmRiZjIwNzQ0NTM1N2VhNjdhZWQyN2ZkZjgyZTM4MjBkNjcifQ"
+        },
+        {
+          "resource": "repo://scripts/chat_sft.py#L61-L63",
+          "version": "repo-lines-v1:sha256:b3fea8c9b2150ff2fc0d0194d952c6d1dff4d2cbd1dc1931a8b1f702bf7735c0:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGY2ZTQzZTE5NTZlZjc3Y2I4ZWQ1YzZiZDBmNWIyNDUxNDQ0NTgzMDRhN2NkYmM3YmYyZDliOTI2MmJkYjFlMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDE5NTljZDMwYjNhZDExMTEwMDkwNTUxMWUyMzA2YzMzMzlhNWYwOTJiZjNjNjlhOGNlOTRiZjIxZWUyZjExZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMWM5NmFmNGI3MDA1ZDhjNzcyYTM0ZmY5ODNjNzFlOTVhNTQ1YTNmZDQ5ZTcyY2I4ZWY3ZTlkM2JjMGI3Yjk2MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjQ5ZGQ5YjMwZDZhYWQwYTFiNzNlNTdmZDk1NGE0NGU1NThmZGZiYzkzM2I2MzZkN2ZmYWQ5ZGQ1MDQzYmM2YyJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.5.2",
+    "at": "2026-09-17T20:15:00.211Z"
+  }
+}
