@@ -14,9 +14,8 @@ import argparse
 import os
 os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 import time
-import wandb
 import torch
-from nanochat.common import compute_init, compute_cleanup, print0, DummyWandb, get_base_dir, autodetect_device_type, get_peak_flops, COMPUTE_DTYPE, COMPUTE_DTYPE_REASON, is_ddp_initialized
+from nanochat.common import compute_init, compute_cleanup, print0, get_logger, get_base_dir, autodetect_device_type, get_peak_flops, COMPUTE_DTYPE, COMPUTE_DTYPE_REASON, is_ddp_initialized
 from nanochat.tokenizer import get_token_bytes
 from nanochat.checkpoint_manager import save_checkpoint, load_model, load_optimizer_state
 from nanochat.loss_eval import evaluate_bpb
@@ -83,8 +82,7 @@ else:
     gpu_peak_flops = float('inf')  # MFU not meaningful for CPU/MPS
 
 # wandb logging init
-use_dummy_wandb = args.run == "dummy" or not master_process
-wandb_run = DummyWandb() if use_dummy_wandb else wandb.init(project="nanochat-sft", name=args.run, config=user_config)
+wandb_run = get_logger("nanochat-sft", args.run, user_config, master_process)
 
 # Flash Attention status
 if not HAS_FA3:
@@ -382,6 +380,7 @@ while True:
         wandb_run.log({
             "step": step,
             "total_training_flops": flops_so_far,
+            "total_training_time": total_training_time,
             "chatcore_metric": chatcore,
             "chatcore_cat": chatcore_cat,
             **{f"chatcore/{task_name}": acc for task_name, acc in task_results.items()},
