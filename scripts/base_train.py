@@ -21,13 +21,12 @@ import argparse
 from dataclasses import asdict
 from contextlib import contextmanager
 
-import wandb
 import torch
 import torch.distributed as dist
 
 from nanochat.gpt import GPT, GPTConfig, Linear
 from nanochat.dataloader import tokenizing_distributed_data_loader_bos_bestfit, tokenizing_distributed_data_loader_with_state_bos_bestfit
-from nanochat.common import compute_init, compute_cleanup, print0, DummyWandb, print_banner, get_base_dir, autodetect_device_type, get_peak_flops, COMPUTE_DTYPE, COMPUTE_DTYPE_REASON, is_ddp_initialized
+from nanochat.common import compute_init, compute_cleanup, print0, get_logger, print_banner, get_base_dir, autodetect_device_type, get_peak_flops, COMPUTE_DTYPE, COMPUTE_DTYPE_REASON, is_ddp_initialized
 from nanochat.tokenizer import get_tokenizer, get_token_bytes
 from nanochat.checkpoint_manager import save_checkpoint, load_checkpoint
 from nanochat.loss_eval import evaluate_bpb
@@ -96,8 +95,7 @@ else:
 print0(f"COMPUTE_DTYPE: {COMPUTE_DTYPE} ({COMPUTE_DTYPE_REASON})")
 
 # wandb logging init
-use_dummy_wandb = args.run == "dummy" or not master_process
-wandb_run = DummyWandb() if use_dummy_wandb else wandb.init(project="nanochat", name=args.run, config=user_config)
+wandb_run = get_logger("nanochat", args.run, user_config, master_process)
 
 # Flash Attention status
 from nanochat.flash_attention import USE_FA3
@@ -447,6 +445,7 @@ while True:
         wandb_run.log({
             "step": step,
             "total_training_flops": flops_so_far,
+            "total_training_time": total_training_time,
             "core_metric": results["core_metric"],
             "centered_results": results["centered_results"],
         })

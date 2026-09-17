@@ -4,6 +4,8 @@ Common utilities for nanochat.
 
 import os
 import re
+import json
+import time
 import logging
 import urllib.request
 import torch
@@ -221,6 +223,59 @@ class DummyWandb:
         pass
     def finish(self):
         pass
+
+class FileLogger:
+    """
+    Minimal wandb stand-in that appends one JSON object per log() call to
+    <base_dir>/metrics/<project>/<run>.jsonl. Read back with scripts/dashboard.py.
+    """
+    def __init__(self, project, run, config=None):
+        self.path = os.path.join(get_base_dir(), "metrics", project, f"{run}.jsonl")
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+        self.file = open(self.path, "a", buffering=1) # line buffered so tail/dashboard see rows immediately
+        if config:
+            self.log({"_config": config})
+
+    def log(self, data, *args, **kwargs):
+        row = {"_time": time.time(), **data}
+        self.file.write(json.dumps(row, default=str) + "\n")
+
+    def finish(self):
+        self.file.close()
+
+class MultiLogger:
+    """Fans out log()/finish() to several loggers"""
+    def __init__(self, loggers):
+        self.loggers = loggers
+    def log(self, *args, **kwargs):
+        for l in self.loggers:
+            l.log(*args, **kwargs)
+    def finish(self):
+        for l in self.loggers:
+            l.finish()
+
+def get_logger(project, run, config, master_process=True):
+    """
+    Returns an object with wandb-like .log() and .finish().
+    - run == "dummy" or a non-master rank: DummyWandb (logs nothing)
+    - otherwise, controlled by NANOCHAT_LOGGER env var:
+        "both"  (default): local JSONL file + wandb
+        "file"           : local JSONL file only (no wandb account needed)
+        "wandb"          : wandb only
+    """
+    if run == "dummy" or not master_process:
+        return DummyWandb()
+    mode = os.environ.get("NANOCHAT_LOGGER", "both")
+    assert mode in ("both", "file", "wandb"), f"NANOCHAT_LOGGER must be one of both|file|wandb, got {mode}"
+    loggers = []
+    if mode in ("both", "file"):
+        file_logger = FileLogger(project, run, config)
+        logger.info(f"Logging metrics to {file_logger.path}")
+        loggers.append(file_logger)
+    if mode in ("both", "wandb"):
+        import wandb # lazy import so that "file" mode never touches wandb
+        loggers.append(wandb.init(project=project, name=run, config=config))
+    return loggers[0] if len(loggers) == 1 else MultiLogger(loggers)
 
 # hardcoded BF16 peak flops for various GPUs
 # inspired by torchtitan: https://github.com/pytorch/torchtitan/blob/main/torchtitan/tools/utils.py

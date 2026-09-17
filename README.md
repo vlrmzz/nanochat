@@ -111,6 +111,31 @@ The important thing to note is that nanochat is written and configured around on
 
 The script [runs/runcpu.sh](runs/runcpu.sh) shows a very simple example of running on CPU or Apple Silicon. It dramatically shrinks the LLM that is being trained to make things fit into a reasonable time interval of a few ten minutes of training. You will not get strong results in this way.
 
+## Logging and local dashboard
+
+All training scripts (`base_train`, `chat_sft`, `chat_rl`) log metrics through one object with the wandb `log()` / `finish()` interface. The `--run` flag names the run; `--run=dummy` (the default) disables all logging. For any other run name the `NANOCHAT_LOGGER` environment variable chooses the backend:
+
+| `NANOCHAT_LOGGER` | Behaviour |
+|-------------------|-----------|
+| `both` (default) | Append to a local JSONL file **and** log to wandb (needs `wandb login`) |
+| `file` | Local JSONL file only. No account, no network. |
+| `wandb` | wandb only |
+
+The JSONL files live at `$NANOCHAT_BASE_DIR/metrics/<project>/<run>.jsonl`, one JSON object per `log()` call, so they are trivial to load with pandas or `jq`. To watch a run without wandb, e.g. on a Lambda node, start training with the file backend and then serve the built-in dashboard from the same node:
+
+```bash
+NANOCHAT_LOGGER=file WANDB_RUN=d12 bash runs/speedrun.sh
+python -m scripts.dashboard   # serves http://localhost:8080 on the node
+```
+
+From your laptop, forward the port over SSH and open `http://localhost:8080` in a browser:
+
+```bash
+ssh -N -L 8080:localhost:8080 ubuntu@<node-ip>
+```
+
+The page draws one chart per metric (`val/bpb`, `core_metric`, `train/loss`, `train/mfu`, `train/tok_per_sec`, ...), overlays every run it finds, lets you switch the x-axis between `step`, `total_training_time` and `total_training_flops`, and refreshes itself every few seconds. It is a single stdlib HTTP server plus a page that loads Chart.js from a CDN, so nothing extra needs to be installed on the node.
+
 ## Precision / dtype
 
 nanochat does not use `torch.amp.autocast`. Instead, precision is managed explicitly through a single global `COMPUTE_DTYPE` (defined in `nanochat/common.py`). By default this is auto-detected based on your hardware:
@@ -176,6 +201,7 @@ I've published a number of guides that might contain helpful information, most r
 │   ├── chat_eval.py                # Chat model: eval tasks
 │   ├── chat_rl.py                  # Chat model: reinforcement learning
 │   ├── chat_sft.py                 # Chat model: train SFT
+│   ├── dashboard.py                # Local (wandb-free) training dashboard
 │   ├── infer_bench.py              # Inference: latency/throughput/VRAM bench
 │   ├── tok_eval.py                 # Tokenizer: evaluate compression rate
 │   └── tok_train.py                # Tokenizer: train it
@@ -190,6 +216,7 @@ I've published a number of guides that might contain helpful information, most r
 │   ├── test_attention_fallback.py  # FA3/SDPA attention fallback
 │   ├── test_engine.py              # Inference engine, KV cache
 │   ├── test_execution.py           # Sandboxed code execution
+│   ├── test_logger.py              # File logger + dashboard data loading
 │   ├── test_optim.py               # MuonAdamW optimizer (needs GPU)
 │   ├── test_tasks.py               # Task slicing, mixtures, HubDataset
 │   └── test_tokenizer.py           # BPE round-trips, chat rendering
